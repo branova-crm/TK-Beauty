@@ -1,6 +1,5 @@
 "use client";
 
-import SectionTitle from "@/components/ui/SectionTitle";
 import Card from "@/components/ui/Card";
 import { Star } from "lucide-react";
 import SurfaceSection from "@/components/ui/SurfaceSection";
@@ -9,47 +8,47 @@ import Reveal from "@/components/ui/Reveal";
 const testimonials = [
     {
         name: "Anna M.",
-        text: "Einfach nur begeistert! Die Laserbehandlung ist fast schmerzfrei und schon nach der zweiten Sitzung sehe ich tolle Ergebnisse.",
-        treatment: "Haarentfernung",
+        text: "Sehr liebe Beratung, man fühlt sich sofort gut aufgehoben. Ergebnisse waren nach kurzer Zeit sichtbar.",
+        treatment: "Dauerhafte Haarentfernung",
     },
     {
         name: "Sarah K.",
-        text: "Super Studio, tolle Atmosphäre und sehr kompetente Beratung. Mein Hautbild hat sich durch das Microneedling extrem verbessert.",
+        text: "Professionell, sauber, ruhig – genau die Art Studio, die man sucht.",
         treatment: "Microneedling",
     },
     {
         name: "Julia R.",
-        text: "Das Team ist super freundlich und nimmt sich viel Zeit. Man fühlt sich direkt wohl und bestens aufgehoben.",
+        text: "Ich mag die ehrliche Beratung. Kein Druck, sondern Qualität.",
         treatment: "Gesichtsbehandlung",
     },
 ];
 
 export default function Testimonials() {
     return (
-        <SurfaceSection variant="white" id="testimonials">
+        <SurfaceSection variant="surface" id="testimonials">
             <Reveal>
-                <SectionTitle
-                    title="Kundenstimmen"
-                    subtitle="Bewertungen"
-                    align="center"
-                />
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
+                        Kundenstimmen
+                    </h2>
+                </div>
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 {testimonials.map((testimonial, index) => (
                     <Reveal key={index} delay={0.1 * index}>
-                        <Card className="p-10 flex flex-col h-full bg-surface/30 border-none shadow-sm hover:shadow-premium transition-all duration-500 rounded-[2.5rem]">
+                        <Card className="p-10 flex flex-col h-full bg-[#FAF8F5] border border-[#3A3A3A]/[0.06] shadow-sm hover:shadow-premium transition-all duration-500 rounded-[24px]">
                             <div className="flex gap-1 text-primary mb-6">
                                 {[...Array(5)].map((_, i) => (
                                     <Star key={i} className="w-4 h-4 fill-current" />
                                 ))}
                             </div>
-                            <p className="text-gray-600 italic mb-8 flex-grow leading-relaxed">
+                            <p className="text-[#685743] italic mb-8 flex-grow leading-relaxed">
                                 "{testimonial.text}"
                             </p>
-                            <div className="border-t border-muted/50 pt-6">
-                                <p className="font-serif font-bold text-secondary">{testimonial.name}</p>
-                                <p className="text-xs text-primary font-bold uppercase tracking-wider mt-1">{testimonial.treatment}</p>
+                            <div className="border-t border-[#3A3A3A]/10 pt-6">
+                                <p className="font-serif font-bold text-foreground">{testimonial.name}</p>
+                                <p className="text-xs text-[#8A7A65] font-semibold uppercase tracking-wider mt-1">{testimonial.treatment}</p>
                             </div>
                         </Card>
                     </Reveal>

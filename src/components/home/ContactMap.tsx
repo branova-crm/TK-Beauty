@@ -1,76 +1,78 @@
 "use client";
 
-import SectionTitle from "@/components/ui/SectionTitle";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Instagram, Calendar, MapIcon } from "lucide-react";
+import Button from "@/components/ui/Button";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
 
 export default function ContactMap() {
     return (
-        <SurfaceSection variant="surface" id="kontakt">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                <Reveal delay={0.2}>
-                    <div className="space-y-12">
-                        <SectionTitle
-                            title="Besuche uns im Studio"
-                            subtitle="Standort"
-                            align="left"
-                            className="mb-0"
-                        />
+        <SurfaceSection variant="white" id="kontakt" className="!bg-white px-0 md:px-0">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <Reveal delay={0.2} className="w-full">
+                    <div className="space-y-12 max-w-lg">
+                        <div className="space-y-4">
+                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight">
+                                Besuche uns im Studio
+                            </h2>
+                            <p className="text-lg text-[#685743]">
+                                Hast du Fragen oder möchtest einen Termin vereinbaren? Wir sind gerne für dich da.
+                            </p>
+                        </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                            <div className="space-y-4">
-                                <div className="w-12 h-12 rounded-2xl bg-white shadow-premium flex items-center justify-center text-primary">
-                                    <MapPin className="w-6 h-6" />
+                        <div className="space-y-8">
+                            <div className="flex items-start gap-4">
+                                <div className="mt-1">
+                                    <MapPin className="w-6 h-6 text-[#8A7A65]" />
                                 </div>
                                 <div className="space-y-1">
-                                    <p className="font-serif font-black text-secondary">Adresse</p>
-                                    <p className="text-gray-500 text-sm">Musterstraße 123,<br />90402 Nürnberg</p>
+                                    <p className="font-semibold text-foreground">Adresse</p>
+                                    <p className="text-[#685743]">Krugstraße 39,<br />90419 Nürnberg</p>
                                 </div>
                             </div>
 
-                            <div className="space-y-4">
-                                <div className="w-12 h-12 rounded-2xl bg-white shadow-premium flex items-center justify-center text-primary">
-                                    <Phone className="w-6 h-6" />
+                            <div className="flex items-start gap-4">
+                                <div className="mt-1">
+                                    <Instagram className="w-6 h-6 text-[#8A7A65]" />
                                 </div>
                                 <div className="space-y-1">
-                                    <p className="font-serif font-black text-secondary">Kontakt</p>
-                                    <p className="text-gray-500 text-sm">0123 / 4567890<br />info@tk-beauty.de</p>
+                                    <p className="font-semibold text-foreground">Instagram</p>
+                                    <p className="text-[#685743]">@tk_beauty_nuernberg</p>
                                 </div>
                             </div>
+                        </div>
 
-                            <div className="space-y-4">
-                                <div className="w-12 h-12 rounded-2xl bg-white shadow-premium flex items-center justify-center text-primary">
-                                    <Clock className="w-6 h-6" />
-                                </div>
-                                <div className="space-y-1">
-                                    <p className="font-serif font-black text-secondary">Öffnungszeiten</p>
-                                    <p className="text-gray-500 text-sm">Mo - Fr: 09:00 - 20:00 Uhr<br />Sa: 10:00 - 16:00 Uhr</p>
-                                </div>
-                            </div>
+                        <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                            <Button variant="primary">
+                                <Calendar className="w-5 h-5 opacity-80" />
+                                Termin sichern
+                            </Button>
+                            <Button variant="secondary" className="px-8">
+                                <MapIcon className="w-5 h-5 opacity-80 mr-2" />
+                                Route öffnen
+                            </Button>
                         </div>
                     </div>
                 </Reveal>
 
-                <Reveal delay={0.4}>
-                    <div className="relative h-[500px] rounded-[3rem] overflow-hidden shadow-2xl bg-muted group">
-                        <div className="absolute inset-0 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000">
-                            {/* Hier käme normal eine Google Maps Einbindung via Iframe hin */}
-                            <div className="w-full h-full bg-[#e5e3df] flex items-center justify-center text-gray-400 font-serif italic text-lg p-12 text-center">
-                                Interaktive Karte von Nürnberg <br />
-                                (Google Maps Integration bereit)
-                            </div>
+                <Reveal delay={0.4} className="w-full">
+                    <div className="relative aspect-[4/5] md:aspect-square lg:aspect-auto lg:h-[600px] rounded-[24px] overflow-hidden shadow-premium group border border-[#3A3A3A]/[0.06]">
+                        {/* Map iframe placeholder using Google Maps Embed API or simple static image for performance */}
+                        <div className="absolute inset-0 transition-all duration-700">
+                            <iframe
+                                src="https://maps.google.com/maps?q=Krugstra%C3%9Fe%2039%2C%2090419%20N%C3%BCrnberg&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                className="w-full h-full"
+                            />
                         </div>
 
-                        {/* Custom Marker Placeholder */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <div className="relative">
-                                <div className="w-12 h-12 bg-primary rounded-full shadow-2xl animate-pulse" />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-4 h-4 bg-white rounded-full shadow-lg" />
-                                </div>
-                            </div>
-                        </div>
+                        {/* Custom Marker overlay removed because iframe takes over, or kept if map is static */}
+                        <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_40px_rgba(239,228,208,0.5)] z-10" />
                     </div>
                 </Reveal>
             </div>

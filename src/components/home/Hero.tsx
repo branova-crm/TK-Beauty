@@ -1,90 +1,94 @@
 "use client";
 
 import Button from "@/components/ui/Button";
-import { ChevronRight, ShieldCheck, Sparkles } from "lucide-react";
+import { Star, ShieldCheck, Calendar, ArrowRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 
 export default function Hero() {
     return (
-        <section className="relative pt-32 pb-20 overflow-hidden bg-white">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                {/* Text Content */}
-                <div className="space-y-8">
-                    <Reveal delay={0.1}>
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold">
-                            <Sparkles className="w-4 h-4" />
-                            Premium Alexandrit Laser Technologie
-                        </div>
-                    </Reveal>
+        <section className="pt-32 pb-4 px-4 md:px-8 w-full bg-background flex justify-center">
+            {/* Page Container */}
+            <div className="max-w-[1240px] w-full">
+                {/* Hero Rounded Card */}
+                <div className="bg-creme rounded-[28px] md:rounded-[40px] pt-7 md:pt-14 px-7 md:px-14 pb-8 border border-[#3A3A3A]/[0.06] shadow-premium flex flex-col gap-0">
 
-                    <Reveal delay={0.2}>
-                        <h1 className="text-6xl md:text-8xl font-serif font-black text-secondary leading-[1.05] tracking-tight text-balance">
-                            Your glow <br />
-                            <span className="text-primary italic font-normal">starts here</span>
-                        </h1>
-                    </Reveal>
+                    <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+                        {/* Left Column (Text - ~45%) */}
+                        <div className="w-full lg:w-[45%] flex flex-col space-y-8 z-10">
+                            <Reveal delay={0.1}>
+                                <h1 className="text-[42px] leading-[1.1] md:text-[64px] lg:text-[72px] font-serif font-semibold text-foreground tracking-tighter text-balance">
+                                    Dein <span className="text-primary italic">Glow</span> beginnt hier
+                                </h1>
+                            </Reveal>
 
-                    <Reveal delay={0.3}>
-                        <p className="text-xl text-gray-500 leading-relaxed max-w-lg">
-                            Dauerhafte Haarentfernung und modernste Hautpflege in Nürnberg.
-                            Erleben Sie schmerzarme Behandlungen mit sichtbaren Ergebnissen.
-                        </p>
-                    </Reveal>
+                            <Reveal delay={0.2}>
+                                <p className="text-base md:text-lg text-[#685743] leading-[1.6] max-w-md">
+                                    Bei TK Beauty in Nürnberg verbinden wir Premium-Technologie mit persönlicher Beratung – für sichtbar gepflegte Haut und ein rundum gutes Gefühl.
+                                </p>
+                            </Reveal>
 
-                    <Reveal delay={0.4}>
-                        <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                            <Button size="lg" className="group !rounded-full py-6 px-10 text-lg">
-                                Erstgespräch buchen
-                                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </Button>
-                            <Button variant="outline" size="lg" className="!rounded-full py-6 px-10 text-lg">
-                                Behandlungen ansehen
-                            </Button>
-                        </div>
-                    </Reveal>
-
-                    {/* Trust Leiste */}
-                    <Reveal delay={0.5}>
-                        <div className="pt-12 border-t border-muted/30 grid grid-cols-2 gap-6">
-                            <div className="flex items-center gap-3 text-sm text-gray-400 font-medium">
-                                <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-primary">
-                                    <ShieldCheck className="w-5 h-5" />
+                            <Reveal delay={0.3}>
+                                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                    <Button variant="primary">
+                                        <Calendar className="w-5 h-5 opacity-80" />
+                                        Kostenlose Beratung
+                                    </Button>
+                                    <Button variant="secondary">
+                                        Behandlungen ansehen
+                                        <ArrowRight className="w-4 h-4 ml-1 opacity-70" />
+                                    </Button>
                                 </div>
-                                Persönliche Beratung
-                            </div>
-                            <div className="flex items-center gap-3 text-sm text-gray-400 font-medium">
-                                <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-primary">
-                                    <ShieldCheck className="w-5 h-5" />
+                            </Reveal>
+                        </div>
+
+                        {/* Right Column (Image - ~55%) */}
+                        <div className="w-full lg:w-[55%] h-[300px] lg:h-[400px]">
+                            <Reveal delay={0.2} className="w-full h-full">
+                                <div className="w-full h-full rounded-[32px] overflow-hidden relative shadow-inner">
+                                    <img
+                                        src="/images/8.jpg"
+                                        alt="Premium Beauty Behandlung"
+                                        className="w-full h-full object-cover"
+                                    />
+                                    {/* subtle overlay to integrate image into creme theme slightly */}
+                                    <div className="absolute inset-0 bg-[#EFE4D0]/5 mix-blend-multiply" />
                                 </div>
-                                Hochwertigste Technik
+                            </Reveal>
+                        </div>
+                    </div>
+
+                    <Reveal delay={0.4} className="w-full">
+                        <div className="w-full">
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 py-6 font-medium">
+                                <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm md:text-base text-[#8A7A65]">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-2 h-2 rounded-full bg-primary/70" />
+                                        <span className="font-medium">Motus AX Alexandrit Laser</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-2 h-2 rounded-full bg-primary/70" />
+                                        <span className="font-medium">Individuelle Beratung</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-2 h-2 rounded-full bg-primary/70" />
+                                        <span className="font-medium">Premium Pflege</span>
+                                    </div>
+                                </div>
+
+                                {/* Social Proof Mini */}
+                                <div className="flex items-center gap-4 bg-white/40 px-6 py-3 rounded-full border border-[#3A3A3A]/[0.05] shadow-sm">
+                                    <div className="flex gap-1 text-primary">
+                                        {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-4 h-4 fill-current" />)}
+                                    </div>
+                                    <span className="text-sm md:text-base font-semibold text-foreground">
+                                        4,9/5 <span className="text-[#8A7A65] font-normal hidden sm:inline ml-1">Rating</span>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                    </Reveal>
-                </div>
-
-                {/* Visual Content */}
-                <div className="relative">
-                    <Reveal delay={0.4}>
-                        <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
-                            <img
-                                src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&q=80&w=800&h=1000"
-                                alt="Premium Beauty Treatment"
-                                className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
-                            />
-                        </div>
-
-                        {/* Subtle floating overlay */}
-                        <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-[2rem] shadow-premium max-w-[220px]">
-                            <p className="text-primary font-serif font-black text-4xl mb-2">100%</p>
-                            <p className="text-gray-500 text-sm font-medium leading-tight">Zufriedenheits-garantie für Ihre Haut</p>
                         </div>
                     </Reveal>
                 </div>
             </div>
-
-            {/* Background decoration elements */}
-            <div className="absolute top-0 right-0 -z-10 w-1/3 h-1/2 bg-primary/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 left-0 -z-10 w-1/4 h-1/2 bg-primary/5 blur-[100px] rounded-full -translate-x-1/2 translate-y-1/2" />
         </section>
     );
 }

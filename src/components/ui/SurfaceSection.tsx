@@ -22,18 +22,18 @@ export default function SurfaceSection({
     id
 }: SurfaceSectionProps) {
     const variants = {
-        light: "bg-background",
-        surface: "bg-[#f5f5f3]",
+        light: "bg-[#EFE4D0]",
+        surface: "bg-[#FAF8F5]",
         white: "bg-white",
     };
 
     return (
-        <section id={id} className={cn("px-4 sm:px-6 py-12 sm:py-24", className)}>
+        <section id={id} className={cn("px-4 md:px-8 w-full bg-background flex justify-center py-6", className)}>
             <div
                 className={cn(
-                    "max-w-7xl mx-auto rounded-[2.5rem] overflow-hidden",
+                    "max-w-[1240px] w-full rounded-[28px] md:rounded-[40px] overflow-hidden",
                     variants[variant],
-                    "p-8 sm:p-20 shadow-premium",
+                    "p-7 md:p-14 shadow-premium border border-[#3A3A3A]/[0.06]",
                     innerClassName
                 )}
             >

@@ -1,11 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8f5f1;
-  --foreground: #3a3a3a;
+  --background: #e7e7e7;
+  /* Main Surface: Hell Orange / Creme */
+  --foreground: #3A3A3A;
+  /* Text */
   --primary: #BFA67A;
-  --secondary: #3a3a3a;
-  --accent: #E6D5C9;
+  /* Primary Gold/Beige */
+  --secondary: #685743;
+  /* Grau Braun */
+  --accent: #EFE4D0;
+
+  /* Additional CI colors */
+  --color-orange-gray: #AA9B87;
+  --color-orange-gray-2: #8A7A65;
+  --color-brown: #685743;
+  --color-pastel: #C9BBA6;
+  --color-creme: #EFE4D0;
+  --color-card: #FAF8F5;
+  /* Off-White for clean cards */
 }
 
 @theme inline {
@@ -14,6 +27,8 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-card: var(--color-card);
+  --color-creme: var(--color-creme);
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-inter);
 }
@@ -22,6 +37,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), ui-sans-serif, system-ui;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
 h1,
@@ -37,18 +54,25 @@ h6 {
 
 /* Custom Utilities for Premium Look */
 @layer utilities {
-  .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    /* Updated blur value */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-  }
-
   .text-balance {
     text-wrap: balance;
   }
 
   .shadow-premium {
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px, rgba(0, 0, 0, 0.02) 0px 10px 20px;
+    box-shadow: 0 10px 10px rgba(56, 56, 56, 0.06);
+  }
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-150%) skewX(-25deg);
+    }
+
+    33% {
+      transform: translateX(150%) skewX(-25deg);
+    }
+
+    100% {
+      transform: translateX(150%) skewX(-25deg);
+    }
   }
 }

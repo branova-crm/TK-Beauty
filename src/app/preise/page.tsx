@@ -1,8 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SectionTitle from "@/components/ui/SectionTitle";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
+import SurfaceSection from "@/components/ui/SurfaceSection";
+import Reveal from "@/components/ui/Reveal";
 
 export default function PreisePage() {
     const pricing = [
@@ -16,7 +17,7 @@ export default function PreisePage() {
             ]
         },
         {
-            category: "Skin Treatments",
+            category: "Hautbehandlungen",
             items: [
                 { name: "Microneedling Basic", price: "99 €" },
                 { name: "Microneedling + Wirkstoffe", price: "129 €" },
@@ -27,38 +28,56 @@ export default function PreisePage() {
     ];
 
     return (
-        <main className="min-h-screen pt-32 bg-background">
+        <main className="min-h-screen bg-creme pt-32 font-sans">
             <Navbar />
-            <div className="max-w-4xl mx-auto px-6 py-20">
-                <SectionTitle
-                    title="Transparente Preise"
-                    subtitle="Investition in Sie"
-                />
 
-                <div className="space-y-12 mt-16">
-                    {pricing.map((group) => (
-                        <div key={group.category} className="space-y-6">
-                            <h3 className="text-2xl font-serif text-primary border-b border-primary/20 pb-4">{group.category}</h3>
-                            <Card className="divide-y divide-muted/30">
-                                {group.items.map((item) => (
-                                    <div key={item.name} className="flex justify-between p-6 items-center hover:bg-muted/10 transition-colors">
-                                        <span className="font-medium text-secondary">{item.name}</span>
-                                        <span className="font-serif font-bold text-primary">{item.price}</span>
-                                    </div>
-                                ))}
-                            </Card>
+            <SurfaceSection variant="light" className="py-20 flex flex-col items-center">
+                <div className="max-w-3xl w-full">
+                    <Reveal>
+                        <div className="text-center mb-16">
+                            <span className="text-sm font-bold tracking-widest text-[#8A7A65] uppercase mb-4 block">
+                                Investition in Sie
+                            </span>
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground">
+                                Transparente Preise
+                            </h1>
                         </div>
-                    ))}
-                </div>
+                    </Reveal>
 
-                <div className="mt-20 p-12 bg-primary rounded-[3rem] text-white text-center space-y-8 shadow-2xl">
-                    <h3 className="text-3xl font-serif italic text-balance">Möchten Sie ein individuelles Paket?</h3>
-                    <p className="text-white/80 max-w-lg mx-auto">
-                        Bei Buchung von mehreren Zonen oder Behandlungspaketen bieten wir attraktive Sonderkonditionen an. Fragen Sie uns einfach unverbindlich an.
-                    </p>
-                    <Button variant="secondary" size="lg" className="mx-auto !bg-white !text-primary">Individuelles Angebot einholen</Button>
+                    <div className="space-y-16">
+                        {pricing.map((group, index) => (
+                            <Reveal key={group.category} delay={0.1 * index}>
+                                <div className="space-y-6">
+                                    <h3 className="text-2xl font-serif text-foreground font-bold border-b border-[#3A3A3A]/10 pb-4">{group.category}</h3>
+                                    <Card className="divide-y divide-[#3A3A3A]/[0.06]">
+                                        {group.items.map((item) => (
+                                            <div key={item.name} className="flex justify-between px-8 py-6 items-center hover:bg-[#3A3A3A]/[0.02] transition-colors">
+                                                <span className="font-medium text-foreground">{item.name}</span>
+                                                <span className="font-serif font-bold text-primary text-lg">{item.price}</span>
+                                            </div>
+                                        ))}
+                                    </Card>
+                                </div>
+                            </Reveal>
+                        ))}
+                    </div>
+
+                    <Reveal delay={0.4}>
+                        <div className="mt-24 p-12 bg-white/40 backdrop-blur-md border border-[#3A3A3A]/[0.08] rounded-[40px] text-center space-y-8 shadow-premium-sm">
+                            <h3 className="text-3xl font-serif font-bold text-foreground italic">Möchten Sie ein individuelles Paket?</h3>
+                            <p className="text-[#685743] max-w-lg mx-auto">
+                                Bei Buchung von mehreren Zonen oder Behandlungspaketen bieten wir attraktive Sonderkonditionen an. Fragen Sie uns einfach unverbindlich an.
+                            </p>
+                            <div className="flex justify-center pt-4">
+                                <Button variant="primary" size="lg" className="px-10">
+                                    Individuelles Angebot einholen
+                                </Button>
+                            </div>
+                        </div>
+                    </Reveal>
                 </div>
-            </div>
+            </SurfaceSection>
+
             <Footer />
         </main>
     );

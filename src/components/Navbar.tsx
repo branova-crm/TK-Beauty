@@ -6,6 +6,7 @@ import { Menu, X, Calendar } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import ContactModal from "./ContactModal";
+import Button from "@/components/ui/Button";
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -35,14 +36,25 @@ export default function Navbar() {
         <>
             <nav
                 className={cn(
-                    "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-                    scrolled ? "bg-background/80 backdrop-blur-md py-3 shadow-sm" : "bg-transparent"
+                    "fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-center px-4 md:px-8",
+                    scrolled ? "pt-4" : "pt-0"
                 )}
             >
-                <div className="max-w-7xl mx-auto flex items-center justify-between">
+                <div
+                    className={cn(
+                        "w-full transition-all duration-500 flex items-center justify-between",
+                        scrolled
+                            ? "max-w-[1240px] bg-white/80 backdrop-blur-lg border border-[#3A3A3A]/[0.08] shadow-premium rounded-full px-6 md:px-10 h-20"
+                            : "max-w-[1440px] bg-transparent border-transparent h-28 px-0"
+                    )}
+                >
                     {/* Logo */}
-                    <Link href="/" className="text-2xl font-serif font-bold tracking-tight text-primary">
-                        TK BEAUTY
+                    <Link href="/" className="flex items-center">
+                        <img
+                            src="/images/BEAUTYSTUDIO_26.png"
+                            alt="TK BEAUTYSTUDIO"
+                            className="h-12 w-auto object-contain"
+                        />
                     </Link>
 
                     {/* Desktop Links */}
@@ -51,18 +63,20 @@ export default function Navbar() {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-medium hover:text-primary transition-colors duration-200"
+                                className="text-sm font-semibold text-foreground hover:text-primary transition-colors duration-200 uppercase tracking-widest"
                             >
                                 {link.name}
                             </Link>
                         ))}
-                        <button
+                        <Button
+                            variant="primary"
+                            size="sm"
                             onClick={() => setIsModalOpen(true)}
-                            className="bg-primary text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+                            className="shadow-premium"
                         >
-                            <Calendar className="w-4 h-4" />
+                            <Calendar className="w-4 h-4 opacity-80" />
                             Termin sichern
-                        </button>
+                        </Button>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -71,33 +85,36 @@ export default function Navbar() {
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
-                        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        {isOpen ? <X className="w-6 h-6 outline-none" /> : <Menu className="w-6 h-6 outline-none" />}
                     </button>
                 </div>
 
                 {/* Mobile Menu */}
                 {isOpen && (
-                    <div className="md:hidden absolute top-full left-0 right-0 bg-background border-t border-muted p-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-300">
+                    <div className="md:hidden absolute top-full left-0 right-0 bg-[#EFE4D0] border-t border-[#3A3A3A]/10 p-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-300">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="block text-lg font-medium hover:text-primary"
+                                className="block text-lg font-bold text-foreground hover:text-primary uppercase tracking-widest"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {link.name}
                             </Link>
                         ))}
-                        <button
-                            onClick={() => {
-                                setIsOpen(false);
-                                setIsModalOpen(true);
-                            }}
-                            className="w-full bg-primary text-white px-6 py-3 rounded-xl text-center font-semibold hover:bg-primary/90 transition-all flex items-center justify-center gap-2"
-                        >
-                            <Calendar className="w-5 h-5" />
-                            Termin sichern
-                        </button>
+                        <div className="pt-4">
+                            <Button
+                                variant="primary"
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    setIsModalOpen(true);
+                                }}
+                                className="w-full shadow-premium"
+                            >
+                                <Calendar className="w-5 h-5 opacity-80" />
+                                Termin sichern
+                            </Button>
+                        </div>
                     </div>
                 )}
             </nav>

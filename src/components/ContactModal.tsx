@@ -89,7 +89,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                 </p>
                             </div>
                             <div className="text-xs text-white/60">
-                                TK BEAUTY Nürnberg<br />
+                                TK BEAUTYSTUDIO Nürnberg<br />
                                 Krugstraße 39<br />
                                 90419 Nürnberg
                             </div>

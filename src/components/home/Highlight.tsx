@@ -1,53 +1,55 @@
 "use client";
 
 import Button from "@/components/ui/Button";
-import SectionTitle from "@/components/ui/SectionTitle";
 import { Check } from "lucide-react";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
 
 export default function Highlight() {
     return (
-        <SurfaceSection variant="white" className="!py-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <Reveal delay={0.2}>
-                    <div className="space-y-8">
-                        <SectionTitle
-                            title="Motus AX Alexandrit LASER"
-                            subtitle="Goldstandard"
-                            align="left"
-                            className="mb-0"
-                        />
-                        <p className="text-xl text-gray-500 leading-relaxed font-serif italic">
-                            "Effektivität trifft auf maximalen Komfort. Erleben Sie die Haarentfernung der nächsten Generation."
+        <SurfaceSection variant="white" className="!py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <Reveal delay={0.2} className="w-full">
+                    <div className="space-y-8 max-w-lg">
+                        <div className="space-y-4">
+                            <span className="text-sm font-bold tracking-widest text-[#8A7A65] uppercase">
+                                Motus AX Alexandrit LASER
+                            </span>
+                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight">
+                                Glatte Haut in wenigen Sitzungen
+                            </h2>
+                        </div>
+                        <p className="text-lg text-[#685743] leading-relaxed">
+                            Motus AX steht für moderne Alexandrit-Technologie – präzise, hautschonend und besonders komfortabel. In der Beratung klären wir, was für deine Haut sinnvoll ist.
                         </p>
-                        <ul className="space-y-4">
+                        <ul className="space-y-5 pt-4">
                             {[
-                                "Schmerzfrei durch integrierte Kühlung",
-                                "Für alle Hauttypen & Haarfarben geeignet",
-                                "Kürzere Behandlungsdauer",
-                                "Hautschonend & sicher"
+                                "Sanfte Behandlung mit hoher Präzision",
+                                "Für viele Haut- und Haartypen geeignet",
+                                "Moderne Technologie, hochwertig umgesetzt",
+                                "Individuelle Einstellungen statt Standardprogramm"
                             ].map((item) => (
-                                <li key={item} className="flex items-center gap-4 text-secondary font-medium">
-                                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
-                                        <Check className="w-3.5 h-3.5 text-primary" />
+                                <li key={item} className="flex items-start gap-4 text-foreground font-medium">
+                                    <div className="w-6 h-6 rounded-full bg-[#EFE4D0] flex items-center justify-center shrink-0 mt-0.5">
+                                        <Check className="w-3.5 h-3.5 text-[#685743]" />
                                     </div>
-                                    {item}
+                                    <span className="leading-snug">{item}</span>
                                 </li>
                             ))}
                         </ul>
-                        <Button size="lg" className="!rounded-full px-10">Beratung vereinbaren</Button>
+                        <div className="pt-6">
+                            <Button size="lg" className="px-10">Beratung vereinbaren</Button>
+                        </div>
                     </div>
                 </Reveal>
 
-                <Reveal delay={0.4}>
-                    <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl group">
+                <Reveal delay={0.4} className="w-full">
+                    <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-premium group bg-[#FAF8F5]">
                         <img
-                            src="https://images.unsplash.com/photo-1512290923902-8a9f81dc206e?auto=format&fit=crop&q=80&w=1000&h=1000"
+                            src="/images/9.jpg"
                             alt="Motus AX Laser Technology"
                             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-primary/10 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0" />
                     </div>
                 </Reveal>
             </div>
