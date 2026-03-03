@@ -162,97 +162,99 @@ export default function CookieBanner() {
                                     </button>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {/* Essential */}
-                                    <div className="p-4 rounded-2xl bg-white border border-[#3A3A3A]/5 flex flex-col justify-between relative overflow-hidden group min-h-[140px]">
-                                        <div className="space-y-3 relative z-10">
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center gap-3">
-                                                    <Lock className="w-4 h-4 text-[#8A7A65]" />
-                                                    <p className="font-bold text-sm text-foreground">Technisch Notwendig</p>
+                                <div className="max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar -mr-2">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        {/* Essential */}
+                                        <div className="p-4 rounded-2xl bg-white border border-[#3A3A3A]/5 flex flex-col justify-between relative overflow-hidden group min-h-[140px]">
+                                            <div className="space-y-3 relative z-10">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-3">
+                                                        <Lock className="w-4 h-4 text-[#8A7A65]" />
+                                                        <p className="font-bold text-sm text-foreground">Technisch Notwendig</p>
+                                                    </div>
+                                                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                                                        <Check className="w-3.5 h-3.5" />
+                                                    </div>
                                                 </div>
-                                                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                                                    <Check className="w-3.5 h-3.5" />
+                                                <p className="text-[11px] text-[#685743] leading-relaxed">
+                                                    Diese Cookies sind für den Betrieb der Website zwingend erforderlich und können nicht deaktiviert werden.
+                                                </p>
+                                                <div className="flex flex-wrap gap-1.5 opacity-80 pt-1">
+                                                    <span className="text-[9px] px-2 py-0.5 bg-gray-100 rounded-md text-[#8A7A65]">Local Storage</span>
+                                                    <span className="text-[9px] px-2 py-0.5 bg-gray-100 rounded-md text-[#8A7A65]">Consent Status</span>
                                                 </div>
-                                            </div>
-                                            <p className="text-[11px] text-[#685743] leading-relaxed">
-                                                Diese Cookies sind für den Betrieb der Website zwingend erforderlich und können nicht deaktiviert werden.
-                                            </p>
-                                            <div className="flex flex-wrap gap-1.5 opacity-80 pt-1">
-                                                <span className="text-[9px] px-2 py-0.5 bg-gray-100 rounded-md text-[#8A7A65]">Local Storage</span>
-                                                <span className="text-[9px] px-2 py-0.5 bg-gray-100 rounded-md text-[#8A7A65]">Consent Status</span>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* Analytics */}
-                                    <div
-                                        onClick={() => setSettings(s => ({ ...s, analytics: !s.analytics }))}
-                                        className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden group min-h-[140px] ${settings.analytics ? "bg-primary/5 border-primary/20" : "bg-white border-[#3A3A3A]/5"
-                                            }`}
-                                    >
-                                        <div className="space-y-3 relative z-10">
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center gap-3">
-                                                    <BarChart3 className={`w-4 h-4 ${settings.analytics ? "text-primary" : "text-[#8A7A65]"}`} />
-                                                    <p className="font-bold text-sm text-foreground">Analyse & Performance</p>
+                                        {/* Analytics */}
+                                        <div
+                                            onClick={() => setSettings(s => ({ ...s, analytics: !s.analytics }))}
+                                            className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden group min-h-[140px] ${settings.analytics ? "bg-primary/5 border-primary/20" : "bg-white border-[#3A3A3A]/5"
+                                                }`}
+                                        >
+                                            <div className="space-y-3 relative z-10">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-3">
+                                                        <BarChart3 className={`w-4 h-4 ${settings.analytics ? "text-primary" : "text-[#8A7A65]"}`} />
+                                                        <p className="font-bold text-sm text-foreground">Analyse & Performance</p>
+                                                    </div>
+                                                    <Switch
+                                                        enabled={settings.analytics}
+                                                        onChange={() => setSettings(s => ({ ...s, analytics: !s.analytics }))}
+                                                    />
                                                 </div>
-                                                <Switch
-                                                    enabled={settings.analytics}
-                                                    onChange={() => setSettings(s => ({ ...s, analytics: !s.analytics }))}
-                                                />
-                                            </div>
-                                            <p className="text-[11px] text-[#685743] leading-relaxed">
-                                                Helfen uns zu verstehen, wie die Website genutzt wird, um das Angebot und die Ladezeiten zu verbessern.
-                                            </p>
-                                            <div className="flex flex-wrap gap-1.5 pt-1">
-                                                <span className={`text-[9px] px-2 py-0.5 rounded-md transition-colors ${settings.analytics ? "bg-primary/10 text-primary" : "bg-gray-100 text-[#8A7A65]"}`}>Vercel Analytics</span>
-                                                <span className={`text-[9px] px-2 py-0.5 rounded-md transition-colors ${settings.analytics ? "bg-primary/10 text-primary" : "bg-gray-100 text-[#8A7A65]"}`}>Speed Insights</span>
+                                                <p className="text-[11px] text-[#685743] leading-relaxed">
+                                                    Helfen uns zu verstehen, wie die Website genutzt wird, um das Angebot und die Ladezeiten zu verbessern.
+                                                </p>
+                                                <div className="flex flex-wrap gap-1.5 pt-1">
+                                                    <span className={`text-[9px] px-2 py-0.5 rounded-md transition-colors ${settings.analytics ? "bg-primary/10 text-primary" : "bg-gray-100 text-[#8A7A65]"}`}>Vercel Analytics</span>
+                                                    <span className={`text-[9px] px-2 py-0.5 rounded-md transition-colors ${settings.analytics ? "bg-primary/10 text-primary" : "bg-gray-100 text-[#8A7A65]"}`}>Speed Insights</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* Marketing (Google Maps) */}
-                                    <div
-                                        onClick={() => setSettings(s => ({ ...s, marketing: !s.marketing }))}
-                                        className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden group min-h-[140px] ${settings.marketing ? "bg-primary/5 border-primary/20" : "bg-white border-[#3A3A3A]/5"
-                                            }`}
-                                    >
-                                        <div className="space-y-3 relative z-10">
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center gap-3">
-                                                    <Globe className={`w-4 h-4 ${settings.marketing ? "text-primary" : "text-[#8A7A65]"}`} />
-                                                    <p className="font-bold text-sm text-foreground">Externe Medien & Marketing</p>
+                                        {/* Marketing (Google Maps) */}
+                                        <div
+                                            onClick={() => setSettings(s => ({ ...s, marketing: !s.marketing }))}
+                                            className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden group min-h-[140px] ${settings.marketing ? "bg-primary/5 border-primary/20" : "bg-white border-[#3A3A3A]/5"
+                                                }`}
+                                        >
+                                            <div className="space-y-3 relative z-10">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-3">
+                                                        <Globe className={`w-4 h-4 ${settings.marketing ? "text-primary" : "text-[#8A7A65]"}`} />
+                                                        <p className="font-bold text-sm text-foreground">Externe Medien & Marketing</p>
+                                                    </div>
+                                                    <Switch
+                                                        enabled={settings.marketing}
+                                                        onChange={() => setSettings(s => ({ ...s, marketing: !s.marketing }))}
+                                                    />
                                                 </div>
-                                                <Switch
-                                                    enabled={settings.marketing}
-                                                    onChange={() => setSettings(s => ({ ...s, marketing: !s.marketing }))}
-                                                />
-                                            </div>
-                                            <p className="text-[11px] text-[#685743] leading-relaxed">
-                                                Ermöglicht das Anzeigen von externen Inhalten wie Karten. Es wird eine Verbindung zu Drittanbietern aufgebaut.
-                                            </p>
-                                            <div className="flex flex-wrap gap-1.5 pt-1">
-                                                <span className={`text-[9px] px-2 py-0.5 rounded-md transition-colors ${settings.marketing ? "bg-primary/10 text-primary" : "bg-gray-100 text-[#8A7A65]"}`}>Google Maps</span>
+                                                <p className="text-[11px] text-[#685743] leading-relaxed">
+                                                    Ermöglicht das Anzeigen von externen Inhalten wie Karten. Es wird eine Verbindung zu Drittanbietern aufgebaut.
+                                                </p>
+                                                <div className="flex flex-wrap gap-1.5 pt-1">
+                                                    <span className={`text-[9px] px-2 py-0.5 rounded-md transition-colors ${settings.marketing ? "bg-primary/10 text-primary" : "bg-gray-100 text-[#8A7A65]"}`}>Google Maps</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* Info Box */}
-                                    <div className="p-4 rounded-2xl bg-[#F2F0ED] border border-[#3A3A3A]/5 flex items-start gap-3 min-h-[140px]">
-                                        <Info className="w-4 h-4 text-[#8A7A65] mt-0.5 shrink-0" />
-                                        <p className="text-[11px] text-[#685743] leading-relaxed m-0 italic">
-                                            Ihre Auswahl wird für 1 Jahr gespeichert. Sie können die Einstellungen jederzeit über das Schloss-Symbol unten links aufrufen und widerrufen.
-                                        </p>
+                                        {/* Info Box */}
+                                        <div className="p-4 rounded-2xl bg-[#F2F0ED] border border-[#3A3A3A]/5 flex items-start gap-3 min-h-[140px]">
+                                            <Info className="w-4 h-4 text-[#8A7A65] mt-0.5 shrink-0" />
+                                            <p className="text-[11px] text-[#685743] leading-relaxed m-0 italic">
+                                                Ihre Auswahl wird für 1 Jahr gespeichert. Sie können die Einstellungen jederzeit über das Schloss-Symbol unten links aufrufen und widerrufen.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div className="flex flex-col sm:flex-row gap-2 pt-2">
-                                    <Button variant="primary" size="sm" onClick={handleSaveSelection} className="flex-1 text-xs py-3">
+                                <div className="flex flex-col sm:flex-row gap-2 pt-2 border-t border-[#3A3A3A]/5 mt-2">
+                                    <Button variant="primary" size="sm" onClick={handleSaveSelection} className="flex-1 text-xs py-3 font-bold">
                                         Auswahl speichern & bestätigen
                                     </Button>
-                                    <Button variant="secondary" size="sm" onClick={handleDeclineAll} className="flex-1 text-xs py-3">
-                                        Nur notwendige Cookies nutzen
+                                    <Button variant="secondary" size="sm" onClick={handleDeclineAll} className="flex-1 text-xs py-3 font-bold">
+                                        Nur notwendige nutzen
                                     </Button>
                                 </div>
                             </motion.div>
