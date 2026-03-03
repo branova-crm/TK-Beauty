@@ -4,8 +4,12 @@ import Button from "@/components/ui/Button";
 import { Check } from "lucide-react";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
+import { useState } from "react";
+import ContactModal from "@/components/ContactModal";
 
 export default function Highlight() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <SurfaceSection variant="white" className="!py-24">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -38,7 +42,13 @@ export default function Highlight() {
                             ))}
                         </ul>
                         <div className="pt-6">
-                            <Button size="lg" className="px-10">Beratung vereinbaren</Button>
+                            <Button
+                                size="lg"
+                                className="px-10"
+                                onClick={() => setIsModalOpen(true)}
+                            >
+                                Beratung vereinbaren
+                            </Button>
                         </div>
                     </div>
                 </Reveal>
@@ -53,6 +63,7 @@ export default function Highlight() {
                     </div>
                 </Reveal>
             </div>
+            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </SurfaceSection>
     );
 }

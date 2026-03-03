@@ -16,6 +16,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "TK BEAUTYSTUDIO | Premium Beauty Studio Nürnberg",
   description: "Exklusive Behandlungen für Ihre Schönheit: Dauerhafte Haarentfernung mit Alexandrit Laser, Microneedling & Kosmetik in Nürnberg.",
+  icons: {
+    icon: "/images/Favicon.png",
+  },
 };
 
 export default function RootLayout({

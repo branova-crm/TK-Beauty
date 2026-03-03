@@ -51,7 +51,7 @@ export default function Services() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {services.map((service, index) => (
                     <Reveal key={service.title} delay={0.1 * index}>
-                        <Card className="min-h-[520px] flex flex-col hover:shadow-2xl transition-all duration-500 border-2 border-[#3A3A3A]/[0.08] bg-[#FAF8F5] group overflow-hidden rounded-[24px]">
+                        <Card className="md:min-h-[520px] flex flex-col hover:shadow-2xl transition-all duration-500 border-2 border-[#3A3A3A]/[0.08] bg-[#FAF8F5] group overflow-hidden rounded-[24px]">
                             {/* Card Image */}
                             <div className="w-full h-48 overflow-hidden relative shrink-0">
                                 <Image
@@ -68,7 +68,7 @@ export default function Services() {
                                 </div>
                             </div>
 
-                            <div className="p-8 flex flex-col flex-grow">
+                            <div className="p-6 md:p-8 flex flex-col flex-grow">
                                 <h3 className="text-2xl font-serif text-foreground leading-snug mb-3">
                                     {service.title}
                                 </h3>

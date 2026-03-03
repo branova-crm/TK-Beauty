@@ -22,8 +22,8 @@ export default function InstagramPreview() {
 
     return (
         <SurfaceSection variant="white" id="instagram">
-            <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
-                <Reveal>
+            <div className="flex flex-col items-center text-center gap-8 mb-16">
+                <Reveal className="items-center">
                     <div className="space-y-4">
                         <span className="text-sm font-bold tracking-widest text-[#8A7A65] uppercase">
                             Instagram
@@ -31,16 +31,23 @@ export default function InstagramPreview() {
                         <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight">
                             Folge unserer Reise
                         </h2>
-                        <p className="text-[#685743] text-lg max-w-sm">
+                        <p className="text-[#685743] text-lg max-w-sm mx-auto">
                             Einblicke, Ergebnisse & Pflege-Tipps auf Instagram.
                         </p>
                     </div>
                 </Reveal>
-                <Reveal delay={0.2}>
-                    <Button variant="secondary" className="px-8 flex items-center justify-center">
-                        <Instagram className="w-5 h-5 mr-2 opacity-80" />
-                        @tk_beauty_nuernberg ansehen
-                    </Button>
+                <Reveal delay={0.2} className="items-center">
+                    <a
+                        href="https://www.instagram.com/tk_beauty_nuernberg/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block"
+                    >
+                        <Button variant="secondary" className="px-8 flex items-center justify-center">
+                            <Instagram className="w-5 h-5 mr-2 opacity-80" />
+                            @tk_beauty_nuernberg ansehen
+                        </Button>
+                    </a>
                 </Reveal>
             </div>
 

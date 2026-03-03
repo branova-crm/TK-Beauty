@@ -21,7 +21,7 @@ export default function Footer() {
                         Dein exklusives Studio für moderne Ästhetik und dauerhafte Haarentfernung in Nürnberg. Elegantes Ambiente und modernste Technologie für sichtbar schöne Haut.
                     </p>
                     <a
-                        href="https://instagram.com/tk_beauty_nuernberg"
+                        href="https://www.instagram.com/tk_beauty_nuernberg/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-12 h-12 rounded-full border border-[#3A3A3A]/10 flex items-center justify-center text-[#685743] hover:bg-[#EFE4D0] hover:text-foreground transition-all duration-300"
@@ -39,7 +39,6 @@ export default function Footer() {
                             <li><Link href="/behandlungen" className="text-[#685743] hover:text-primary transition-colors text-sm">Behandlungen</Link></li>
                             <li><Link href="/ueber-uns" className="text-[#685743] hover:text-primary transition-colors text-sm">Über uns</Link></li>
                             <li><Link href="/kontakt" className="text-[#685743] hover:text-primary transition-colors text-sm">Kontakt</Link></li>
-                            <li><Link href="/faq" className="text-[#685743] hover:text-primary transition-colors text-sm">FAQ</Link></li>
                         </ul>
                     </div>
 
@@ -47,13 +46,30 @@ export default function Footer() {
                         <h4 className="text-sm font-bold tracking-widest text-foreground uppercase">Kontakt</h4>
                         <ul className="space-y-4 flex flex-col items-center">
                             <li className="flex flex-col items-center gap-1">
-                                <span className="text-[#685743] text-sm flex items-center gap-2"><MapPin className="w-4 h-4 text-primary" /> Krugstraße 39, 90419 Nürnberg</span>
+                                <a
+                                    href="https://www.google.com/maps/dir/?api=1&destination=Krugstraße+39,+90419+Nürnberg"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-[#685743] hover:text-primary transition-colors text-sm flex items-center gap-2"
+                                >
+                                    <MapPin className="w-4 h-4 text-primary" /> Krugstraße 39, 90419 Nürnberg
+                                </a>
                             </li>
                             <li className="flex flex-col items-center gap-1">
-                                <span className="text-[#685743] text-sm flex items-center gap-2"><Phone className="w-4 h-4 text-primary" /> 0123 / 4567890</span>
+                                <a
+                                    href="tel:01234567890"
+                                    className="text-[#685743] hover:text-primary transition-colors text-sm flex items-center gap-2"
+                                >
+                                    <Phone className="w-4 h-4 text-primary" /> 0123 / 4567890
+                                </a>
                             </li>
                             <li className="flex flex-col items-center gap-1">
-                                <span className="text-[#685743] text-sm flex items-center gap-2"><Mail className="w-4 h-4 text-primary" /> info@tkbeauty-nuernberg.de</span>
+                                <a
+                                    href="mailto:info@tkbeauty-nuernberg.de"
+                                    className="text-[#685743] hover:text-primary transition-colors text-sm flex items-center gap-2"
+                                >
+                                    <Mail className="w-4 h-4 text-primary" /> info@tkbeauty-nuernberg.de
+                                </a>
                             </li>
                         </ul>
                     </div>

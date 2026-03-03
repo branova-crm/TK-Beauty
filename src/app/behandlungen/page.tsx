@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Card from "@/components/ui/Card";
@@ -5,8 +7,12 @@ import Button from "@/components/ui/Button";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
 import { Zap, Droplets, UserCheck, ShieldPlus } from "lucide-react";
+import { useState } from "react";
+import ContactModal from "@/components/ContactModal";
 
 export default function BehandlungenPage() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const categories = [
         {
             title: "Laserhaarentfernung",
@@ -53,11 +59,11 @@ export default function BehandlungenPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                     {categories.map((cat, index) => (
                         <Reveal key={cat.title} delay={0.1 * index}>
-                            <Card className="p-8 md:p-12 flex flex-col md:flex-row gap-8 items-start h-full">
+                            <Card className="p-6 md:p-12 flex flex-col md:flex-row gap-6 md:gap-8 items-start h-full">
                                 <div className="w-16 h-16 rounded-[1.5rem] bg-primary/10 flex items-center justify-center text-primary shrink-0">
                                     {cat.icon}
                                 </div>
-                                <div className="space-y-6 flex flex-col h-full w-full">
+                                <div className="space-y-4 md:space-y-6 flex flex-col h-full w-full">
                                     <h3 className="text-2xl md:text-3xl font-serif text-foreground font-bold">{cat.title}</h3>
                                     <p className="text-[#685743] leading-relaxed italic">"{cat.description}"</p>
                                     <ul className="space-y-3 flex-grow">
@@ -69,7 +75,11 @@ export default function BehandlungenPage() {
                                         ))}
                                     </ul>
                                     <div className="pt-4">
-                                        <Button variant="secondary" className="w-full sm:w-fit font-bold">
+                                        <Button
+                                            variant="secondary"
+                                            className="w-full sm:w-fit font-bold"
+                                            onClick={() => setIsModalOpen(true)}
+                                        >
                                             Beratung anfragen
                                         </Button>
                                     </div>
@@ -81,6 +91,7 @@ export default function BehandlungenPage() {
             </SurfaceSection>
 
             <Footer />
+            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </main>
     );
 }

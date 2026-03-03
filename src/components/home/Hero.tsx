@@ -4,8 +4,13 @@ import Button from "@/components/ui/Button";
 import { Star, ShieldCheck, Calendar, ArrowRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import ContactModal from "@/components/ContactModal";
 
 export default function Hero() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <section className="pt-32 pb-4 px-4 md:px-8 w-full bg-background flex justify-center">
             {/* Page Container */}
@@ -30,14 +35,16 @@ export default function Hero() {
 
                             <Reveal delay={0.3}>
                                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                    <Button variant="primary">
+                                    <Button variant="primary" onClick={() => setIsModalOpen(true)}>
                                         <Calendar className="w-5 h-5 opacity-80" />
                                         Kostenlose Beratung
                                     </Button>
-                                    <Button variant="secondary">
-                                        Behandlungen ansehen
-                                        <ArrowRight className="w-4 h-4 ml-1 opacity-70" />
-                                    </Button>
+                                    <Link href="/behandlungen">
+                                        <Button variant="secondary" className="w-full sm:w-fit">
+                                            Behandlungen ansehen
+                                            <ArrowRight className="w-4 h-4 ml-1 opacity-70" />
+                                        </Button>
+                                    </Link>
                                 </div>
                             </Reveal>
                         </div>
@@ -93,6 +100,7 @@ export default function Hero() {
                     </Reveal>
                 </div>
             </div>
+            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </section>
     );
 }
