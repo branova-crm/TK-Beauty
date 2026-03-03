@@ -8,6 +8,8 @@ import { twMerge } from "tailwind-merge";
 import ContactModal from "./ContactModal";
 import Button from "@/components/ui/Button";
 
+import { AnimatePresence, motion } from "framer-motion";
+
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
@@ -31,6 +33,15 @@ export default function Navbar() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    // Prevent scrolling when mobile menu is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+    }, [isOpen]);
 
     return (
         <>
@@ -82,41 +93,98 @@ export default function Navbar() {
                     {/* Mobile Menu Button */}
                     <button
                         className="md:hidden text-foreground p-2"
-                        onClick={() => setIsOpen(!isOpen)}
-                        aria-label="Toggle menu"
+                        onClick={() => setIsOpen(true)}
+                        aria-label="Open menu"
                     >
-                        {isOpen ? <X className="w-6 h-6 outline-none" /> : <Menu className="w-6 h-6 outline-none" />}
+                        <Menu className="w-8 h-8 outline-none" />
                     </button>
                 </div>
 
-                {/* Mobile Menu */}
-                {isOpen && (
-                    <div className="md:hidden absolute top-full left-0 right-0 bg-[#EFE4D0] border-t border-[#3A3A3A]/10 p-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-300">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="block text-lg font-bold text-foreground hover:text-primary uppercase tracking-widest"
+                {/* Off-canvas Mobile Menu */}
+                <AnimatePresence mode="wait">
+                    {isOpen && (
+                        <>
+                            {/* Backdrop */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
                                 onClick={() => setIsOpen(false)}
+                                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] md:hidden"
+                            />
+
+                            {/* Drawer Content */}
+                            <motion.div
+                                initial={{ x: "100%" }}
+                                animate={{ x: 0 }}
+                                exit={{ x: "100%" }}
+                                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                                className="fixed top-0 right-0 h-full w-[85%] max-w-[400px] bg-[#FAF8F5] z-[70] md:hidden shadow-2xl flex flex-col pt-8"
                             >
-                                {link.name}
-                            </Link>
-                        ))}
-                        <div className="pt-4">
-                            <Button
-                                variant="primary"
-                                onClick={() => {
-                                    setIsOpen(false);
-                                    setIsModalOpen(true);
-                                }}
-                                className="w-full shadow-premium"
-                            >
-                                <Calendar className="w-5 h-5 opacity-80" />
-                                Termin sichern
-                            </Button>
-                        </div>
-                    </div>
-                )}
+                                {/* Header */}
+                                <div className="flex items-center justify-between px-8 mb-12">
+                                    <Link href="/" onClick={() => setIsOpen(false)}>
+                                        <img
+                                            src="/images/BEAUTYSTUDIO_26.png"
+                                            alt="TK BEAUTYSTUDIO"
+                                            className="h-10 w-auto"
+                                        />
+                                    </Link>
+                                    <button
+                                        onClick={() => setIsOpen(false)}
+                                        className="p-2 text-foreground/70 hover:text-primary transition-colors"
+                                    >
+                                        <X className="w-8 h-8" />
+                                    </button>
+                                </div>
+
+                                {/* Links */}
+                                <div className="flex flex-col px-8 space-y-2">
+                                    {navLinks.map((link, idx) => (
+                                        <motion.div
+                                            key={link.name}
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0.1 + idx * 0.1 }}
+                                        >
+                                            <Link
+                                                href={link.href}
+                                                className="block text-2xl font-serif font-bold text-foreground py-4 border-b border-[#3A3A3A]/[0.06] hover:text-primary transition-colors"
+                                                onClick={() => setIsOpen(false)}
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </motion.div>
+                                    ))}
+                                </div>
+
+                                {/* Footer / Action */}
+                                <div className="mt-auto p-8 bg-white/40">
+                                    <p className="text-xs uppercase tracking-[0.2em] text-[#8A7A65] font-bold mb-6">
+                                        Bereit für Ihren Glow?
+                                    </p>
+                                    <Button
+                                        variant="primary"
+                                        size="lg"
+                                        onClick={() => {
+                                            setIsOpen(false);
+                                            setIsModalOpen(true);
+                                        }}
+                                        className="w-full shadow-premium py-6 text-lg"
+                                    >
+                                        <Calendar className="w-5 h-5" />
+                                        Termin sichern
+                                    </Button>
+
+                                    <div className="mt-10 flex flex-col space-y-3 opacity-60">
+                                        <p className="text-sm font-medium">TK BEAUTY Nürnberg</p>
+                                        <p className="text-xs">Mo-Sa: nach Vereinbarung</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </>
+                    )}
+                </AnimatePresence>
             </nav>
             <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </>
