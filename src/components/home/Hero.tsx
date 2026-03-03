@@ -3,6 +3,7 @@
 import Button from "@/components/ui/Button";
 import { Star, ShieldCheck, Calendar, ArrowRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import Image from "next/image";
 
 export default function Hero() {
     return (
@@ -45,10 +46,13 @@ export default function Hero() {
                         <div className="w-full lg:w-[55%] h-[300px] lg:h-[400px]">
                             <Reveal delay={0.2} className="w-full h-full">
                                 <div className="w-full h-full rounded-[32px] overflow-hidden relative shadow-inner">
-                                    <img
+                                    <Image
                                         src="/images/8.jpg"
                                         alt="Premium Beauty Behandlung"
-                                        className="w-full h-full object-cover"
+                                        fill
+                                        priority
+                                        className="object-cover"
+                                        sizes="(max-width: 768px) 100vw, 55vw"
                                     />
                                     {/* subtle overlay to integrate image into creme theme slightly */}
                                     <div className="absolute inset-0 bg-[#EFE4D0]/5 mix-blend-multiply" />

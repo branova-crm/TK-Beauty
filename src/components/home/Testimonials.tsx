@@ -27,26 +27,28 @@ export default function Testimonials() {
     return (
         <SurfaceSection variant="surface" id="testimonials">
             <Reveal>
-                <div className="text-center mb-16">
+                <div className="text-center mb-8">
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
                         Kundenstimmen
                     </h2>
                 </div>
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 {testimonials.map((testimonial, index) => (
-                    <Reveal key={index} delay={0.1 * index}>
+                    <Reveal key={index} delay={0.1 * index} className="h-full">
                         <Card className="p-10 flex flex-col h-full bg-[#FAF8F5] border border-[#3A3A3A]/[0.06] shadow-sm hover:shadow-premium transition-all duration-500 rounded-[24px]">
                             <div className="flex gap-1 text-primary mb-6">
                                 {[...Array(5)].map((_, i) => (
                                     <Star key={i} className="w-4 h-4 fill-current" />
                                 ))}
                             </div>
-                            <p className="text-[#685743] italic mb-8 flex-grow leading-relaxed">
-                                "{testimonial.text}"
-                            </p>
-                            <div className="border-t border-[#3A3A3A]/10 pt-6">
+                            <div className="flex-grow">
+                                <p className="text-[#685743] italic mb-8 leading-relaxed">
+                                    "{testimonial.text}"
+                                </p>
+                            </div>
+                            <div className="border-t border-[#3A3A3A]/10 pt-6 mt-auto">
                                 <p className="font-serif font-bold text-foreground">{testimonial.name}</p>
                                 <p className="text-xs text-[#8A7A65] font-semibold uppercase tracking-wider mt-1">{testimonial.treatment}</p>
                             </div>

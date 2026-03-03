@@ -5,6 +5,7 @@ import Card from "@/components/ui/Card";
 import Link from "next/link";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
+import Image from "next/image";
 
 const services = [
     {
@@ -53,10 +54,12 @@ export default function Services() {
                         <Card className="min-h-[520px] flex flex-col hover:shadow-2xl transition-all duration-500 border-2 border-[#3A3A3A]/[0.08] bg-[#FAF8F5] group overflow-hidden rounded-[24px]">
                             {/* Card Image */}
                             <div className="w-full h-48 overflow-hidden relative shrink-0">
-                                <img
+                                <Image
                                     src={service.image}
                                     alt={service.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                                 />
                                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
                                     <span className="text-[10px] uppercase tracking-widest text-primary font-bold">

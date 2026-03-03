@@ -26,14 +26,14 @@ export default function Steps() {
     return (
         <SurfaceSection variant="white" className="!py-24">
             <Reveal>
-                <div className="text-center mb-16">
+                <div className="text-center mb-12">
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
                         So läuft dein Termin ab
                     </h2>
                 </div>
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mt-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 {steps.map((step, index) => (
                     <Reveal key={step.title} delay={0.1 * index}>
                         <div className="relative space-y-6 group flex flex-col items-center text-center">
