@@ -77,7 +77,7 @@ export default function BehandlungenPage() {
                                     <div className="pt-4">
                                         <Button
                                             variant="secondary"
-                                            className="w-full sm:w-fit font-bold"
+                                            className="w-full lg:w-fit font-bold"
                                             onClick={() => setIsModalOpen(true)}
                                         >
                                             Beratung anfragen

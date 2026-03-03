@@ -44,7 +44,7 @@ export default function Highlight() {
                         <div className="pt-6">
                             <Button
                                 size="lg"
-                                className="px-10"
+                                className="w-full lg:w-fit px-10"
                                 onClick={() => setIsModalOpen(true)}
                             >
                                 Beratung vereinbaren

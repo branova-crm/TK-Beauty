@@ -80,28 +80,28 @@ export default function KontaktPage() {
                 <div className="w-full">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                         <Reveal delay={0.1}>
-                            <a href="tel:01234567890" className="block h-full group">
+                            <a href="tel:+4915562483435" className="block h-full group">
                                 <Card className="p-8 text-center space-y-5 h-full group-hover:border-primary/20 transition-all duration-300">
                                     <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform">
                                         <Phone className="w-6 h-6" />
                                     </div>
                                     <div>
                                         <h4 className="font-serif font-bold text-2xl text-foreground italic mb-2">Anrufen</h4>
-                                        <p className="text-base text-[#685743]">0123 / 4567890</p>
+                                        <p className="text-base text-[#685743]">+49 15562 483435</p>
                                     </div>
                                 </Card>
                             </a>
                         </Reveal>
 
                         <Reveal delay={0.2}>
-                            <a href="mailto:info@tkbeauty-nuernberg.de" className="block h-full group">
+                            <a href="mailto:tkbeauty@web.de" className="block h-full group">
                                 <Card className="p-8 text-center space-y-5 h-full group-hover:border-primary/20 transition-all duration-300">
                                     <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform">
                                         <Mail className="w-6 h-6" />
                                     </div>
                                     <div>
                                         <h4 className="font-serif font-bold text-2xl text-foreground italic mb-2">Schreiben</h4>
-                                        <p className="text-base text-[#685743] break-all">info@tkbeauty-nuernberg.de</p>
+                                        <p className="text-base text-[#685743] break-all">tkbeauty@web.de</p>
                                     </div>
                                 </Card>
                             </a>

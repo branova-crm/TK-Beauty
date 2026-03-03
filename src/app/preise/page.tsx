@@ -56,8 +56,8 @@ export default function PreisePage() {
                             Entdecken Sie unsere Leistungen und investieren Sie in Ihr Wohlbefinden.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                            <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+                        <div className="flex flex-col lg:flex-row gap-4 pt-4">
+                            <Button variant="primary" className="w-full lg:w-fit" onClick={() => setIsModalOpen(true)}>
                                 Beratung vereinbaren
                             </Button>
                         </div>
@@ -115,7 +115,7 @@ export default function PreisePage() {
                             <Button
                                 variant="primary"
                                 size="lg"
-                                className="px-12"
+                                className="w-full lg:w-fit px-12"
                                 onClick={() => setIsModalOpen(true)}
                             >
                                 Individuelles Angebot einholen

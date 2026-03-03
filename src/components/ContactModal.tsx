@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { X, Send, Loader2, CheckCircle } from "lucide-react";
+import Link from "next/link";
 import Button from "@/components/ui/Button";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -170,7 +171,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                     onChange={(e) => setFormData({ ...formData, privacy: e.target.checked })}
                                 />
                                 <label htmlFor="privacy" className="text-[10px] text-gray-400 leading-tight">
-                                    Ich habe die Datenschutzerklärung zur Kenntnis genommen und stimme zu, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden. *
+                                    Ich habe die <Link href="/datenschutz" className="text-primary hover:underline transition-colors">Datenschutzerklärung</Link> zur Kenntnis genommen und stimme zu, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden. *
                                 </label>
                             </div>
 

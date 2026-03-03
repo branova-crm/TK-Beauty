@@ -55,7 +55,7 @@ export default function Navbar() {
                     className={cn(
                         "w-full transition-all duration-500 flex items-center justify-between",
                         scrolled
-                            ? "max-w-[1240px] bg-white/80 backdrop-blur-lg border border-[#3A3A3A]/[0.08] shadow-premium rounded-full px-6 md:px-10 h-20"
+                            ? "max-w-[1240px] bg-white/80 backdrop-blur-lg border border-[#3A3A3A]/[0.08] shadow-premium rounded-full px-6 lg:px-10 h-20"
                             : "max-w-[1440px] bg-transparent border-transparent h-28 px-0"
                     )}
                 >
@@ -69,7 +69,7 @@ export default function Navbar() {
                     </Link>
 
                     {/* Desktop Links */}
-                    <div className="hidden md:flex items-center space-x-8">
+                    <div className="hidden lg:flex items-center space-x-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
@@ -92,7 +92,7 @@ export default function Navbar() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden text-foreground p-2"
+                        className="lg:hidden text-foreground p-2"
                         onClick={() => setIsOpen(true)}
                         aria-label="Open menu"
                     >
@@ -110,7 +110,7 @@ export default function Navbar() {
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => setIsOpen(false)}
-                                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] md:hidden"
+                                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] lg:hidden"
                             />
 
                             {/* Drawer Content */}
@@ -119,7 +119,7 @@ export default function Navbar() {
                                 animate={{ x: 0 }}
                                 exit={{ x: "100%" }}
                                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                                className="fixed top-0 right-0 h-full w-[85%] max-w-[400px] bg-[#FAF8F5] z-[70] md:hidden shadow-2xl flex flex-col pt-8"
+                                className="fixed top-0 right-0 h-full w-[85%] max-w-[400px] bg-[#FAF8F5] z-[70] lg:hidden shadow-2xl flex flex-col pt-8"
                             >
                                 {/* Header */}
                                 <div className="flex items-center justify-between px-8 mb-12">

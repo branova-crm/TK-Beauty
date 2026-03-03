@@ -34,13 +34,13 @@ export default function Hero() {
                             </Reveal>
 
                             <Reveal delay={0.3}>
-                                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                    <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+                                <div className="flex flex-col lg:flex-row gap-4 pt-4">
+                                    <Button variant="primary" className="w-full lg:w-fit" onClick={() => setIsModalOpen(true)}>
                                         <Calendar className="w-5 h-5 opacity-80" />
                                         Kostenlose Beratung
                                     </Button>
-                                    <Link href="/behandlungen">
-                                        <Button variant="secondary" className="w-full sm:w-fit">
+                                    <Link href="/behandlungen" className="w-full lg:w-fit">
+                                        <Button variant="secondary" className="w-full lg:w-fit">
                                             Behandlungen ansehen
                                             <ArrowRight className="w-4 h-4 ml-1 opacity-70" />
                                         </Button>

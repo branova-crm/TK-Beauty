@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import CookieBanner from "./CookieBanner";
 
 export default function ConsentManager() {
@@ -19,7 +20,12 @@ export default function ConsentManager() {
     return (
         <>
             <CookieBanner />
-            {consent?.analytics && <SpeedInsights />}
+            {consent?.analytics && (
+                <>
+                    <SpeedInsights />
+                    <Analytics />
+                </>
+            )}
         </>
     );
 }

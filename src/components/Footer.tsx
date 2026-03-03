@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
-import { Instagram, MapPin, Phone, Mail } from "lucide-react";
+import { Instagram, MapPin, Phone, Mail, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -57,18 +60,18 @@ export default function Footer() {
                             </li>
                             <li className="flex flex-col items-center gap-1">
                                 <a
-                                    href="tel:01234567890"
+                                    href="tel:+4915562483435"
                                     className="text-[#685743] hover:text-primary transition-colors text-sm flex items-center gap-2"
                                 >
-                                    <Phone className="w-4 h-4 text-primary" /> 0123 / 4567890
+                                    <Phone className="w-4 h-4 text-primary" /> +49 15562 483435
                                 </a>
                             </li>
                             <li className="flex flex-col items-center gap-1">
                                 <a
-                                    href="mailto:info@tkbeauty-nuernberg.de"
+                                    href="mailto:tkbeauty@web.de"
                                     className="text-[#685743] hover:text-primary transition-colors text-sm flex items-center gap-2"
                                 >
-                                    <Mail className="w-4 h-4 text-primary" /> info@tkbeauty-nuernberg.de
+                                    <Mail className="w-4 h-4 text-primary" /> tkbeauty@web.de
                                 </a>
                             </li>
                         </ul>
@@ -85,15 +88,51 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#8A7A65]">
-                    <p>&copy; {currentYear} TK BEAUTYSTUDIO Nürnberg. Alle Rechte vorbehalten.</p>
-                    <div className="flex space-x-6">
+                <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8 text-xs text-[#8A7A65]">
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="flex flex-col items-center md:items-start group cursor-default"
+                    >
+                        <p className="text-base font-medium tracking-tight">
+                            © {currentYear} TK BEAUTYSTUDIO.
+                        </p>
+                        <a
+                            href="https://branova.de"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-base text-foreground mt-1 group-hover:text-primary transition-all duration-500"
+                        >
+                            Designed with
+                            <motion.span
+                                animate={{
+                                    scale: [1, 1.2, 1],
+                                }}
+                                transition={{
+                                    duration: 1.5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                                className="text-red-400 inline-block drop-shadow-[0_0_8px_rgba(248,113,113,0.3)]"
+                            >
+                                ❤
+                            </motion.span>
+                            by
+                            <span className="font-bold underline decoration-primary/20 underline-offset-8 decoration-2 group-hover:decoration-primary/60 transition-all duration-500">
+                                Branova.de
+                            </span>
+                        </a>
+                    </motion.div>
+
+                    <div className="flex space-x-8 text-xs font-bold tracking-widest uppercase opacity-60">
+                        <Link href="/cookies" className="hover:text-primary transition-colors">Cookies</Link>
                         <Link href="/impressum" className="hover:text-primary transition-colors">Impressum</Link>
                         <Link href="/datenschutz" className="hover:text-primary transition-colors">Datenschutz</Link>
                         <Link href="/agb" className="hover:text-primary transition-colors">AGB</Link>
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer >
     );
 }
