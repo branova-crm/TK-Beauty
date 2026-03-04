@@ -4,264 +4,133 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/ui/Reveal";
 import Card from "@/components/ui/Card";
-import {
-    Shield,
-    Lock,
-    Eye,
-    FileText,
-    UserCheck,
-    Globe,
-    Info,
-    Mail,
-    Phone,
-    MapPin,
-    Clock,
-    CheckCircle2
-} from "lucide-react";
 
 export default function DatenschutzPage() {
     return (
         <main className="min-h-screen bg-[#F2F0ED] pt-32 pb-20">
             <Navbar />
 
-            <div className="max-w-5xl mx-auto px-6">
-                {/* Title Section */}
-                <div className="pt-20 pb-16 text-center">
+            <div className="max-w-4xl mx-auto px-6">
+                <div className="pt-10 pb-10 text-center">
                     <Reveal>
-                        <span className="text-sm font-bold tracking-[0.3em] text-[#8A7A65] uppercase mb-4 block">
-
-                        </span>
-                        <h1 className="text-5xl md:text-7xl font-serif font-bold text-foreground mb-6">
-                            Datenschutz
+                        <h1 className="text-4xl font-serif font-bold text-foreground mb-4">
+                            Datenschutzerklärung
                         </h1>
-                        <div className="w-24 h-1 bg-primary/20 mx-auto rounded-full" />
                     </Reveal>
                 </div>
 
-                {/* Unified Content Card */}
                 <Reveal delay={0.2}>
-                    <Card className="bg-creme border-none shadow-premium p-8 md:p-16 rounded-[40px] md:rounded-[60px]">
-                        <div className="prose prose-stone max-w-none text-[#685743]">
+                    <Card className="bg-white border border-gray-200 shadow-sm p-10 md:p-16 rounded-2xl">
+                        <div className="prose prose-stone max-w-none text-gray-700 leading-relaxed space-y-8">
 
-                            <p className="text-center italic mb-16 text-sm text-[#8A7A65]">
-                                (gültig für 2026, rechtskonform nach DSGVO & TDDDG)
-                            </p>
+                            <h2 className="text-2xl font-bold border-b pb-2">1. Datenschutz auf einen Blick</h2>
 
-                            {/* 1. Allgemeine Hinweise */}
-                            <section className="mb-20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <Shield className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">1. Allgemeine Hinweise</h2>
-                                </div>
-                                <div className="pl-16 space-y-4">
-                                    <p>Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen. Mit dieser Datenschutzerklärung informieren wir über die Erhebung, Verarbeitung und Nutzung personenbezogener Daten auf unserer Website nach der Datenschutz-Grundverordnung (DSGVO) und dem Telekommunikation-Digitale-Dienste-Datenschutzgesetz (TDDDG).</p>
-                                    <p>Personenbezogene Daten sind Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen (z. B. Name, E-Mail, IP-Adresse).</p>
-                                </div>
-                            </section>
+                            <h3 className="text-xl font-bold">Allgemeine Hinweise</h3>
+                            <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Hierzu gehören beispielsweise Name, Adresse, E-Mail-Adresse oder IP-Adresse.</p>
+                            <p>Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
 
-                            {/* 2. Verantwortliche Stelle */}
-                            <section className="mb-20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <Info className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">2. Verantwortliche Stelle</h2>
-                                </div>
-                                <div className="pl-16 space-y-4">
-                                    <p className="font-bold text-foreground mb-4">Verantwortlich für die Datenverarbeitung auf dieser Website:</p>
-                                    <div className="bg-white/40 p-6 rounded-2xl border border-primary/5">
-                                        <p className="font-bold text-foreground text-lg mb-2">TK Beauty</p>
-                                        <p>Inhaberin: Tetyana Kolunin<br />Krugstraße 39<br />90419 Nürnberg<br />Deutschland</p>
-                                        <div className="mt-4 space-y-2">
-                                            <p className="flex items-center gap-2 text-sm"><Mail className="w-4 h-4 text-primary" /> tkbeauty@web.de</p>
-                                            <p className="flex items-center gap-2 text-sm"><Phone className="w-4 h-4 text-primary" /> +49 15562 483435</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+                            <hr className="my-8" />
 
-                            {/* 3. Rechtsgrundlagen */}
-                            <section className="mb-20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <CheckCircle2 className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">3. Rechtsgrundlagen</h2>
-                                </div>
-                                <div className="pl-16 space-y-6">
-                                    <p>Wir verarbeiten personenbezogene Daten nur auf Basis der gesetzlichen Erlaubnis, z. B.:</p>
-                                    <ul className="list-none p-0 space-y-3">
-                                        <li className="flex items-center gap-3"><span className="text-primary font-bold">✔</span> zur Vertragserfüllung oder vorvertraglicher Maßnahmen</li>
-                                        <li className="flex items-center gap-3"><span className="text-primary font-bold">✔</span> zur Wahrung berechtigter Interessen</li>
-                                        <li className="flex items-center gap-3"><span className="text-primary font-bold">✔</span> aufgrund Ihrer Einwilligung</li>
-                                        <li className="flex items-center gap-3"><span className="text-primary font-bold">✔</span> aufgrund gesetzlicher Verpflichtungen</li>
-                                    </ul>
-                                    <p>Die einschlägigen Rechtsgrundlagen ergeben sich u. a. aus der DSGVO (insb. Art. 6) und dem TDDDG (§ 25).</p>
-                                </div>
-                            </section>
+                            <h3 className="text-xl font-bold">Datenerfassung auf dieser Website</h3>
 
-                            {/* 4. Hosting & Server-Logfiles */}
-                            <section className="mb-20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <Globe className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">4. Hosting & Server-Logfiles</h2>
-                                </div>
-                                <div className="pl-16 space-y-4">
-                                    <p>Unsere Website wird über <strong>Vercel Inc.</strong> bereitgestellt. Die Serverregion ist Frankfurt (eu-central-1) – das bedeutet, dass Ihre Daten primär innerhalb der EU verarbeitet werden. Vercel nimmt zusätzlich am EU-US Data Privacy Framework (DPF) teil, was ein angemessenes Datenschutzniveau für Datenübermittlungen in die USA sicherstellt.</p>
-                                    <p>Beim Aufruf der Website werden automatisch Daten in sogenannten Server-Logfiles gespeichert, z. B.:</p>
-                                    <ul className="list-disc pl-5 space-y-2">
-                                        <li>anonymisierte IP-Adresse</li>
-                                        <li>Browsertyp/-version</li>
-                                        <li>Datum/Uhrzeit des Zugriffs</li>
-                                        <li>angeforderte Ressourcen</li>
-                                    </ul>
-                                    <p><strong>Zweck:</strong> Gewährleistung eines funktionsfähigen und sicheren Betriebs der Website.<br />
-                                        <strong>Rechtsgrundlage:</strong> berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).</p>
-                                </div>
-                            </section>
+                            <h4 className="font-bold">Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h4>
+                            <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Die Kontaktdaten des Verantwortlichen können Sie dem Abschnitt „Hinweis zur verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.</p>
 
-                            {/* 5. Cookies & Consent-Management */}
-                            <section className="mb-20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <Eye className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">5. Cookies & Consent-Management</h2>
-                                </div>
-                                <div className="pl-16 space-y-8">
-                                    <div>
-                                        <h3 className="text-xl font-serif font-bold text-foreground m-0 mb-4 italic">5.1 Technisch notwendige Cookies & LocalStorage</h3>
-                                        <p>Technisch notwendige Cookies und LocalStorage werden verwendet, um z. B. Ihre Einwilligungsentscheidung zu speichern oder grundsätzliche Website-Funktionen zu ermöglichen. Diese Cookies werden ohne gesonderte Einwilligung gesetzt, wenn sie für die technisch einwandfreie Bereitstellung erforderlich sind (z. B. Speicherung des Consent-Status).<br />
-                                            <strong>Rechtsgrundlage:</strong> § 25 Abs. 2 TDDDG.</p>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-serif font-bold text-foreground m-0 mb-4 italic">5.2 Einwilligungspflichtige Cookies / Vercel Analytics & Speed Insights</h3>
-                                        <p>Alle Cookies oder Technologien, die nicht technisch notwendig sind (z. B. zur Performance-Analyse), werden erst nach ausdrücklicher Einwilligung über unser Cookie-Banner aktiviert. Dazu zählen optional:</p>
-                                        <ul className="list-disc pl-5 space-y-2 mb-4">
-                                            <li>Vercel Analytics</li>
-                                            <li>Vercel Speed Insights</li>
-                                        </ul>
-                                        <p>Diese Dienste erfassen anonymisierte Nutzungs- und Performance-Daten erst nach Zustimmung.<br />
-                                            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO i. V. m. § 25 Abs. 1 TDDDG.</p>
-                                        <div className="bg-primary/5 p-4 rounded-xl flex items-center gap-3">
-                                            <Info className="w-5 h-5 text-primary" />
-                                            <p className="m-0 font-medium">➡️ Ohne Ihre Einwilligung werden diese Dienste nicht ausgeführt.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+                            <h4 className="font-bold">Wie erfassen wir Ihre Daten?</h4>
+                            <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich beispielsweise um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
+                            <p>Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Dabei handelt es sich vor allem um technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
+                            <p>Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.</p>
 
-                            {/* 6. Kontaktformular */}
-                            <section className="mb-20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <Mail className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">6. Kontaktformular / Lead-Erfassung</h2>
-                                </div>
-                                <div className="pl-16 space-y-4">
-                                    <p>Wenn Sie unser Kontaktformular nutzen, verarbeiten wir folgende Daten:</p>
-                                    <ul className="list-disc pl-5 space-y-2">
-                                        <li>Name</li>
-                                        <li>E-Mail</li>
-                                        <li>Telefonnummer</li>
-                                        <li>Nachrichtentext</li>
-                                    </ul>
-                                    <p><strong>Zweck:</strong> Bearbeitung Ihrer Anfrage, Terminvereinbarung etc.<br />
-                                        <strong>Empfänger / Speicherung:</strong> Die Daten werden in Supabase gespeichert und zur Zustellung per E-Mail über einen SMTP-Dienst (mail.agenturserver.de) an uns weitergeleitet.<br />
-                                        <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen / Vertragserfüllung).</p>
-                                    <p>Zwischen uns und den jeweiligen Dienstleistern besteht ein Auftragsverarbeitungsvertrag (AVV).</p>
-                                </div>
-                            </section>
+                            <h4 className="font-bold">Wofür nutzen wir Ihre Daten?</h4>
+                            <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
 
-                            {/* 7. Google Maps */}
-                            <section className="mb-20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <MapPin className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">7. Google Maps (iframe)</h2>
-                                </div>
-                                <div className="pl-16 space-y-4">
-                                    <p>Auf unserer Kontaktseite ist eine Google Maps-Karte eingebettet, um Ihnen unseren Standort anzuzeigen. Beim Laden der Karte wird Ihre IP-Adresse an Google übermittelt.<br />
-                                        <strong>Rechtsgrundlage:</strong> berechtigtes Interesse, um die Karte darzustellen (Art. 6 Abs. 1 lit. f DSGVO).</p>
-                                    <p>Weitere Informationen zur Datenverarbeitung durch Google finden Sie hier:<br />
-                                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline italic">https://policies.google.com/privacy</a></p>
-                                </div>
-                            </section>
+                            <h4 className="font-bold">Welche Rechte haben Sie bezüglich Ihrer Daten?</h4>
+                            <p>Sie haben jederzeit das Recht:</p>
+                            <ul className="list-disc pl-6 space-y-2">
+                                <li>unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten</li>
+                                <li>die Berichtigung oder Löschung dieser Daten zu verlangen</li>
+                                <li>eine erteilte Einwilligung jederzeit für die Zukunft zu widerrufen</li>
+                                <li>unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen</li>
+                            </ul>
+                            <p>Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
 
-                            {/* 8. Betroffenenrechte */}
-                            <section className="mb-20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <UserCheck className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">8. Betroffenenrechte</h2>
-                                </div>
-                                <div className="pl-16 space-y-6">
-                                    <p>Sie haben gemäß DSGVO folgende Rechte:</p>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        {[
-                                            "Auskunft über die verarbeiteten Daten",
-                                            "Berichtigung unrichtiger Daten",
-                                            "Einschränkung der Verarbeitung",
-                                            "Löschung („Recht auf Vergessenwerden“)",
-                                            "Datenübertragbarkeit",
-                                            "Widerruf von Einwilligungen",
-                                            "Beschwerde bei einer Aufsichtsbehörde"
-                                        ].map(recht => (
-                                            <div key={recht} className="flex items-center gap-3">
-                                                <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                                                <span className="text-sm font-medium">{recht}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <p>Zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte: <strong>tkbeauty@web.de</strong>.</p>
-                                </div>
-                            </section>
+                            <h2 className="text-2xl font-bold border-b pb-2">2. Hosting</h2>
+                            <p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
+                            <p><strong>Vercel Inc.</strong><br />
+                                440 N Barranca Ave #4133<br />
+                                Covina, CA 91723<br />
+                                USA</p>
+                            <p>Die Serverregion befindet sich innerhalb der Europäischen Union (Frankfurt). Dennoch kann es im Rahmen der technischen Bereitstellung zu Datenübertragungen in die USA kommen.</p>
+                            <p>Vercel ist nach dem <strong>EU-US Data Privacy Framework (DPF)</strong> zertifiziert.</p>
+                            <p>Die Verwendung des Hosters erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website.</p>
+                            <p>Wir haben mit dem Anbieter einen <strong>Vertrag zur Auftragsverarbeitung (AVV) gemäß Art. 28 DSGVO</strong> geschlossen.</p>
 
-                            {/* 9. Speicherdauer */}
-                            <section className="mb-20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <Clock className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">9. Speicherdauer</h2>
-                                </div>
-                                <div className="pl-16 space-y-4">
-                                    <p>Personenbezogene Daten werden nur so lange gespeichert, wie es für die jeweiligen Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen bestehen.</p>
-                                </div>
-                            </section>
+                            <h2 className="text-2xl font-bold border-b pb-2">3. Allgemeine Hinweise und Pflichtinformationen</h2>
 
-                            {/* 10. Sicherheit */}
-                            <section className="mb-20">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <Lock className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">10. Sicherheit</h2>
-                                </div>
-                                <div className="pl-16 space-y-4">
-                                    <p>Wir setzen angemessene technische und organisatorische Sicherheitsmaßnahmen ein, um Ihre Daten vor Verlust, Manipulation und unberechtigtem Zugriff zu schützen.</p>
-                                </div>
-                            </section>
+                            <h3 className="text-xl font-bold">Datenschutz</h3>
+                            <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+                            <p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
 
-                            {/* 11. Änderungen */}
-                            <section>
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary/70">
-                                        <FileText className="w-6 h-6" />
-                                    </div>
-                                    <h2 className="text-2xl font-serif font-bold text-foreground m-0">11. Änderungen der Datenschutzerklärung</h2>
-                                </div>
-                                <div className="pl-16 space-y-4">
-                                    <p>Diese Datenschutzerklärung gilt ab 2026 und wird bei Bedarf aktualisiert. Sie finden die jeweils aktuelle Version auf unserer Website.</p>
-                                </div>
-                            </section>
+                            <h3 className="text-xl font-bold">Hinweis zur verantwortlichen Stelle</h3>
+                            <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+                            <p>TK Beauty<br />
+                                Inhaberin: Tetyana Kolunin<br />
+                                Krugstraße 39<br />
+                                90419 Nürnberg<br />
+                                Deutschland</p>
+                            <p>Telefon: +49 15562 483435<br />
+                                E-Mail: tkbeauty@web.de</p>
+                            <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.</p>
+
+                            <h3 className="text-xl font-bold">Speicherdauer</h3>
+                            <p>Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt.</p>
+                            <p>Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung widerrufen, werden Ihre Daten gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+
+                            <h3 className="text-xl font-bold">Allgemeine Hinweise zu den Rechtsgrundlagen der Datenverarbeitung</h3>
+                            <p>Sofern Sie in die Datenverarbeitung eingewilligt haben, verarbeiten wir Ihre personenbezogenen Daten auf Grundlage von <strong>Art. 6 Abs. 1 lit. a DSGVO</strong>. Sind Ihre Daten zur Vertragserfüllung erforderlich, erfolgt die Verarbeitung auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong>. Sofern eine gesetzliche Verpflichtung besteht, erfolgt die Verarbeitung auf Grundlage von <strong>Art. 6 Abs. 1 lit. c DSGVO</strong>. In anderen Fällen erfolgt die Verarbeitung auf Grundlage unseres berechtigten Interesses gemäß <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>.</p>
+
+                            <h3 className="text-xl font-bold">Empfänger von personenbezogenen Daten</h3>
+                            <p>Im Rahmen unserer Geschäftstätigkeit arbeiten wir mit externen Dienstleistern zusammen. Eine Übermittlung personenbezogener Daten erfolgt nur, wenn dies zur Vertragserfüllung erforderlich ist, wir gesetzlich dazu verpflichtet sind, ein berechtigtes Interesse besteht oder eine Einwilligung vorliegt.</p>
+
+                            <h3 className="text-xl font-bold">Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
+                            <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt davon unberührt.</p>
+
+                            <h3 className="text-xl font-bold">Widerspruchsrecht gemäß Art. 21 DSGVO</h3>
+                            <p>Wenn die Datenverarbeitung auf Grundlage von <strong>Art. 6 Abs. 1 lit. e oder f DSGVO</strong> erfolgt, haben Sie jederzeit das Recht, Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten einzulegen.</p>
+
+                            <h3 className="text-xl font-bold">Beschwerderecht bei der zuständigen Aufsichtsbehörde</h3>
+                            <p>Im Falle von Verstößen gegen die DSGVO steht Ihnen ein Beschwerderecht bei einer Aufsichtsbehörde zu. Zuständige Aufsichtsbehörde:</p>
+                            <p>Bayerisches Landesamt für Datenschutzaufsicht<br />
+                                Promenade 18, 91522 Ansbach, Deutschland<br />
+                                https://www.lda.bayern.de</p>
+
+                            <h3 className="text-xl font-bold">Recht auf Datenübertragbarkeit</h3>
+                            <p>Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, in einem maschinenlesbaren Format zu erhalten.</p>
+
+                            <h2 className="text-2xl font-bold border-b pb-2">4. Datenerfassung auf dieser Website</h2>
+
+                            <h3 className="text-xl font-bold">Cookies</h3>
+                            <p>Unsere Internetseiten verwenden sogenannte Cookies. Cookies sind kleine Datenpakete und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder als Session-Cookies (werden nach Ende des Besuchs gelöscht) oder als permanente Cookies gespeichert. Rechtsgrundlage für technisch notwendige Cookies ist <strong>§ 25 Abs. 2 TDDDG</strong>. Analyse-Cookies werden nur mit Einwilligung gesetzt (<strong>Art. 6 Abs. 1 lit. a DSGVO</strong>).</p>
+
+                            <h3 className="text-xl font-bold">Server-Log-Dateien</h3>
+                            <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in Server-Log-Dateien. Dies sind: Browsertyp, Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Die Erfassung erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>.</p>
+
+                            <h3 className="text-xl font-bold">Kontaktformular</h3>
+                            <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular gespeichert (Name, E-Mail, Telefonnummer, Nachricht). Rechtsgrundlage ist <strong>Art. 6 Abs. 1 lit. b DSGVO</strong>.</p>
+                            <p>Die Daten werden gespeichert bei:<br />
+                                <strong>Supabase Inc.</strong>, San Francisco, USA</p>
+                            <p>Zusätzlich erfolgt eine Weiterleitung per E-Mail über den SMTP-Server: mail.agenturserver.de. Mit den Dienstleistern bestehen <strong>Auftragsverarbeitungsverträge nach Art. 28 DSGVO</strong>.</p>
+
+                            <h2 className="text-2xl font-bold border-b pb-2">5. Plugins und Tools</h2>
+
+                            <h3 className="text-xl font-bold">Google Maps</h3>
+                            <p>Diese Website nutzt den Kartendienst Google Maps. Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern. Die Nutzung erfolgt im Interesse einer ansprechenden Darstellung unserer Website. Rechtsgrundlage: <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>. Weitere Informationen finden Sie unter: https://policies.google.com/privacy</p>
+
+                            <h2 className="text-2xl font-bold border-b pb-2">6. SSL- bzw. TLS-Verschlüsselung</h2>
+                            <p>Diese Seite nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt.</p>
+
+                            <h2 className="text-2xl font-bold border-b pb-2">7. Änderungen dieser Datenschutzerklärung</h2>
+                            <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht. Die jeweils aktuelle Version finden Sie jederzeit auf dieser Website.</p>
 
                         </div>
                     </Card>
