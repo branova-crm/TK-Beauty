@@ -14,11 +14,11 @@ const securityHeaders = [
   },
 
   // ── Referrer Policy ────────────────────────────────────────
-  // Sendet die volle Referrer-URL nur bei gleicher Origin.
-  // Bei Cross-Origin-Requests wird nur die Origin gesendet.
+  // Entfernt den Referrer-Header komplett bei allen Anfragen.
+  // Maximaler Datenschutz – keine Informationen an Dritte.
   {
     key: "Referrer-Policy",
-    value: "strict-origin-when-cross-origin",
+    value: "no-referrer",
   },
 
   // ── X-Frame-Options ────────────────────────────────────────

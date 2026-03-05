@@ -24,7 +24,7 @@ export function proxy(request: NextRequest) {
     const cspHeader = `
     default-src 'none';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ""};
-    style-src 'self' 'nonce-${nonce}';
+    style-src 'self' 'unsafe-inline';
     img-src 'self' data: https:;
     font-src 'self' https:;
     frame-src https://www.google.com https://maps.google.com;
