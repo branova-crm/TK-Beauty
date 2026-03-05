@@ -1,38 +1,10 @@
 import type { NextConfig } from "next";
 
 // ============================================================
-// Content Security Policy (CSP)
-// Schützt vor XSS, Clickjacking und ungewolltem Code-Loading.
-// Jede Direktive definiert, woher bestimmte Ressourcen geladen
-// werden dürfen.
-// ============================================================
-const ContentSecurityPolicy = `
-  default-src 'self';
-  script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com;
-  style-src 'self' 'unsafe-inline';
-  img-src 'self' data: https:;
-  font-src 'self' https:;
-  frame-src https://www.google.com https://maps.google.com;
-  connect-src 'self' https://maps.googleapis.com;
-  object-src 'none';
-  base-uri 'self';
-  form-action 'self';
-  frame-ancestors 'none';
-  upgrade-insecure-requests;
-`;
-
-// ============================================================
 // Security Headers – Best Practices für Production Deployments
+// CSP wird separat in src/proxy.ts über Nonces gesetzt.
 // ============================================================
 const securityHeaders = [
-  // ── Content Security Policy ────────────────────────────────
-  // Definiert erlaubte Quellen für Scripts, Styles, Bilder etc.
-  // Verhindert XSS und ungewolltes Laden externer Ressourcen.
-  {
-    key: "Content-Security-Policy",
-    value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
-  },
-
   // ── HTTP Strict Transport Security (HSTS) ──────────────────
   // Erzwingt HTTPS für alle zukünftigen Verbindungen.
   // max-age=63072000 = 2 Jahre, inkl. Subdomains + Preload-Liste.
@@ -91,7 +63,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  // Security Headers für alle Routen anwenden
+  // Nicht-CSP Security Headers für alle Routen anwenden
   async headers() {
     return [
       {
@@ -104,3 +76,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
