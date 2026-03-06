@@ -6,6 +6,7 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
+import Image from "next/image";
 import { useState } from "react";
 import ContactModal from "@/components/ContactModal";
 
@@ -65,17 +66,21 @@ export default function PreisePage() {
 
                     <Reveal delay={0.4} className="relative">
                         <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden shadow-premium border border-[#3A3A3A]/[0.05]">
-                            <img
+                            <Image
                                 src="/images/4.jpg"
                                 alt="TK Beauty Studio Preisübersicht"
-                                className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+                                fill
+                                className="object-cover transition-transform duration-1000 hover:scale-105"
+                                sizes="(max-width: 1024px) 100vw, 50vw"
                             />
                         </div>
                         {/* Decorative Badge */}
                         <div className="absolute -top-6 -right-6 md:-top-10 md:-right-10 bg-white p-6 md:p-10 rounded-[32px] shadow-premium z-10 border border-[#3A3A3A]/[0.05] flex flex-col items-center">
-                            <img
+                            <Image
                                 src="/images/22.png"
                                 alt="TK BEAUTYSTUDIO Logo"
+                                width={120}
+                                height={120}
                                 className="h-10 md:h-14 w-auto object-contain"
                             />
                         </div>

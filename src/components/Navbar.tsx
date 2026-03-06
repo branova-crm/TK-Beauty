@@ -7,7 +7,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import ContactModal from "./ContactModal";
 import Button from "@/components/ui/Button";
-
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 
 function cn(...inputs: ClassValue[]) {
@@ -61,10 +61,13 @@ export default function Navbar() {
                 >
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
-                        <img
+                        <Image
                             src="/images/BEAUTYSTUDIO_26.png"
                             alt="TK BEAUTYSTUDIO"
+                            width={153}
+                            height={48}
                             className="h-12 w-auto object-contain"
+                            priority
                         />
                     </Link>
 
@@ -124,9 +127,11 @@ export default function Navbar() {
                                 {/* Header */}
                                 <div className="flex items-center justify-between px-8 mb-12">
                                     <Link href="/" onClick={() => setIsOpen(false)}>
-                                        <img
+                                        <Image
                                             src="/images/BEAUTYSTUDIO_26.png"
                                             alt="TK BEAUTYSTUDIO"
+                                            width={128}
+                                            height={40}
                                             className="h-10 w-auto"
                                         />
                                     </Link>

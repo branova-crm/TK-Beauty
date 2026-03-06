@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Card from "@/components/ui/Card";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
+import Image from "next/image";
 
 export default function UeberUnsPage() {
     return (
@@ -50,16 +51,20 @@ export default function UeberUnsPage() {
 
                     <Reveal delay={0.4} className="relative">
                         <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden shadow-premium border border-[#3A3A3A]/[0.05]">
-                            <img
+                            <Image
                                 src="/images/21.png"
                                 alt="TK Beauty Studio"
-                                className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+                                fill
+                                className="object-cover transition-transform duration-1000 hover:scale-105"
+                                sizes="(max-width: 1024px) 100vw, 50vw"
                             />
                         </div>
                         <div className="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 bg-white p-6 md:p-10 rounded-[32px] shadow-premium z-10 border border-[#3A3A3A]/[0.05] flex flex-col items-center">
-                            <img
+                            <Image
                                 src="/images/BEAUTYSTUDIO_26.png"
                                 alt="TK BEAUTYSTUDIO Logo"
+                                width={153}
+                                height={56}
                                 className="h-10 md:h-14 w-auto object-contain mb-4"
                             />
                             <p className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-[#8A7A65] whitespace-nowrap">Haut. Leidenschaft.</p>

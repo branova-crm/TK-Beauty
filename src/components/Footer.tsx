@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, MapPin, Phone, Mail, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -14,9 +15,11 @@ export default function Footer() {
                 {/* Logo & Intro */}
                 <div className="flex flex-col items-center space-y-6 max-w-md">
                     <Link href="/" className="inline-block">
-                        <img
+                        <Image
                             src="/images/BEAUTYSTUDIO_26.png"
                             alt="TK BEAUTYSTUDIO"
+                            width={179}
+                            height={56}
                             className="h-14 w-auto object-contain"
                         />
                     </Link>

@@ -33,11 +33,12 @@ export default function BeforeAfter() {
             >
                 {/* After Image (Background) - 12.png is Nachher */}
                 <div className="absolute inset-0">
-                    <img
+                    <Image
                         src="/images/12.png"
                         alt="Nachher"
-                        className="w-full h-full object-cover"
-                        style={{ display: 'block' }}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 896px"
                     />
                     <div className="absolute bottom-6 right-6 px-4 py-2 bg-white/90 backdrop-blur rounded-full text-xs font-bold uppercase tracking-widest text-foreground shadow-sm">
                         Nachher
@@ -53,11 +54,12 @@ export default function BeforeAfter() {
                         zIndex: 5
                     }}
                 >
-                    <img
+                    <Image
                         src="/images/11.png"
                         alt="Vorher"
-                        className="w-full h-full object-cover"
-                        style={{ display: 'block' }}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 896px"
                     />
                     <div className="absolute bottom-6 left-6 px-4 py-2 bg-white/90 backdrop-blur rounded-full text-xs font-bold uppercase tracking-widest text-foreground shadow-sm">
                         Vorher
