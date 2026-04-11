@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/ui/Reveal";
 import Card from "@/components/ui/Card";
@@ -9,7 +9,7 @@ import { Mail, Phone, MapPin, Scale, Globe, Info } from "lucide-react";
 export default function ImpressumPage() {
     return (
         <main className="min-h-screen bg-[#F2F0ED] pt-32 pb-20">
-            <Navbar />
+            <Header />
 
             <div className="max-w-5xl mx-auto px-6">
                 {/* Clean Title */}

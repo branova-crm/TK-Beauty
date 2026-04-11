@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 import Card from "@/components/ui/Card";
 import SurfaceSection from "@/components/ui/SurfaceSection";
@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function UeberUnsPage() {
     return (
         <main className="min-h-screen bg-creme pt-32">
-            <Navbar />
+            <Header />
 
             <SurfaceSection variant="light" className="py-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/ui/Reveal";
 import Card from "@/components/ui/Card";
@@ -20,7 +20,7 @@ export default function CookiePolicyPage() {
 
     return (
         <main suppressHydrationWarning className="min-h-screen bg-[#F2F0ED] selection:bg-primary/20">
-            <Navbar />
+            <Header />
 
             <section className="relative pt-40 pb-20 overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />

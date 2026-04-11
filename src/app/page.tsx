@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/home/Hero";
 import Services from "@/components/home/Services";
@@ -13,7 +13,7 @@ import ContactMap from "@/components/home/ContactMap";
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navbar />
+      <Header />
 
       {/* Hero Section */}
       <Hero />

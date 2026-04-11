@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
@@ -36,7 +36,7 @@ export default function PreisePage() {
 
     return (
         <main className="min-h-screen bg-creme pt-32 font-sans">
-            <Navbar />
+            <Header />
 
             <SurfaceSection variant="light" className="py-20">
                 {/* Header Section with Image */}

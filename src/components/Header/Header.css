@@ -1,0 +1,277 @@
+/* ============================================
+   Header Component – Dedicated Styles
+   ============================================ */
+
+/* -------------------------------------------
+   1. TOP HEADER (transparent, absolute)
+   ------------------------------------------- */
+.header-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .header-top {
+    padding: 0 32px;
+  }
+}
+
+.header-top-inner {
+  max-width: 1440px;
+  width: 100%;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+/* -------------------------------------------
+   2. STICKY NAV (Glass Pill)
+   ------------------------------------------- */
+.sticky-nav {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .sticky-nav {
+    padding: 0 32px;
+  }
+}
+
+.sticky-nav.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sticky-inner {
+  max-width: 1240px;
+  width: 100%;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-radius: 999px;
+  border: 1px solid rgba(58, 58, 58, 0.08);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+@media (min-width: 1024px) {
+  .sticky-inner {
+    padding: 12px 40px;
+  }
+}
+
+/* Milchglas / Frosted layer */
+.sticky-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 999px;
+}
+
+.sticky-inner > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* -------------------------------------------
+   3. NAVIGATION LINKS (Desktop)
+   ------------------------------------------- */
+.header-desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .header-desktop-nav {
+    display: flex;
+  }
+}
+
+.header-nav-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--foreground, #3A3A3A);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.header-nav-link:hover {
+  color: var(--primary, #BFA67A);
+}
+
+/* Sticky variant – same style */
+.sticky-nav-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--foreground, #3A3A3A);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.sticky-nav-link:hover {
+  color: var(--primary, #BFA67A);
+}
+
+/* -------------------------------------------
+   4. MOBILE MENU BUTTON
+   ------------------------------------------- */
+.header-mobile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--foreground, #3A3A3A);
+  transition: color 0.2s ease;
+}
+
+.header-mobile-btn:hover {
+  color: var(--primary, #BFA67A);
+}
+
+@media (min-width: 1024px) {
+  .header-mobile-btn {
+    display: none;
+  }
+}
+
+/* -------------------------------------------
+   5. OFFCANVAS MENU (Mobile, Full Screen)
+   ------------------------------------------- */
+.offcanvas-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background-color: #FAF8F5;
+  display: flex;
+  flex-direction: column;
+}
+
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 0 24px;
+  flex-shrink: 0;
+}
+
+.offcanvas-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #3A3A3A;
+  transition: color 0.2s ease;
+}
+
+.offcanvas-close-btn:hover {
+  color: #BFA67A;
+}
+
+.offcanvas-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  gap: 0;
+}
+
+.offcanvas-link {
+  display: block;
+  font-family: var(--font-playfair), ui-serif, Georgia, serif;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  padding: 20px 0;
+  color: #3A3A3A;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.offcanvas-link:hover {
+  color: #BFA67A;
+}
+
+.offcanvas-cta-wrap {
+  margin-top: 32px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.offcanvas-footer {
+  flex-shrink: 0;
+  padding: 32px 0;
+  text-align: center;
+}
+
+.offcanvas-footer-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #8A7A65;
+  font-weight: 600;
+}
+
+.offcanvas-footer-sub {
+  font-size: 11px;
+  color: rgba(138, 122, 101, 0.6);
+  margin-top: 4px;
+}
+
+/* -------------------------------------------
+   6. LOGO
+   ------------------------------------------- */
+.header-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}

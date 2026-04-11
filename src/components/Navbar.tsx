@@ -25,11 +25,14 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
+        handleScroll();
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -46,12 +49,14 @@ export default function Navbar() {
     return (
         <>
             <nav
+                suppressHydrationWarning
                 className={cn(
                     "fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-center px-4 md:px-8",
                     scrolled ? "pt-4" : "pt-0"
                 )}
             >
                 <div
+                    suppressHydrationWarning
                     className={cn(
                         "w-full transition-all duration-500 flex items-center justify-between",
                         scrolled
@@ -66,7 +71,7 @@ export default function Navbar() {
                             alt="TK BEAUTYSTUDIO"
                             width={153}
                             height={48}
-                            className="h-12 w-auto object-contain"
+                            className="object-contain"
                             priority
                         />
                     </Link>
@@ -102,72 +107,74 @@ export default function Navbar() {
                         <Menu className="w-8 h-8 outline-none" />
                     </button>
                 </div>
+            </nav>
 
-                {/* Off-canvas Mobile Menu */}
-                <AnimatePresence mode="wait">
+            {/* Full-screen Mobile Menu */}
+            {mounted && (
+                <AnimatePresence>
                     {isOpen && (
-                        <>
-                            {/* Backdrop */}
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                onClick={() => setIsOpen(false)}
-                                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] lg:hidden"
-                            />
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed inset-0 w-screen h-screen z-[200] lg:hidden"
+                            style={{ backgroundColor: "#FAF8F5" }}
+                        >
+                            {/* Close Button */}
+                            <div className="flex items-center justify-between px-6 pt-6">
+                                <Link href="/" onClick={() => setIsOpen(false)}>
+                                    <Image
+                                        src="/images/BEAUTYSTUDIO_26.png"
+                                        alt="TK BEAUTYSTUDIO"
+                                        width={128}
+                                        height={40}
+                                        className="object-contain"
+                                    />
+                                </Link>
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    aria-label="Menü schließen"
+                                    className="p-2 text-[#3A3A3A] hover:text-[#BFA67A] transition-colors duration-200"
+                                >
+                                    <X className="w-7 h-7" />
+                                </button>
+                            </div>
 
-                            {/* Drawer Content */}
-                            <motion.div
-                                initial={{ x: "100%" }}
-                                animate={{ x: 0 }}
-                                exit={{ x: "100%" }}
-                                transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                                className="fixed top-0 right-0 h-full w-[85%] max-w-[400px] bg-[#FAF8F5] z-[70] lg:hidden shadow-2xl flex flex-col pt-8"
-                            >
-                                {/* Header */}
-                                <div className="flex items-center justify-between px-8 mb-12">
-                                    <Link href="/" onClick={() => setIsOpen(false)}>
-                                        <Image
-                                            src="/images/BEAUTYSTUDIO_26.png"
-                                            alt="TK BEAUTYSTUDIO"
-                                            width={128}
-                                            height={40}
-                                            className="h-10 w-auto"
-                                        />
-                                    </Link>
-                                    <button
-                                        onClick={() => setIsOpen(false)}
-                                        className="p-2 text-foreground/70 hover:text-primary transition-colors"
+                            {/* Navigation Links - centered */}
+                            <div className="flex flex-col items-center justify-center flex-1 h-[calc(100vh-200px)] px-8">
+                                {navLinks.map((link, idx) => (
+                                    <motion.div
+                                        key={link.name}
+                                        initial={{ opacity: 0, y: 24 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{
+                                            delay: 0.15 + idx * 0.08,
+                                            duration: 0.4,
+                                            ease: [0.25, 0.46, 0.45, 0.94],
+                                        }}
                                     >
-                                        <X className="w-8 h-8" />
-                                    </button>
-                                </div>
-
-                                {/* Links */}
-                                <div className="flex flex-col px-8 space-y-2">
-                                    {navLinks.map((link, idx) => (
-                                        <motion.div
-                                            key={link.name}
-                                            initial={{ opacity: 0, x: 20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.1 + idx * 0.1 }}
+                                        <Link
+                                            href={link.href}
+                                            className="block text-3xl font-serif font-bold text-center py-5 text-[#3A3A3A] hover:text-[#BFA67A] transition-colors duration-200 tracking-wide"
+                                            onClick={() => setIsOpen(false)}
                                         >
-                                            <Link
-                                                href={link.href}
-                                                className="block text-2xl font-serif font-bold text-foreground py-4 border-b border-[#3A3A3A]/[0.06] hover:text-primary transition-colors"
-                                                onClick={() => setIsOpen(false)}
-                                            >
-                                                {link.name}
-                                            </Link>
-                                        </motion.div>
-                                    ))}
-                                </div>
+                                            {link.name}
+                                        </Link>
+                                    </motion.div>
+                                ))}
 
-                                {/* Footer / Action */}
-                                <div className="mt-auto p-8 bg-white/40">
-                                    <p className="text-xs uppercase tracking-[0.2em] text-[#8A7A65] font-bold mb-6">
-                                        Bereit für Ihren Glow?
-                                    </p>
+                                {/* CTA Button */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 24 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{
+                                        delay: 0.15 + navLinks.length * 0.08,
+                                        duration: 0.4,
+                                        ease: [0.25, 0.46, 0.45, 0.94],
+                                    }}
+                                    className="mt-8 w-full max-w-xs"
+                                >
                                     <Button
                                         variant="primary"
                                         size="lg"
@@ -175,23 +182,29 @@ export default function Navbar() {
                                             setIsOpen(false);
                                             setIsModalOpen(true);
                                         }}
-                                        className="w-full shadow-premium py-6 text-lg"
+                                        className="w-full shadow-premium py-5 text-base"
                                     >
                                         <Calendar className="w-5 h-5" />
                                         Termin sichern
                                     </Button>
+                                </motion.div>
+                            </div>
 
-                                    <div className="mt-10 flex flex-col space-y-3 opacity-60">
-                                        <p className="text-sm font-medium">TK BEAUTY Nürnberg</p>
-                                        <p className="text-xs">Mo-Sa: nach Vereinbarung</p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </>
+                            {/* Bottom Info */}
+                            <div className="absolute bottom-8 left-0 right-0 text-center">
+                                <p className="text-xs uppercase tracking-[0.2em] text-[#8A7A65] font-semibold">
+                                    TK BEAUTY · Nürnberg
+                                </p>
+                                <p className="text-xs text-[#8A7A65]/60 mt-1">
+                                    Mo–Sa: nach Vereinbarung
+                                </p>
+                            </div>
+                        </motion.div>
                     )}
                 </AnimatePresence>
-            </nav>
-            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            )}
+
+            {mounted && <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}
         </>
     );
 }

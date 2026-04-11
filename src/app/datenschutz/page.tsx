@@ -1,13 +1,13 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/ui/Reveal";
 
 export default function DatenschutzPage() {
     return (
         <main className="min-h-screen bg-[#F2F0ED] pt-32 pb-20">
-            <Navbar />
+            <Header />
 
             <div className="max-w-4xl mx-auto px-6">
                 <Reveal delay={0.2}>

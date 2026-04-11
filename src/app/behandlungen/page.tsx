@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
@@ -42,7 +42,7 @@ export default function BehandlungenPage() {
 
     return (
         <main className="min-h-screen bg-creme pt-32">
-            <Navbar />
+            <Header />
 
             <SurfaceSection variant="light" className="py-20">
                 <Reveal>
