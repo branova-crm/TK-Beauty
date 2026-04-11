@@ -129,7 +129,6 @@ export default function Footer() {
                     </motion.div>
 
                     <div className="flex space-x-8 text-xs font-bold tracking-widest uppercase opacity-60">
-                        <Link href="/cookies" className="hover:text-primary transition-colors">Cookies</Link>
                         <Link href="/impressum" className="hover:text-primary transition-colors">Impressum</Link>
                         <Link href="/datenschutz" className="hover:text-primary transition-colors">Datenschutz</Link>
                     </div>

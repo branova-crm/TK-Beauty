@@ -75,4 +75,22 @@ h6 {
       transform: translateX(150%) skewX(-25deg);
     }
   }
+  /* Premium Glass Pill Effect (Elementor Style) */
+  .glass-pill {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-pill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1); /* Diffusion layer */
+    z-index: -1;
+  }
 }

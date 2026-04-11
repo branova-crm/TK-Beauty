@@ -25,10 +25,20 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+            const currentScroll = window.scrollY;
+            if (currentScroll < 50) {
+                setScrolled(false);
+                setIsVisible(true);
+            } else if (currentScroll < 300) {
+                setIsVisible(false);
+            } else {
+                setScrolled(true);
+                setIsVisible(true);
+            }
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -47,16 +57,17 @@ export default function Navbar() {
         <>
             <nav
                 className={cn(
-                    "fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-center px-4 md:px-8",
-                    scrolled ? "pt-4" : "pt-0"
+                    "fixed top-0 left-0 w-full z-50 flex justify-center px-4 md:px-8 transition-all duration-500",
+                    scrolled ? "pt-5" : "pt-0",
+                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
                 )}
             >
                 <div
                     className={cn(
                         "w-full transition-all duration-500 flex items-center justify-between",
                         scrolled
-                            ? "max-w-[1240px] bg-white/80 backdrop-blur-lg border border-[#3A3A3A]/[0.08] shadow-premium rounded-full px-6 lg:px-10 h-20"
-                            : "max-w-[1440px] bg-transparent border-transparent h-28 px-0"
+                            ? "max-w-[1200px] h-20 rounded-full px-6 lg:px-10 glass-pill"
+                            : "max-w-[1440px] h-28 px-0 bg-transparent"
                     )}
                 >
                     {/* Logo */}
