@@ -96,56 +96,32 @@ h6 {
 
 /* --- eRecht24 CCM19 Premium Styling --- */
 
-/* Force CCM19 to be on top of EVERYTHING (max z-index) */
-#ccm19-container,
-.ccm19-container,
-[id^="ccm19-"],
-.ccm19-widget-container,
-div[class*="ccm19"] {
+/* Fix z-index for the main app container only */
+#ccm19-app {
   z-index: 2147483647 !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
 }
 
-/* Ensure the modal/popup itself is visible and correctly positioned */
-.ccm19-popup, 
-[id^="ccm19-"] .ccm19-modal-content,
-[id^="ccm19-"].ccm19-modal {
+/* Premium Styling for the Modal */
+.ccm19-modal-content, 
+.ccm19-popup {
   background: rgba(250, 248, 245, 0.98) !important;
   backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(138, 122, 101, 0.1) !important;
   border-radius: 32px !important;
   box-shadow: 0 30px 50px rgba(0,0,0,0.1) !important;
   font-family: var(--font-inter), sans-serif !important;
-  z-index: 2147483647 !important;
 }
 
-/* Mobile-friendly banner sizing - optimized for small screens */
-@media (max-width: 767px) {
-  .ccm19-popup, 
-  [id^="ccm19-"] .ccm19-modal-content,
-  [id^="ccm19-"].ccm19-modal {
-    border-radius: 20px !important;
-    margin: 10px !important;
-    width: calc(100% - 20px) !important;
-    max-width: none !important;
-    max-height: 80vh !important;
-    bottom: 10px !important;
-    top: auto !important;
-    left: 0 !important;
-    right: 0 !important;
-    overflow-y: auto !important;
-  }
-}
-
-[id^="ccm19-"] h2 {
+/* Typography Overrides */
+.ccm-cookie-declaration h2,
+#ccm19-app h2 {
   font-family: var(--font-playfair), serif !important;
   color: var(--foreground) !important;
   font-weight: 700 !important;
 }
 
-.ccm19-btn-primary, [id^="ccm19-"] .ccm19-btn-primary {
+/* Button Styling */
+.ccm19-btn-primary {
   background: var(--primary) !important;
   border-radius: 99px !important;
   font-weight: 700 !important;
@@ -160,7 +136,6 @@ div[class*="ccm19"] {
   bottom: 24px !important;
   left: 24px !important;
   z-index: 2147483647 !important;
-  position: fixed !important;
 }
 
 @media (max-width: 767px) {
