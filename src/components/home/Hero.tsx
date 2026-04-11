@@ -12,7 +12,7 @@ export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <section className="pt-32 pb-4 px-4 md:px-8 w-full bg-background flex justify-center">
+        <section className="pt-20 md:pt-24 pb-4 px-4 md:px-8 w-full bg-background flex justify-center">
             {/* Page Container */}
             <div className="max-w-[1240px] w-full">
                 {/* Hero Rounded Card */}

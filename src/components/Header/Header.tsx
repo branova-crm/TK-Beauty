@@ -76,8 +76,8 @@ export default function Header() {
                         <Image
                             src="/images/BEAUTYSTUDIO_26.png"
                             alt="TK BEAUTYSTUDIO"
-                            width={153}
-                            height={48}
+                            width={260}
+                            height={82}
                             className="object-contain"
                             priority
                         />
@@ -126,8 +126,8 @@ export default function Header() {
                         <Image
                             src="/images/BEAUTYSTUDIO_26.png"
                             alt="TK BEAUTYSTUDIO"
-                            width={128}
-                            height={40}
+                            width={180}
+                            height={57}
                             className="object-contain"
                         />
                     </Link>
