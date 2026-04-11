@@ -13,12 +13,12 @@ import type { NextConfig } from "next";
 // ============================================================
 const cspHeader = `
   default-src 'none';
-  script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com https://va.vercel-scripts.com;
+  script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com https://va.vercel-scripts.com https://cloud.ccm19.de;
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: https:;
   font-src 'self' https:;
   frame-src https://www.google.com https://maps.google.com;
-  connect-src 'self' https://maps.googleapis.com https://vitals.vercel-insights.com https://va.vercel-scripts.com;
+  connect-src 'self' https://maps.googleapis.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://cloud.ccm19.de;
   object-src 'none';
   base-uri 'self';
   form-action 'self';
