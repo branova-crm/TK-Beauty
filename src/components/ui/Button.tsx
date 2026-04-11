@@ -35,8 +35,9 @@ export default function Button({
 
     return (
         <button
+            suppressHydrationWarning
             className={cn(
-                "rounded-full transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed",
+                "rounded-full transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none",
                 variants[variant],
                 sizes[size],
                 className

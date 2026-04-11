@@ -4,7 +4,7 @@ import { MapPin, Instagram, Calendar, MapIcon } from "lucide-react";
 import Button from "@/components/ui/Button";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ContactModal from "@/components/ContactModal";
 
 interface ContactMapProps {
@@ -13,6 +13,11 @@ interface ContactMapProps {
 
 export default function ContactMap({ isNested = false }: ContactMapProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const openRoute = () => {
         window.open("https://www.google.com/maps/dir/?api=1&destination=Krugstraße+39,+90419+Nürnberg", "_blank");
@@ -74,16 +79,18 @@ export default function ContactMap({ isNested = false }: ContactMapProps) {
             <Reveal delay={0.4} className="w-full">
                 <div className="relative aspect-[4/5] md:aspect-square lg:aspect-auto lg:h-[600px] rounded-[24px] overflow-hidden shadow-premium group border border-[#3A3A3A]/[0.05] bg-[#FAF8F5] flex flex-col items-center justify-center text-center">
                     <div className="absolute inset-0 transition-all duration-700">
-                        <iframe
-                            src="https://maps.google.com/maps?q=Krugstra%C3%9Fe%2039%2C%2090419%20N%C3%BCrnberg&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                            width="100%"
-                            height="100%"
-                            style={{ border: 0 }}
-                            allowFullScreen
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            className="w-full h-full"
-                        />
+                        {mounted && (
+                            <iframe
+                                src="https://maps.google.com/maps?q=Krugstra%C3%9Fe%2039%2C%2090419%20N%C3%BCrnberg&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                className="w-full h-full"
+                            />
+                        )}
                     </div>
                     {/* The placeholder is now handled by eRecht24 (CCM19) if necessary */}
                     <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_40px_rgba(239,228,208,0.2)] z-10" />

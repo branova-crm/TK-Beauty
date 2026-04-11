@@ -56,18 +56,20 @@ export default function Navbar() {
     return (
         <>
             <nav
+                suppressHydrationWarning
                 className={cn(
-                    "fixed top-0 left-0 w-full z-50 flex justify-center px-4 md:px-8 transition-all duration-500",
+                    "fixed top-0 left-0 w-full z-50 flex justify-center px-4 md:px-8 transition-[padding,transform,opacity] duration-500 outline-none",
                     scrolled ? "pt-5" : "pt-0",
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
                 )}
             >
                 <div
+                    suppressHydrationWarning
                     className={cn(
-                        "w-full transition-all duration-500 flex items-center justify-between",
+                        "w-full transition-[max-width,height,padding,border-radius,background-color] duration-500 flex items-center justify-between",
                         scrolled
-                            ? "max-w-[1200px] h-20 rounded-full px-6 lg:px-10 glass-pill"
-                            : "max-w-[1440px] h-28 px-0 bg-transparent"
+                            ? "max-w-[1200px] h-20 rounded-full px-6 lg:px-10 glass-pill border border-white/20"
+                            : "max-w-[1440px] h-28 px-0 bg-transparent border-0 shadow-none outline-none"
                     )}
                 >
                     {/* Logo */}
@@ -88,7 +90,7 @@ export default function Navbar() {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-semibold text-foreground hover:text-primary transition-colors duration-200 uppercase tracking-widest"
+                                className="text-sm font-semibold text-foreground hover:text-primary transition-colors duration-200 uppercase tracking-widest focus:outline-none"
                             >
                                 {link.name}
                             </Link>
@@ -106,7 +108,7 @@ export default function Navbar() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="lg:hidden text-foreground p-2"
+                        className="lg:hidden text-foreground p-2 focus:outline-none"
                         onClick={() => setIsOpen(true)}
                         aria-label="Open menu"
                     >
