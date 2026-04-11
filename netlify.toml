@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Force HTTPS redirect
+[[redirects]]
+  from = "http://tkbeautystudio.de/*"
+  to = "https://tkbeautystudio.de/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.tkbeautystudio.de/*"
+  to = "https://tkbeautystudio.de/:splat"
+  status = 301
+  force = true
