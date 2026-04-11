@@ -10,28 +10,27 @@ export default function DatenschutzPage() {
             <Header />
 
             <div className="max-w-4xl mx-auto px-6">
-                <Reveal delay={0.2}>
-                    <div className="bg-[#FAF8F5] border border-[#AA9B87]/20 shadow-[0_10px_40px_rgba(0,0,0,0.03)] p-10 md:p-16 rounded-3xl mt-10">
-                        <style>{`
-                            .ds-content h1 { font-family: var(--font-playfair), serif; font-size: 2.5rem; text-align: center; font-weight: 700; margin-bottom: 4rem; color: #BFA67A; }
-                            .ds-content h2 { font-family: var(--font-playfair), serif; font-size: 2rem; font-weight: 700; border-bottom: 1px solid rgba(191,166,122,0.3); padding-bottom: 1rem; margin-top: 5rem; margin-bottom: 2rem; color: #3A3A3A; }
-                            .ds-content h3 { font-size: 1.5rem; font-weight: 600; margin-top: 3.5rem; margin-bottom: 1.5rem; color: #685743; }
-                            .ds-content h4 { font-size: 1.25rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1rem; color: #3A3A3A; }
-                            .ds-content p { margin-bottom: 2rem; color: #4B5563; font-size: 1.125rem; line-height: 1.9; font-weight: 300; }
-                            .ds-content a { color: #BFA67A; border-bottom: 1px solid rgba(191,166,122,0.3); transition: border-color 0.2s; }
-                            .ds-content a:hover { border-color: #BFA67A; }
-                            .ds-content ul { list-style-type: disc; padding-left: 2rem; margin-bottom: 2.5rem; }
-                            .ds-content li { color: #4B5563; font-size: 1.125rem; line-height: 1.9; font-weight: 300; margin-bottom: 0.75rem; }
-                            .ds-content strong { color: #3A3A3A; font-weight: 600; }
-                            
-                            @media (min-width: 768px) {
-                                .ds-content h1 { font-size: 3rem; }
-                                .ds-content h2 { font-size: 2.25rem; }
-                            }
-                        `}</style>
-                        <div 
-                            className="ds-content w-full"
-                            dangerouslySetInnerHTML={{ __html: `<h1>Datenschutz&shy;erkl&auml;rung</h1>
+                <div className="bg-[#FAF8F5] border border-[#AA9B87]/20 shadow-[0_10px_40px_rgba(0,0,0,0.03)] p-10 md:p-16 rounded-3xl mt-10">
+                    <style>{`
+                        .ds-content h1 { font-family: var(--font-playfair), serif; font-size: 2.5rem; text-align: center; font-weight: 700; margin-bottom: 4rem; color: #BFA67A; }
+                        .ds-content h2 { font-family: var(--font-playfair), serif; font-size: 2rem; font-weight: 700; border-bottom: 1px solid rgba(191,166,122,0.3); padding-bottom: 1rem; margin-top: 5rem; margin-bottom: 2rem; color: #3A3A3A; }
+                        .ds-content h3 { font-size: 1.5rem; font-weight: 600; margin-top: 3.5rem; margin-bottom: 1.5rem; color: #685743; }
+                        .ds-content h4 { font-size: 1.25rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1rem; color: #3A3A3A; }
+                        .ds-content p { margin-bottom: 2rem; color: #4B5563; font-size: 1.125rem; line-height: 1.9; font-weight: 300; }
+                        .ds-content a { color: #BFA67A; border-bottom: 1px solid rgba(191,166,122,0.3); transition: border-color 0.2s; }
+                        .ds-content a:hover { border-color: #BFA67A; }
+                        .ds-content ul { list-style-type: disc; padding-left: 2rem; margin-bottom: 2.5rem; }
+                        .ds-content li { color: #4B5563; font-size: 1.125rem; line-height: 1.9; font-weight: 300; margin-bottom: 0.75rem; }
+                        .ds-content strong { color: #3A3A3A; font-weight: 600; }
+                        
+                        @media (min-width: 768px) {
+                            .ds-content h1 { font-size: 3rem; }
+                            .ds-content h2 { font-size: 2.25rem; }
+                        }
+                    `}</style>
+                    <div 
+                        className="ds-content w-full"
+                        dangerouslySetInnerHTML={{ __html: `<h1>Datenschutz&shy;erkl&auml;rung</h1>
 <h2>1. Datenschutz auf einen Blick</h2>
 <h3>Allgemeine Hinweise</h3> <p>Die folgenden Hinweise geben einen einfachen &Uuml;berblick dar&uuml;ber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie pers&ouml;nlich identifiziert werden k&ouml;nnen. Ausf&uuml;hrliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgef&uuml;hrten Datenschutzerkl&auml;rung.</p>
 <h3>Datenerfassung auf dieser Website</h3> <h4>Wer ist verantwortlich f&uuml;r die Datenerfassung auf dieser Website?</h4> <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten k&ouml;nnen Sie dem Abschnitt &bdquo;Hinweis zur Verantwortlichen Stelle&ldquo; in dieser Datenschutzerkl&auml;rung entnehmen.</p> <h4>Wie erfassen wir Ihre Daten?</h4> <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.&nbsp;B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p> <p>Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.&nbsp;B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.</p> <h4>Wof&uuml;r nutzen wir Ihre Daten?</h4> <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gew&auml;hrleisten. Andere Daten k&ouml;nnen zur Analyse Ihres Nutzerverhaltens verwendet werden. Sofern &uuml;ber die Website Vertr&auml;ge geschlossen oder angebahnt werden k&ouml;nnen, werden die &uuml;bermittelten Daten auch f&uuml;r Vertragsangebote, Bestellungen oder sonstige Auftragsanfragen verarbeitet.</p> <h4>Welche Rechte haben Sie bez&uuml;glich Ihrer Daten?</h4> <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft &uuml;ber Herkunft, Empf&auml;nger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben au&szlig;erdem ein Recht, die Berichtigung oder L&ouml;schung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, k&ouml;nnen Sie diese Einwilligung jederzeit f&uuml;r die Zukunft widerrufen. Au&szlig;erdem haben Sie das Recht, unter bestimmten Umst&auml;nden die Einschr&auml;nkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein Beschwerderecht bei der zust&auml;ndigen Aufsichtsbeh&ouml;rde zu.</p> <p>Hierzu sowie zu weiteren Fragen zum Thema Datenschutz k&ouml;nnen Sie sich jederzeit an uns wenden.</p>
@@ -94,9 +93,8 @@ E-Mail: tkbeauty@web.de</p>
 <p>Das Unternehmen verf&uuml;gt &uuml;ber eine Zertifizierung nach dem &bdquo;EU-US Data Privacy Framework&ldquo; (DPF). Der DPF ist ein &Uuml;bereinkommen zwischen der Europ&auml;ischen Union und den USA, der die Einhaltung europ&auml;ischer Datenschutzstandards bei Datenverarbeitungen in den USA gew&auml;hrleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/5780" target="_blank" rel="noopener noreferrer">https://www.dataprivacyframework.gov/participant/5780</a>.</p>
 <h2>7. eCommerce und Zahlungs&shy;anbieter</h2>
 <h3>Verarbeiten von Kunden- und Vertragsdaten</h3> <p>Wir erheben, verarbeiten und nutzen personenbezogene Kunden- und Vertragsdaten zur Begr&uuml;ndung, inhaltlichen Ausgestaltung und &Auml;nderung unserer Vertragsbeziehungen. Personenbezogene Daten &uuml;ber die Inanspruchnahme dieser Website (Nutzungsdaten) erheben, verarbeiten und nutzen wir nur, soweit dies erforderlich ist, um dem Nutzer die Inanspruchnahme des Dienstes zu erm&ouml;glichen oder abzurechnen. Rechtsgrundlage hierf&uuml;r ist Art. 6 Abs. 1 lit. b DSGVO.</p> <p>Die erhobenen Kundendaten werden nach Abschluss des Auftrags oder Beendigung der Gesch&auml;ftsbeziehung und Ablauf der ggf. bestehenden gesetzlichen Aufbewahrungsfristen gel&ouml;scht. Gesetzliche Aufbewahrungsfristen bleiben unber&uuml;hrt.</p>` }}
-                        />
-                    </div>
-                </Reveal>
+                    />
+                </div>
             </div>
 
             <div className="mt-20">
