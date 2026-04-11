@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
+import ConsentManager from "@/components/ConsentManager";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -34,6 +36,12 @@ export default function RootLayout({
         className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-background text-foreground`}
       >
         {children}
+        <ConsentManager />
+        <Script 
+          src="https://cloud.ccm19.de/app.js?apiKey=ff7e73e38d81af3c82275cc24475dce7b5a3fcc5dd5a34fe&domain=69da519c17dba216530dcf02&lang=de_DE" 
+          strategy="beforeInteractive"
+          referrerPolicy="origin"
+        />
       </body>
     </html>
   );

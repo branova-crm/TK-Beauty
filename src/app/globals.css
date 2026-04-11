@@ -94,3 +94,34 @@ h6 {
     z-index: -1;
   }
 }
+
+/* --- eRecht24 CCM19 Premium Styling --- */
+.ccm19-popup, [id^="ccm19-"] .ccm19-modal-content {
+  background: rgba(250, 248, 245, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(138, 122, 101, 0.1) !important;
+  border-radius: 32px !important;
+  box-shadow: 0 30px 50px rgba(0,0,0,0.1) !important;
+  font-family: var(--font-inter), sans-serif !important;
+}
+
+[id^="ccm19-"] h2 {
+  font-family: var(--font-playfair), serif !important;
+  color: var(--foreground) !important;
+  font-weight: 700 !important;
+}
+
+.ccm19-btn-primary, [id^="ccm19-"] .ccm19-btn-primary {
+  background: var(--primary) !important;
+  border-radius: 99px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-size: 11px !important;
+}
+
+.ccm19-toggle-container {
+  display: flex !important;
+  bottom: 24px !important;
+  left: 24px !important;
+}
