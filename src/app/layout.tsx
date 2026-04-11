@@ -38,8 +38,9 @@ export default function RootLayout({
         {children}
         <ConsentManager />
         <Script 
+          id="ccm19-script"
           src="https://cloud.ccm19.de/app.js?apiKey=ff7e73e38d81af3c82275cc24475dce7b5a3fcc5dd5a34fe&domain=69da519c17dba216530dcf02&lang=de_DE" 
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           referrerPolicy="origin"
         />
       </body>
