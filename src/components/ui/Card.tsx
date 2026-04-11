@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, HTMLAttributes } from "react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -6,13 +6,13 @@ function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-interface CardProps {
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
     children: ReactNode;
     className?: string;
     hover?: boolean;
 }
 
-export default function Card({ children, className, hover = true }: CardProps) {
+export default function Card({ children, className, hover = true, ...props }: CardProps) {
     return (
         <div
             className={cn(
@@ -20,6 +20,7 @@ export default function Card({ children, className, hover = true }: CardProps) {
                 hover && "hover:shadow-premium hover:-translate-y-1",
                 className
             )}
+            {...props}
         >
             {children}
         </div>
