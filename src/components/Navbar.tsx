@@ -25,20 +25,10 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
-            const currentScroll = window.scrollY;
-            if (currentScroll < 50) {
-                setScrolled(false);
-                setIsVisible(true);
-            } else if (currentScroll < 300) {
-                setIsVisible(false);
-            } else {
-                setScrolled(true);
-                setIsVisible(true);
-            }
+            setScrolled(window.scrollY > 20);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -56,20 +46,17 @@ export default function Navbar() {
     return (
         <>
             <nav
-                suppressHydrationWarning
                 className={cn(
-                    "fixed top-0 left-0 w-full z-50 flex justify-center px-4 md:px-8 transition-[padding,transform,opacity] duration-500 outline-none",
-                    scrolled ? "pt-5" : "pt-0",
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
+                    "fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-center px-4 md:px-8",
+                    scrolled ? "pt-4" : "pt-0"
                 )}
             >
                 <div
-                    suppressHydrationWarning
                     className={cn(
-                        "w-full transition-[max-width,height,padding,border-radius,background-color] duration-500 flex items-center justify-between",
+                        "w-full transition-all duration-500 flex items-center justify-between",
                         scrolled
-                            ? "max-w-[1200px] h-20 rounded-full px-6 lg:px-10 glass-pill border border-white/20"
-                            : "max-w-[1440px] h-28 px-0 bg-transparent border-0 shadow-none outline-none"
+                            ? "max-w-[1240px] bg-white/80 backdrop-blur-lg border border-[#3A3A3A]/[0.08] shadow-premium rounded-full px-6 lg:px-10 h-20"
+                            : "max-w-[1440px] bg-transparent border-transparent h-28 px-0"
                     )}
                 >
                     {/* Logo */}
@@ -90,7 +77,7 @@ export default function Navbar() {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-semibold text-foreground hover:text-primary transition-colors duration-200 uppercase tracking-widest focus:outline-none"
+                                className="text-sm font-semibold text-foreground hover:text-primary transition-colors duration-200 uppercase tracking-widest"
                             >
                                 {link.name}
                             </Link>
@@ -108,7 +95,7 @@ export default function Navbar() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="lg:hidden text-foreground p-2 focus:outline-none"
+                        className="lg:hidden text-foreground p-2"
                         onClick={() => setIsOpen(true)}
                         aria-label="Open menu"
                     >
