@@ -45,7 +45,7 @@ export default function Testimonials() {
                             </div>
                             <div className="flex-grow">
                                 <p className="text-[#685743] italic mb-8 leading-relaxed">
-                                    "{testimonial.text}"
+                                    &quot;{testimonial.text}&quot;
                                 </p>
                             </div>
                             <div className="border-t border-[#3A3A3A]/10 pt-6 mt-auto">

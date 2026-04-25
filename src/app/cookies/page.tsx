@@ -1,11 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer";
-import Reveal from "@/components/ui/Reveal";
-import Card from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
 import { Shield } from "lucide-react";
 import { Settings as SettingsIcon } from "lucide-react";
 
@@ -15,6 +9,7 @@ export default function CookiePolicyPage() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
@@ -54,9 +49,9 @@ export default function CookiePolicyPage() {
                                     href="#" 
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        // @ts-ignore
+                                        // @ts-expect-error CCM might be defined globally
                                         if (typeof CCM !== 'undefined' && CCM.openWidget) {
-                                            // @ts-ignore
+                                            // @ts-expect-error CCM might be defined globally
                                             CCM.openWidget();
                                         }
                                     }}

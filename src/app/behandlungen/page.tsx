@@ -65,7 +65,7 @@ export default function BehandlungenPage() {
                                 </div>
                                 <div className="space-y-4 md:space-y-6 flex flex-col h-full w-full">
                                     <h3 className="text-2xl md:text-3xl font-serif text-foreground font-bold">{cat.title}</h3>
-                                    <p className="text-[#685743] leading-relaxed italic">"{cat.description}"</p>
+                                    <p className="text-[#685743] leading-relaxed italic">&quot;{cat.description}&quot;</p>
                                     <ul className="space-y-3 flex-grow">
                                         {cat.details.map(d => (
                                             <li key={d} className="flex items-center gap-3 text-sm font-medium text-foreground">
