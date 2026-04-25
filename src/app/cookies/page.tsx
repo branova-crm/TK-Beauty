@@ -1,5 +1,9 @@
 "use client";
 
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer";
+import Reveal from "@/components/ui/Reveal";
+import Card from "@/components/ui/Card";
 import { Shield } from "lucide-react";
 import { Settings as SettingsIcon } from "lucide-react";
 
