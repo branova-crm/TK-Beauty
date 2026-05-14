@@ -14,7 +14,7 @@ export const motusFrauenEinzel: MotusPriceItem[] = [
     { name: "Oberlippe", price: "45 €", duration: "10 Min." },
     { name: "Kinn", price: "49 €", duration: "10 Min." },
     { name: "Wangen", price: "49 €", duration: "15 Min." },
-    { name: "Gesicht 3 Zonen", price: "109 €", duration: "35 Min." },
+    { name: "Gesicht 3 Zonen", price: "119 €", duration: "35 Min." },
     { name: "Gesicht komplett", price: "139 €", duration: "45 Min." },
     { name: "Hals", price: "65 €", duration: "15 Min." },
     { name: "Gesicht komplett inkl. Hals", price: "175 €", duration: "1 Std." },
