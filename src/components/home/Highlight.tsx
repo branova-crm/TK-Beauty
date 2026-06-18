@@ -5,12 +5,9 @@ import { Check } from "lucide-react";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
 import Image from "next/image";
-import { useState } from "react";
-import ContactModal from "@/components/ContactModal";
+import Link from "next/link";
 
 export default function Highlight() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     return (
         <SurfaceSection variant="white" className="!py-24">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -32,7 +29,7 @@ export default function Highlight() {
                                 "Sanfte Behandlung mit hoher Präzision",
                                 "Für viele Haut- und Haartypen geeignet",
                                 "Moderne Technologie, hochwertig umgesetzt",
-                                "Individuelle Einstellungen statt Standardprogramm"
+                                "Individuelle Einstellungen statt Standardprogramm",
                             ].map((item) => (
                                 <li key={item} className="flex items-start gap-4 text-foreground font-medium">
                                     <div className="w-6 h-6 rounded-full bg-[#EFE4D0] flex items-center justify-center shrink-0 mt-0.5">
@@ -43,13 +40,11 @@ export default function Highlight() {
                             ))}
                         </ul>
                         <div className="pt-6">
-                            <Button
-                                size="lg"
-                                className="w-full lg:w-fit px-10"
-                                onClick={() => setIsModalOpen(true)}
-                            >
-                                Beratung vereinbaren
-                            </Button>
+                            <Link href="/termin">
+                                <Button size="lg" className="w-full lg:w-fit px-10">
+                                    Termin buchen
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </Reveal>
@@ -66,7 +61,6 @@ export default function Highlight() {
                     </div>
                 </Reveal>
             </div>
-            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </SurfaceSection>
     );
 }

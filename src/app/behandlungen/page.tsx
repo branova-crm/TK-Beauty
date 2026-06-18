@@ -6,38 +6,32 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
-import { Zap, Droplets, UserCheck, ShieldPlus } from "lucide-react";
-import { useState } from "react";
-import ContactModal from "@/components/ContactModal";
+import { Zap, Droplets, UserCheck } from "lucide-react";
+import Link from "next/link";
 
 export default function BehandlungenPage() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     const categories = [
         {
             title: "Laserhaarentfernung",
             description: "Dauerhaft glatte Haut mit dem Motus AX Alexandrit Laser. Schmerzarm und effektiv.",
             icon: <Zap className="w-10 h-10" />,
-            details: ["Alle Hauttypen", "Schnelle Sitzungen", "Dauerhafte Ergebnisse"]
+            details: ["Alle Hauttypen", "Schnelle Sitzungen", "Dauerhafte Ergebnisse"],
+            href: "/behandlungen/motus-ax",
         },
         {
             title: "Microneedling",
             description: "Hauterneuerung und Anti-Aging durch kontrollierte Mikroverletzungen.",
             icon: <Droplets className="w-10 h-10" />,
-            details: ["Porenverfeinerung", "Narbenglättung", "Frischer Teint"]
+            details: ["Porenverfeinerung", "Narbenglättung", "Frischer Teint"],
+            href: "/behandlungen/microneedling",
         },
         {
             title: "Kosmetische Behandlungen",
             description: "Professionelle Gesichtsbehandlungen für jedes Hautbedürfnis.",
             icon: <UserCheck className="w-10 h-10" />,
-            details: ["Individuelle Analyse", "Tiefenreinigung", "Feuchtigkeit"]
+            details: ["Individuelle Analyse", "Tiefenreinigung", "Feuchtigkeit"],
+            href: "/behandlungen/kosmetische-behandlungen",
         },
-        {
-            title: "Christina Kosmetik",
-            description: "Wirkstoffkosmetik für sichtbare Hautbildverbesserung.",
-            icon: <ShieldPlus className="w-10 h-10" />,
-            details: ["Heimpflege-System", "Hochkonzentriert", "Wissenschaftlich fundiert"]
-        }
     ];
 
     return (
@@ -56,32 +50,37 @@ export default function BehandlungenPage() {
                     </div>
                 </Reveal>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-stretch">
                     {categories.map((cat, index) => (
-                        <Reveal key={cat.title} delay={0.1 * index}>
-                            <Card className="p-6 md:p-12 flex flex-col md:flex-row gap-6 md:gap-8 items-start h-full">
-                                <div className="w-16 h-16 rounded-[1.5rem] bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                        <Reveal key={cat.title} delay={0.1 * index} className="h-full min-w-0">
+                            <Card className="p-6 md:p-8 flex flex-col gap-5 md:gap-6 h-full min-w-0 overflow-hidden">
+                                <div className="w-14 h-14 md:w-16 md:h-16 rounded-[1.5rem] bg-primary/10 flex items-center justify-center text-primary shrink-0">
                                     {cat.icon}
                                 </div>
-                                <div className="space-y-4 md:space-y-6 flex flex-col h-full w-full">
-                                    <h3 className="text-2xl md:text-3xl font-serif text-foreground font-bold">{cat.title}</h3>
-                                    <p className="text-[#685743] leading-relaxed italic">&quot;{cat.description}&quot;</p>
+                                <div className="space-y-4 flex flex-col h-full w-full min-w-0">
+                                    <h3 className="text-xl md:text-2xl font-serif text-foreground font-bold leading-snug text-balance break-words">
+                                        {cat.title}
+                                    </h3>
+                                    <p className="text-[#685743] leading-relaxed text-sm md:text-base">{cat.description}</p>
                                     <ul className="space-y-3 flex-grow">
-                                        {cat.details.map(d => (
+                                        {cat.details.map((d) => (
                                             <li key={d} className="flex items-center gap-3 text-sm font-medium text-foreground">
-                                                <div className="w-2 h-2 rounded-full bg-primary/70" />
+                                                <div className="w-2 h-2 rounded-full bg-primary/70 shrink-0" />
                                                 {d}
                                             </li>
                                         ))}
                                     </ul>
-                                    <div className="pt-4">
-                                        <Button
-                                            variant="secondary"
-                                            className="w-full lg:w-fit font-bold"
-                                            onClick={() => setIsModalOpen(true)}
-                                        >
-                                            Beratung anfragen
-                                        </Button>
+                                    <div className="pt-2 flex flex-col gap-3 w-full">
+                                        <Link href={cat.href} className="block w-full">
+                                            <Button variant="secondary" className="w-full font-bold">
+                                                Mehr erfahren
+                                            </Button>
+                                        </Link>
+                                        <Link href="/termin" className="block w-full">
+                                            <Button variant="primary" className="w-full font-bold">
+                                                Termin buchen
+                                            </Button>
+                                        </Link>
                                     </div>
                                 </div>
                             </Card>
@@ -91,7 +90,6 @@ export default function BehandlungenPage() {
             </SurfaceSection>
 
             <Footer />
-            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </main>
     );
 }

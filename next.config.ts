@@ -13,12 +13,12 @@ import type { NextConfig } from "next";
 // ============================================================
 const cspHeader = `
   default-src 'none';
-  script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com https://va.vercel-scripts.com https://cloud.ccm19.de;
-  style-src 'self' 'unsafe-inline' https://cloud.ccm19.de;
+  script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com https://va.vercel-scripts.com https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net;
+  style-src 'self' 'unsafe-inline' https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net;
   img-src 'self' data: https:;
   font-src 'self' https:;
-  frame-src https://www.google.com https://maps.google.com https://cloud.ccm19.de;
-  connect-src 'self' https://maps.googleapis.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://cloud.ccm19.de;
+  frame-src https://www.google.com https://maps.google.com https://cloud.ccm19.de https://*.planity.com https://planity.com;
+  connect-src 'self' https://maps.googleapis.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net https://*.planity.com https://planity.com;
   object-src 'none';
   base-uri 'self';
   form-action 'self';

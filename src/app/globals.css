@@ -54,6 +54,10 @@ h6 {
 
 /* Custom Utilities for Premium Look */
 @layer utilities {
+  .font-amp {
+    font-family: var(--font-inter), ui-sans-serif, system-ui;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
@@ -73,6 +77,183 @@ h6 {
 
     100% {
       transform: translateX(150%) skewX(-25deg);
+    }
+  }
+
+  @keyframes promo-glow-breathe {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.75;
+      transform: scale(1.015);
+    }
+  }
+
+  @keyframes promo-shimmer-sweep {
+    0% {
+      transform: translateX(-130%) skewX(-18deg);
+    }
+
+    100% {
+      transform: translateX(230%) skewX(-18deg);
+    }
+  }
+
+  @keyframes promo-orb-float {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+      transform: translate(14px, -10px) scale(1.08);
+    }
+
+    66% {
+      transform: translate(-10px, 8px) scale(0.94);
+    }
+  }
+
+  @keyframes promo-badge-glow {
+    0%,
+    100% {
+      box-shadow:
+        0 0 0 0 rgba(191, 166, 122, 0.35),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    50% {
+      box-shadow:
+        0 0 18px 4px rgba(191, 166, 122, 0.55),
+        0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  @keyframes promo-deadline-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(239, 228, 208, 0.08);
+    }
+
+    50% {
+      box-shadow: 0 0 0 6px rgba(239, 228, 208, 0.06);
+    }
+  }
+
+  .promo-action-shell {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 20px;
+    background: linear-gradient(125deg, #4a3f32 0%, #554734 38%, #685743 72%, #5c4d3d 100%);
+    box-shadow:
+      0 0 0 1px rgba(191, 166, 122, 0.22),
+      0 16px 48px rgba(58, 48, 38, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .promo-action-shell::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(191, 166, 122, 0.28) 0%, transparent 42%),
+      radial-gradient(circle at 80% 70%, rgba(239, 228, 208, 0.14) 0%, transparent 38%);
+    animation: promo-glow-breathe 5.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .promo-action-orb {
+    position: absolute;
+    border-radius: 9999px;
+    pointer-events: none;
+    filter: blur(28px);
+    z-index: 0;
+  }
+
+  .promo-action-orb--gold {
+    top: -20%;
+    right: -8%;
+    width: 220px;
+    height: 220px;
+    background: rgba(191, 166, 122, 0.35);
+    animation: promo-orb-float 9s ease-in-out infinite;
+  }
+
+  .promo-action-orb--cream {
+    bottom: -25%;
+    left: -6%;
+    width: 180px;
+    height: 180px;
+    background: rgba(239, 228, 208, 0.2);
+    animation: promo-orb-float 11s ease-in-out infinite reverse;
+  }
+
+  .promo-action-shimmer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .promo-action-shimmer::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 45%;
+    height: 200%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.03) 35%,
+      rgba(239, 228, 208, 0.14) 50%,
+      rgba(255, 255, 255, 0.03) 65%,
+      transparent 100%
+    );
+    animation: promo-shimmer-sweep 7s ease-in-out infinite;
+  }
+
+  .promo-deal-card {
+    transition:
+      transform 0.35s cubic-bezier(0.21, 0.47, 0.32, 0.98),
+      background-color 0.35s ease,
+      box-shadow 0.35s ease,
+      ring-color 0.35s ease;
+  }
+
+  .promo-deal-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.22),
+      0 0 24px rgba(191, 166, 122, 0.12);
+  }
+
+  .promo-savings-badge {
+    animation: promo-badge-glow 2.8s ease-in-out infinite;
+  }
+
+  .promo-deadline-badge {
+    animation: promo-deadline-pulse 3.2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .promo-action-shell::before,
+    .promo-action-orb,
+    .promo-action-shimmer::after,
+    .promo-savings-badge,
+    .promo-deadline-badge {
+      animation: none !important;
+    }
+
+    .promo-deal-card:hover {
+      transform: none;
     }
   }
   /* Premium Glass Pill Effect (Elementor Style) */

@@ -151,6 +151,39 @@
   color: var(--primary, #BFA67A);
 }
 
+.sticky-logo img {
+  max-height: 40px;
+  width: auto;
+}
+
+@media (min-width: 1024px) {
+  .sticky-logo img {
+    max-height: 48px;
+  }
+}
+
+/* Header ausblenden, wenn Pop-up/Modal/Formular aktiv ist */
+html[data-overlay-open="true"] .header-top,
+html[data-overlay-open="true"] .sticky-nav {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-120%);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+html[data-overlay-open="true"] .sticky-nav.visible {
+  transform: translateY(-120%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-overlay-open="true"] .header-top,
+  html[data-overlay-open="true"] .sticky-nav {
+    transition: none;
+  }
+}
+
 /* -------------------------------------------
    4. MOBILE MENU BUTTON
    ------------------------------------------- */

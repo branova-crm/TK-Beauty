@@ -7,9 +7,12 @@ import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import { useOverlayLock } from "@/hooks/useOverlayLock";
 
 export default function InstagramPreview() {
     const [selectedImg, setSelectedImg] = useState<string | null>(null);
+
+    useOverlayLock(!!selectedImg);
 
     const images = [
         "/images/13.png",
@@ -80,7 +83,7 @@ export default function InstagramPreview() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-sm cursor-zoom-out"
+                        className="fixed inset-0 z-[10050] flex items-center justify-center p-4 md:p-8 bg-[#3A3A3A]/90 backdrop-blur-sm cursor-zoom-out"
                         onClick={() => setSelectedImg(null)}
                     >
                         <motion.button

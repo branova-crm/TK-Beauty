@@ -104,7 +104,7 @@ export default function ImpressumPage() {
                                     <div className="pl-14 space-y-6 text-[#685743] leading-relaxed">
                                         <div>
                                             <p className="font-bold text-foreground text-sm uppercase tracking-wider mb-2">EU-Streitschlichtung</p>
-                                            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors italic underline decoration-primary/20 underline-offset-4 break-all block">
+                                            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors underline decoration-primary/20 underline-offset-4 break-all block">
                                                 https://ec.europa.eu/consumers/odr/
                                             </a>
                                         </div>

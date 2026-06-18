@@ -5,13 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Calendar } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import ContactModal from "../ContactModal";
 import Button from "@/components/ui/Button";
+import { OPENING_HOURS } from "@/lib/site";
 import "./Header.css";
 
-/* ──────────────────────────────────────────────
-   Navigation Data
-   ────────────────────────────────────────────── */
 const navLinks = [
     { name: "Behandlungen", href: "/behandlungen" },
     { name: "Über uns", href: "/ueber-uns" },
@@ -19,22 +16,16 @@ const navLinks = [
     { name: "Kontakt", href: "/kontakt" },
 ];
 
-/* ──────────────────────────────────────────────
-   Header Component
-   ────────────────────────────────────────────── */
 export default function Header() {
     const [mounted, setMounted] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    /* ── Mount guard ────────────────────────── */
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
-    /* ── Scroll listener ────────────────────── */
     useEffect(() => {
         if (!mounted) return;
 
@@ -47,7 +38,6 @@ export default function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [mounted]);
 
-    /* ── Lock body scroll when offcanvas open ── */
     useEffect(() => {
         if (!mounted) return;
 
@@ -62,17 +52,12 @@ export default function Header() {
         };
     }, [isOpen, mounted]);
 
-    /* ── Prevent SSR mismatch: render nothing until mounted ── */
     if (!mounted) return null;
 
     return (
         <>
-            {/* ═══════════════════════════════════
-                1. TOP HEADER (transparent, over hero)
-                ═══════════════════════════════════ */}
             <header className="header-top">
                 <div className="header-top-inner">
-                    {/* Logo */}
                     <Link href="/" className="header-logo">
                         <Image
                             src="/images/BEAUTYSTUDIO_26.png"
@@ -84,29 +69,20 @@ export default function Header() {
                         />
                     </Link>
 
-                    {/* Desktop Nav */}
                     <div className="header-desktop-nav">
                         {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="header-nav-link"
-                            >
+                            <Link key={link.name} href={link.href} className="header-nav-link">
                                 {link.name}
                             </Link>
                         ))}
-                        <Button
-                            variant="primary"
-                            size="sm"
-                            onClick={() => setIsModalOpen(true)}
-                            className="shadow-premium"
-                        >
-                            <Calendar className="w-4 h-4 opacity-80" />
-                            Termin sichern
-                        </Button>
+                        <Link href="/termin">
+                            <Button variant="primary" size="sm" className="shadow-premium">
+                                <Calendar className="w-4 h-4 opacity-80" />
+                                Termin sichern
+                            </Button>
+                        </Link>
                     </div>
 
-                    {/* Mobile Hamburger */}
                     <button
                         className="header-mobile-btn"
                         onClick={() => setIsOpen(true)}
@@ -117,13 +93,9 @@ export default function Header() {
                 </div>
             </header>
 
-            {/* ═══════════════════════════════════
-                2. STICKY NAV (Glass Pill)
-                ═══════════════════════════════════ */}
             <div className={`sticky-nav${isScrolled ? " visible" : ""}`}>
                 <div className="sticky-inner">
-                    {/* Logo */}
-                    <Link href="/" className="header-logo">
+                    <Link href="/" className="header-logo sticky-logo">
                         <Image
                             src="/images/BEAUTYSTUDIO_26.png"
                             alt="TK BEAUTYSTUDIO"
@@ -133,29 +105,20 @@ export default function Header() {
                         />
                     </Link>
 
-                    {/* Desktop Nav */}
                     <div className="header-desktop-nav">
                         {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="sticky-nav-link"
-                            >
+                            <Link key={link.name} href={link.href} className="sticky-nav-link">
                                 {link.name}
                             </Link>
                         ))}
-                        <Button
-                            variant="primary"
-                            size="sm"
-                            onClick={() => setIsModalOpen(true)}
-                            className="shadow-premium"
-                        >
-                            <Calendar className="w-4 h-4 opacity-80" />
-                            Termin sichern
-                        </Button>
+                        <Link href="/termin">
+                            <Button variant="primary" size="sm" className="shadow-premium">
+                                <Calendar className="w-4 h-4 opacity-80" />
+                                Termin sichern
+                            </Button>
+                        </Link>
                     </div>
 
-                    {/* Mobile Hamburger */}
                     <button
                         className="header-mobile-btn"
                         onClick={() => setIsOpen(true)}
@@ -166,9 +129,6 @@ export default function Header() {
                 </div>
             </div>
 
-            {/* ═══════════════════════════════════
-                3. OFFCANVAS MOBILE MENU (Full Screen)
-                ═══════════════════════════════════ */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -178,13 +138,8 @@ export default function Header() {
                         transition={{ duration: 0.3 }}
                         className="offcanvas-overlay"
                     >
-                        {/* Header row */}
                         <div className="offcanvas-header">
-                            <Link
-                                href="/"
-                                className="header-logo"
-                                onClick={() => setIsOpen(false)}
-                            >
+                            <Link href="/" className="header-logo" onClick={() => setIsOpen(false)}>
                                 <Image
                                     src="/images/BEAUTYSTUDIO_26.png"
                                     alt="TK BEAUTYSTUDIO"
@@ -202,7 +157,6 @@ export default function Header() {
                             </button>
                         </div>
 
-                        {/* Navigation links */}
                         <div className="offcanvas-body">
                             {navLinks.map((link, idx) => (
                                 <motion.div
@@ -225,7 +179,6 @@ export default function Header() {
                                 </motion.div>
                             ))}
 
-                            {/* CTA */}
                             <motion.div
                                 initial={{ opacity: 0, y: 24 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -236,42 +189,27 @@ export default function Header() {
                                 }}
                                 className="offcanvas-cta-wrap"
                             >
-                                <Button
-                                    variant="primary"
-                                    size="lg"
-                                    onClick={() => {
-                                        setIsOpen(false);
-                                        setIsModalOpen(true);
-                                    }}
-                                    className="w-full shadow-premium"
-                                    style={{ paddingTop: 20, paddingBottom: 20 }}
-                                >
-                                    <Calendar className="w-5 h-5" />
-                                    Termin sichern
-                                </Button>
+                                <Link href="/termin" onClick={() => setIsOpen(false)}>
+                                    <Button
+                                        variant="primary"
+                                        size="lg"
+                                        className="w-full shadow-premium"
+                                        style={{ paddingTop: 20, paddingBottom: 20 }}
+                                    >
+                                        <Calendar className="w-5 h-5" />
+                                        Termin sichern
+                                    </Button>
+                                </Link>
                             </motion.div>
                         </div>
 
-                        {/* Footer */}
                         <div className="offcanvas-footer">
-                            <p className="offcanvas-footer-title">
-                                TK BEAUTY · Nürnberg
-                            </p>
-                            <p className="offcanvas-footer-sub">
-                                Mo–Sa: nach Vereinbarung
-                            </p>
+                            <p className="offcanvas-footer-title">TK BEAUTY · Nürnberg</p>
+                            <p className="offcanvas-footer-sub">{OPENING_HOURS.shortLabel}</p>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
-
-            {/* ═══════════════════════════════════
-                4. CONTACT MODAL
-                ═══════════════════════════════════ */}
-            <ContactModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-            />
         </>
     );
 }

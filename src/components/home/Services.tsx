@@ -1,6 +1,5 @@
 "use client";
 
-import SectionTitle from "@/components/ui/SectionTitle";
 import Card from "@/components/ui/Card";
 import Link from "next/link";
 import SurfaceSection from "@/components/ui/SurfaceSection";
@@ -13,24 +12,21 @@ const services = [
         subtitle: "Dauerhaft glatt",
         description: "Komfortable Laserbehandlung mit Premium Alexandrit-Technologie.",
         image: "/images/10.jpg",
+        href: "/behandlungen/motus-ax",
     },
     {
         title: "Microneedling",
         subtitle: "Hauterneuerung",
         description: "Für sichtbar verfeinertes Hautbild und frischen Glow.",
         image: "/images/12.png",
+        href: "/behandlungen/microneedling",
     },
     {
         title: "Kosmetische Behandlungen",
         subtitle: "Individuelle Pflege",
         description: "Individuell abgestimmt – für gepflegte, strahlende Haut.",
         image: "/images/7.png",
-    },
-    {
-        title: "Christina Kosmetik",
-        subtitle: "Wirkstoffkosmetik",
-        description: "Professionelle Pflege – passend zu deinem hautziel.",
-        image: "/images/5.jpg",
+        href: "/behandlungen/kosmetische-behandlungen",
     },
 ];
 
@@ -48,18 +44,17 @@ export default function Services() {
                 </div>
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-stretch">
                 {services.map((service, index) => (
-                    <Reveal key={service.title} delay={0.1 * index}>
-                        <Card className="md:min-h-[520px] flex flex-col hover:shadow-2xl transition-all duration-500 border-2 border-[#3A3A3A]/[0.08] bg-[#FAF8F5] group overflow-hidden rounded-[24px]">
-                            {/* Card Image */}
+                    <Reveal key={service.title} delay={0.1 * index} className="h-full">
+                        <Card className="flex flex-col h-full bg-[#FAF8F5] border border-[#3A3A3A]/[0.06] shadow-sm hover:shadow-premium transition-all duration-500 rounded-[24px] group overflow-hidden">
                             <div className="w-full h-48 overflow-hidden relative shrink-0">
                                 <Image
                                     src={service.image}
                                     alt={service.title}
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
                                 />
                                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
                                     <span className="text-[10px] uppercase tracking-widest text-primary font-bold">
@@ -77,7 +72,7 @@ export default function Services() {
                                 </p>
                                 <div className="mt-auto">
                                     <Link
-                                        href="/behandlungen"
+                                        href={service.href}
                                         className="inline-flex items-center text-sm font-semibold border-b border-[#3A3A3A]/20 pb-1 text-foreground hover:text-primary hover:border-primary transition-colors"
                                     >
                                         Mehr erfahren

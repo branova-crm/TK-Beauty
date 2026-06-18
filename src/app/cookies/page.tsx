@@ -31,7 +31,7 @@ export default function CookiePolicyPage() {
                             Transparenz & Kontrolle
                         </span>
                         <h1 className="text-5xl md:text-8xl font-serif font-bold text-foreground mb-8 leading-[1.1]">
-                            Cookie <br className="md:hidden" /><span className="text-primary italic">Richtlinie</span>
+                            Cookie <br className="md:hidden" /><span className="text-primary">Richtlinie</span>
                         </h1>
                     </Reveal>
                 </div>

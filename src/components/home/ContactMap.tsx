@@ -5,14 +5,14 @@ import Button from "@/components/ui/Button";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
 import { useState, useEffect } from "react";
-import ContactModal from "@/components/ContactModal";
+import Link from "next/link";
+import { BUSINESS } from "@/lib/site";
 
 interface ContactMapProps {
     isNested?: boolean;
 }
 
 export default function ContactMap({ isNested = false }: ContactMapProps) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -44,12 +44,12 @@ export default function ContactMap({ isNested = false }: ContactMapProps) {
                             </div>
                             <div className="space-y-1">
                                 <p className="font-semibold text-foreground underline decoration-primary/20 decoration-2 underline-offset-4">Adresse</p>
-                                <p className="text-[#685743]">Krugstraße 39,<br />90419 Nürnberg</p>
+                                <p className="text-[#685743]">{BUSINESS.street},<br />{BUSINESS.postalCode} {BUSINESS.city}</p>
                             </div>
                         </div>
 
                         <a
-                            href="https://www.instagram.com/tk_beauty_nuernberg/"
+                            href={BUSINESS.instagram}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-start gap-4 hover:opacity-80 transition-opacity group"
@@ -65,10 +65,12 @@ export default function ContactMap({ isNested = false }: ContactMapProps) {
                     </div>
 
                     <div className="flex flex-col lg:flex-row gap-4 pt-4">
-                        <Button variant="primary" className="w-full lg:w-fit" onClick={() => setIsModalOpen(true)}>
-                            <Calendar className="w-5 h-5 opacity-80" />
-                            Termin sichern
-                        </Button>
+                        <Link href="/termin">
+                            <Button variant="primary" className="w-full lg:w-fit">
+                                <Calendar className="w-5 h-5 opacity-80" />
+                                Termin buchen
+                            </Button>
+                        </Link>
                         <Button variant="secondary" className="w-full lg:w-fit px-8" onClick={openRoute}>
                             <MapIcon className="w-5 h-5 opacity-80 mr-2" />
                             Route öffnen
@@ -93,11 +95,9 @@ export default function ContactMap({ isNested = false }: ContactMapProps) {
                             />
                         )}
                     </div>
-                    {/* The placeholder is now handled by eRecht24 (CCM19) if necessary */}
                     <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_40px_rgba(239,228,208,0.2)] z-10" />
                 </div>
             </Reveal>
-            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     );
 

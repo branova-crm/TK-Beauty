@@ -8,13 +8,11 @@ import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
 import Card from "@/components/ui/Card";
 import Image from "next/image";
+import Link from "next/link";
 import { Mail, Phone, Calendar, Clock, MapPin } from "lucide-react";
-import { useState } from "react";
-import ContactModal from "@/components/ContactModal";
+import { BUSINESS, OPENING_HOURS } from "@/lib/site";
 
 export default function KontaktPage() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     return (
         <main className="min-h-screen bg-creme pt-32">
             <Header />
@@ -28,7 +26,7 @@ export default function KontaktPage() {
                             </span>
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight">
                                 Wir freuen uns <br />
-                                <span className="italic">auf Ihren Besuch</span>
+                                auf Ihren Besuch
                             </h1>
                         </div>
 
@@ -43,8 +41,9 @@ export default function KontaktPage() {
                                     <Clock className="w-5 h-5" />
                                 </div>
                                 <div className="text-sm">
-                                    <p className="font-bold text-foreground uppercase tracking-wider">Kernzeiten</p>
-                                    <p className="text-[#685743]">Mo - Sa: Termine nach Vereinbarung</p>
+                                    <p className="font-bold text-foreground uppercase tracking-wider">Öffnungszeiten</p>
+                                    <p className="text-[#685743]">{OPENING_HOURS.label}</p>
+                                    <p className="text-[#685743]">{OPENING_HOURS.sunday}</p>
                                 </div>
                             </div>
                             <div className="flex gap-4 items-center group">
@@ -53,7 +52,7 @@ export default function KontaktPage() {
                                 </div>
                                 <div className="text-sm">
                                     <p className="font-bold text-foreground uppercase tracking-wider">Standort</p>
-                                    <p className="text-[#685743]">Krugstraße 39, 90419 Nürnberg</p>
+                                    <p className="text-[#685743]">{BUSINESS.street}, {BUSINESS.postalCode} {BUSINESS.city}</p>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +68,6 @@ export default function KontaktPage() {
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                             />
                         </div>
-                        {/* Decorative Badge */}
                         <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-white p-6 md:p-10 rounded-[32px] shadow-premium z-10 border border-[#3A3A3A]/[0.05] flex flex-col items-center">
                             <Image
                                 src="/images/BEAUTYSTUDIO_26.png"
@@ -85,28 +83,35 @@ export default function KontaktPage() {
                 <div className="w-full">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                         <Reveal delay={0.1}>
-                            <a href="tel:+4915562483435" className="block h-full group">
+                            <a href={BUSINESS.phoneHref} className="block h-full group">
                                 <Card className="p-8 text-center space-y-5 h-full group-hover:border-primary/20 transition-all duration-300">
                                     <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform">
                                         <Phone className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h4 className="font-serif font-bold text-2xl text-foreground italic mb-2">Anrufen</h4>
-                                        <p className="text-base text-[#685743]">+49 15562 483435</p>
+                                        <h4 className="font-serif font-bold text-2xl text-foreground mb-2">Anrufen</h4>
+                                        <p className="text-base text-[#685743]">{BUSINESS.phone}*</p>
+                                        <p className="text-xs text-[#8A7A65] mt-2 leading-relaxed">
+                                            * Ihren Termin können Sie alternativ auch{" "}
+                                            <Link href="/termin" className="text-primary hover:underline font-medium">
+                                                online buchen
+                                            </Link>
+                                            .
+                                        </p>
                                     </div>
                                 </Card>
                             </a>
                         </Reveal>
 
                         <Reveal delay={0.2}>
-                            <a href="mailto:tkbeauty@web.de" className="block h-full group">
+                            <a href={`mailto:${BUSINESS.email}`} className="block h-full group">
                                 <Card className="p-8 text-center space-y-5 h-full group-hover:border-primary/20 transition-all duration-300">
                                     <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform">
                                         <Mail className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h4 className="font-serif font-bold text-2xl text-foreground italic mb-2">Schreiben</h4>
-                                        <p className="text-base text-[#685743] break-all">tkbeauty@web.de</p>
+                                        <h4 className="font-serif font-bold text-2xl text-foreground mb-2">Schreiben</h4>
+                                        <p className="text-base text-[#685743] break-all">{BUSINESS.email}</p>
                                     </div>
                                 </Card>
                             </a>
@@ -120,17 +125,14 @@ export default function KontaktPage() {
                                     </div>
                                     <div className="space-y-4">
                                         <div>
-                                            <h4 className="font-serif font-bold text-2xl text-foreground italic mb-2">Buchen</h4>
-                                            <p className="text-base text-[#685743]">Termin online sichern</p>
+                                            <h4 className="font-serif font-bold text-2xl text-foreground mb-2">Buchen</h4>
+                                            <p className="text-base text-[#685743]">Kostenlose Beratung / Termin online sichern*</p>
                                         </div>
-                                        <Button
-                                            variant="secondary"
-                                            size="sm"
-                                            className="w-full"
-                                            onClick={() => setIsModalOpen(true)}
-                                        >
-                                            Jetzt buchen
-                                        </Button>
+                                        <Link href="/termin">
+                                            <Button variant="secondary" size="sm" className="w-full">
+                                                Jetzt buchen
+                                            </Button>
+                                        </Link>
                                     </div>
                                 </Card>
                             </div>
@@ -144,7 +146,6 @@ export default function KontaktPage() {
             </SurfaceSection>
 
             <Footer />
-            <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </main>
     );
 }

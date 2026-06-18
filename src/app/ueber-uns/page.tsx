@@ -20,7 +20,7 @@ export default function UeberUnsPage() {
                                 </span>
                                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-[1.2]">
                                     Willkommen bei <br />
-                                    <span className="italic">TK BEAUTYSTUDIO</span>
+                                    <span className="text-primary">TK BEAUTYSTUDIO</span>
                                 </h1>
                             </div>
 

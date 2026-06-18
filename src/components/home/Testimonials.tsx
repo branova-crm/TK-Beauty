@@ -44,7 +44,7 @@ export default function Testimonials() {
                                 ))}
                             </div>
                             <div className="flex-grow">
-                                <p className="text-[#685743] italic mb-8 leading-relaxed">
+                                <p className="text-[#685743] mb-8 leading-relaxed">
                                     &quot;{testimonial.text}&quot;
                                 </p>
                             </div>
