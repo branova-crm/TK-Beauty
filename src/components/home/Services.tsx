@@ -5,30 +5,9 @@ import Link from "next/link";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
 import Image from "next/image";
+import { serviceImages } from "@/data/site-images";
 
-const services = [
-    {
-        title: "Dauerhafte Haarentfernung (Motus AX)",
-        subtitle: "Dauerhaft glatt",
-        description: "Komfortable Laserbehandlung mit Premium Alexandrit-Technologie.",
-        image: "/images/10.jpg",
-        href: "/behandlungen/motus-ax",
-    },
-    {
-        title: "Microneedling",
-        subtitle: "Hauterneuerung",
-        description: "Für sichtbar verfeinertes Hautbild und frischen Glow.",
-        image: "/images/12.png",
-        href: "/behandlungen/microneedling",
-    },
-    {
-        title: "Kosmetische Behandlungen",
-        subtitle: "Individuelle Pflege",
-        description: "Individuell abgestimmt – für gepflegte, strahlende Haut.",
-        image: "/images/7.png",
-        href: "/behandlungen/kosmetische-behandlungen",
-    },
-];
+const services = serviceImages;
 
 export default function Services() {
     return (
@@ -50,8 +29,8 @@ export default function Services() {
                         <Card className="flex flex-col h-full bg-[#FAF8F5] border border-[#3A3A3A]/[0.06] shadow-sm hover:shadow-premium transition-all duration-500 rounded-[24px] group overflow-hidden">
                             <div className="w-full h-48 overflow-hidden relative shrink-0">
                                 <Image
-                                    src={service.image}
-                                    alt={service.title}
+                                    src={service.src}
+                                    alt={service.alt}
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                                     sizes="(max-width: 768px) 100vw, 33vw"

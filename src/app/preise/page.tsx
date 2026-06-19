@@ -22,6 +22,7 @@ import {
 } from "@/data/motus-preise";
 import { microneedlingPreise } from "@/data/microneedling-preise";
 import { kosmetikPreise } from "@/data/kosmetik-preise";
+import { siteImages } from "@/data/site-images";
 import { useState } from "react";
 
 const ACC_LASER_F_EINZEL = "laser-frau-einzel";
@@ -88,8 +89,8 @@ export default function PreisePage() {
                     <Reveal delay={0.4} className="relative">
                         <div className="relative aspect-[4/3] rounded-[40px] overflow-hidden shadow-premium border border-[#3A3A3A]/[0.05]">
                             <Image
-                                src="/images/4.jpg"
-                                alt="TK Beauty Studio Preisübersicht"
+                                src={siteImages.preise.src}
+                                alt={siteImages.preise.alt}
                                 fill
                                 className="object-cover transition-transform duration-1000 hover:scale-105"
                                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -97,8 +98,8 @@ export default function PreisePage() {
                         </div>
                         <div className="absolute -top-6 -right-6 md:-top-10 md:-right-10 bg-white p-6 md:p-10 rounded-[32px] shadow-premium z-10 border border-[#3A3A3A]/[0.05] flex flex-col items-center">
                             <Image
-                                src="/images/22.png"
-                                alt="TK BEAUTYSTUDIO Logo"
+                                src={siteImages.studioInnen.src}
+                                alt={siteImages.studioInnen.alt}
                                 width={120}
                                 height={120}
                                 className="h-10 md:h-14 w-auto object-contain"

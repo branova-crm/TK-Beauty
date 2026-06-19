@@ -7,6 +7,7 @@ import {
     kosmetikBenefits,
     kosmetikFaqs,
 } from "@/data/kosmetik-preise";
+import { siteImages } from "@/data/site-images";
 
 export default function KosmetischeBehandlungenPage() {
     return (
@@ -28,8 +29,8 @@ export default function KosmetischeBehandlungenPage() {
                     { name: "Behandlungen", path: "/behandlungen" },
                     { name: "Kosmetische Behandlungen", path: "/behandlungen/kosmetische-behandlungen" },
                 ]}
-                imageSrc="/images/7.png"
-                imageAlt="Kosmetische Behandlung Nürnberg"
+                imageSrc={siteImages.kosmetik.src}
+                imageAlt={siteImages.kosmetik.alt}
                 relatedLinks={[
                     { href: "/behandlungen/motus-ax", label: "Motus AX Laser" },
                     { href: "/behandlungen/microneedling", label: "Microneedling" },

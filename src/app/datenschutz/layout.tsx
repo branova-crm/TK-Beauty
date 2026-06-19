@@ -1,16 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+export const metadata = pageMetadata.datenschutz;
 
-export default function DatenschutzLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+export default function DatenschutzLayout({ children }: { children: React.ReactNode }) {
+    return children;
 }

@@ -1,16 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+export const metadata = pageMetadata.impressum;
 
-export default function ImpressumLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+export default function ImpressumLayout({ children }: { children: React.ReactNode }) {
+    return children;
 }

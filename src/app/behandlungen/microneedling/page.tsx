@@ -7,6 +7,7 @@ import {
     microneedlingBenefits,
     microneedlingFaqs,
 } from "@/data/microneedling-preise";
+import { siteImages } from "@/data/site-images";
 
 export default function MicroneedlingPage() {
     return (
@@ -28,8 +29,8 @@ export default function MicroneedlingPage() {
                     { name: "Behandlungen", path: "/behandlungen" },
                     { name: "Microneedling", path: "/behandlungen/microneedling" },
                 ]}
-                imageSrc="/images/12.png"
-                imageAlt="Microneedling Behandlung Nürnberg"
+                imageSrc={siteImages.microneedling.src}
+                imageAlt={siteImages.microneedling.alt}
                 relatedLinks={[
                     { href: "/behandlungen/motus-ax", label: "Motus AX Laser" },
                     { href: "/behandlungen/kosmetische-behandlungen", label: "Kosmetische Behandlungen" },

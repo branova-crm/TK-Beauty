@@ -13,6 +13,7 @@ import {
     motusMaennerEinzel,
     motusMaennerKombi,
 } from "@/data/motus-preise";
+import { siteImages } from "@/data/site-images";
 
 const laserSubtitle = "Alexandrit-Laser Motus AX (DEKA)";
 
@@ -68,8 +69,8 @@ export default function MotusAxPage() {
                     { name: "Behandlungen", path: "/behandlungen" },
                     { name: "Motus AX", path: "/behandlungen/motus-ax" },
                 ]}
-                imageSrc="/images/10.jpg"
-                imageAlt="Motus AX Laserhaarentfernung Nürnberg"
+                imageSrc={siteImages.laserMotus.src}
+                imageAlt={siteImages.laserMotus.alt}
                 relatedLinks={[
                     { href: "/behandlungen/microneedling", label: "Microneedling" },
                     { href: "/behandlungen/kosmetische-behandlungen", label: "Kosmetische Behandlungen" },

@@ -1,6 +1,7 @@
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
 import Image from "next/image";
+import { siteImages } from "@/data/site-images";
 
 export default function BeforeAfter() {
     return (
@@ -16,8 +17,8 @@ export default function BeforeAfter() {
             <div className="max-w-4xl mx-auto mt-8">
                 <div className="relative aspect-[16/9] rounded-[24px] overflow-hidden shadow-premium border border-[#3A3A3A]/[0.06]">
                     <Image
-                        src="/images/12.png"
-                        alt="Beispiel für verfeinerte Haut"
+                        src={siteImages.microneedlingBeispiel.src}
+                        alt={siteImages.microneedlingBeispiel.alt}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 896px"

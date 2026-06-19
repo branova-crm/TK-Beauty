@@ -11,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, Calendar, Clock, MapPin } from "lucide-react";
 import { BUSINESS, OPENING_HOURS } from "@/lib/site";
+import { siteImages } from "@/data/site-images";
 
 export default function KontaktPage() {
     return (
@@ -61,8 +62,8 @@ export default function KontaktPage() {
                     <Reveal delay={0.4} className="relative">
                         <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden shadow-premium border border-[#3A3A3A]/[0.05]">
                             <Image
-                                src="/images/2.jpg"
-                                alt="TK Beauty Studio Atmosphäre"
+                                src={siteImages.kontakt.src}
+                                alt={siteImages.kontakt.alt}
                                 fill
                                 className="object-cover transition-transform duration-1000 hover:scale-105"
                                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -70,8 +71,8 @@ export default function KontaktPage() {
                         </div>
                         <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-white p-6 md:p-10 rounded-[32px] shadow-premium z-10 border border-[#3A3A3A]/[0.05] flex flex-col items-center">
                             <Image
-                                src="/images/BEAUTYSTUDIO_26.png"
-                                alt="TK BEAUTYSTUDIO Logo"
+                                src={siteImages.logo.src}
+                                alt={siteImages.logo.alt}
                                 width={128}
                                 height={48}
                                 className="h-8 md:h-12 w-auto object-contain"

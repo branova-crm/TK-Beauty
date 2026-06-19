@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Instagram, MapPin, Phone, Mail, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 import { BUSINESS, OPENING_HOURS, PHONE_FOOTNOTE } from "@/lib/site";
+import { siteImages } from "@/data/site-images";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -15,8 +16,8 @@ export default function Footer() {
                 <div className="flex flex-col items-center space-y-6 max-w-md">
                     <Link href="/" className="inline-block">
                         <Image
-                            src="/images/BEAUTYSTUDIO_26.png"
-                            alt="TK BEAUTYSTUDIO"
+                            src={siteImages.logo.src}
+                            alt={siteImages.logo.alt}
                             width={179}
                             height={56}
                             className="h-14 w-auto object-contain"

@@ -6,6 +6,7 @@ import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
 import Image from "next/image";
 import Link from "next/link";
+import { siteImages } from "@/data/site-images";
 
 export default function Highlight() {
     return (
@@ -52,8 +53,8 @@ export default function Highlight() {
                 <Reveal delay={0.4} className="w-full">
                     <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-premium group bg-[#FAF8F5]">
                         <Image
-                            src="/images/9.jpg"
-                            alt="Motus AX Laser Technology"
+                            src={siteImages.laserMotusHighlight.src}
+                            alt={siteImages.laserMotusHighlight.alt}
                             fill
                             className="object-cover transition-transform duration-1000 group-hover:scale-105"
                             sizes="(max-width: 1024px) 100vw, 50vw"

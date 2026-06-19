@@ -5,6 +5,7 @@ import { Star, Calendar, ArrowRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Image from "next/image";
 import Link from "next/link";
+import { siteImages } from "@/data/site-images";
 
 export default function Hero() {
     return (
@@ -47,8 +48,8 @@ export default function Hero() {
                             <Reveal delay={0.2} className="w-full h-full">
                                 <div className="w-full h-full rounded-[32px] overflow-hidden relative shadow-inner">
                                     <Image
-                                        src="/images/8.jpg"
-                                        alt="Premium Beauty Behandlung"
+                                        src={siteImages.hero.src}
+                                        alt={siteImages.hero.alt}
                                         fill
                                         priority
                                         className="object-cover"

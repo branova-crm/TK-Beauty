@@ -7,6 +7,7 @@ import { Menu, X, Calendar } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { OPENING_HOURS } from "@/lib/site";
+import { siteImages } from "@/data/site-images";
 import "./Header.css";
 
 const navLinks = [
@@ -60,8 +61,8 @@ export default function Header() {
                 <div className="header-top-inner">
                     <Link href="/" className="header-logo">
                         <Image
-                            src="/images/BEAUTYSTUDIO_26.png"
-                            alt="TK BEAUTYSTUDIO"
+                            src={siteImages.logo.src}
+                            alt={siteImages.logo.alt}
                             width={260}
                             height={82}
                             className="object-contain"
@@ -97,8 +98,8 @@ export default function Header() {
                 <div className="sticky-inner">
                     <Link href="/" className="header-logo sticky-logo">
                         <Image
-                            src="/images/BEAUTYSTUDIO_26.png"
-                            alt="TK BEAUTYSTUDIO"
+                            src={siteImages.logo.src}
+                            alt={siteImages.logo.alt}
                             width={180}
                             height={57}
                             className="object-contain"
@@ -141,8 +142,8 @@ export default function Header() {
                         <div className="offcanvas-header">
                             <Link href="/" className="header-logo" onClick={() => setIsOpen(false)}>
                                 <Image
-                                    src="/images/BEAUTYSTUDIO_26.png"
-                                    alt="TK BEAUTYSTUDIO"
+                                    src={siteImages.logo.src}
+                                    alt={siteImages.logo.alt}
                                     width={128}
                                     height={40}
                                     className="object-contain"

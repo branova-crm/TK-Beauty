@@ -6,9 +6,11 @@ import Highlight from "@/components/home/Highlight";
 import Steps from "@/components/home/Steps";
 import Testimonials from "@/components/home/Testimonials";
 import BeforeAfter from "@/components/home/BeforeAfter";
-
 import InstagramPreview from "@/components/home/InstagramPreview";
 import ContactMap from "@/components/home/ContactMap";
+import { pageMetadata } from "@/lib/seo/metadata";
+
+export const metadata = pageMetadata.home;
 
 export default function Home() {
   return (

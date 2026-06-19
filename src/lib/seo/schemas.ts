@@ -1,4 +1,5 @@
 import { BUSINESS, OPENING_HOURS, SITE_URL } from "@/lib/site";
+import { siteImages } from "@/data/site-images";
 
 export type FaqItem = { question: string; answer: string };
 
@@ -22,7 +23,7 @@ export function buildLocalBusinessSchema() {
         "@context": "https://schema.org",
         "@type": "BeautySalon",
         name: BUSINESS.name,
-        image: `${SITE_URL}/images/BEAUTYSTUDIO_26.png`,
+        image: `${SITE_URL}${siteImages.logo.src}`,
         url: SITE_URL,
         telephone: BUSINESS.phone,
         email: BUSINESS.email,

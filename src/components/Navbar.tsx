@@ -8,6 +8,7 @@ import { twMerge } from "tailwind-merge";
 import ContactModal from "./ContactModal";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
+import { siteImages } from "@/data/site-images";
 import { AnimatePresence, motion } from "framer-motion";
 
 function cn(...inputs: ClassValue[]) {
@@ -68,8 +69,8 @@ export default function Navbar() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
                         <Image
-                            src="/images/BEAUTYSTUDIO_26.png"
-                            alt="TK BEAUTYSTUDIO"
+                            src={siteImages.logo.src}
+                            alt={siteImages.logo.alt}
                             width={153}
                             height={48}
                             className="object-contain"
@@ -126,8 +127,8 @@ export default function Navbar() {
                             <div className="flex items-center justify-between px-6 pt-6">
                                 <Link href="/" onClick={() => setIsOpen(false)}>
                                     <Image
-                                        src="/images/BEAUTYSTUDIO_26.png"
-                                        alt="TK BEAUTYSTUDIO"
+                                        src={siteImages.logo.src}
+                                        alt={siteImages.logo.alt}
                                         width={128}
                                         height={40}
                                         className="object-contain"

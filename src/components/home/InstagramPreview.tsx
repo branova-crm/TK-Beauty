@@ -8,20 +8,14 @@ import Reveal from "@/components/ui/Reveal";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOverlayLock } from "@/hooks/useOverlayLock";
+import { siteImages, type SiteImage } from "@/data/site-images";
 
 export default function InstagramPreview() {
-    const [selectedImg, setSelectedImg] = useState<string | null>(null);
+    const [selectedImg, setSelectedImg] = useState<SiteImage | null>(null);
 
     useOverlayLock(!!selectedImg);
 
-    const images = [
-        "/images/13.png",
-        "/images/14.png",
-        "/images/16.png",
-        "/images/17.png",
-        "/images/18.png",
-        "/images/21.png",
-    ];
+    const images = siteImages.instagram;
 
     return (
         <SurfaceSection variant="white" id="instagram">
@@ -56,14 +50,14 @@ export default function InstagramPreview() {
 
             <div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
                 {images.map((img, index) => (
-                    <Reveal key={index} delay={0.1 * index}>
+                    <Reveal key={img.src} delay={0.1 * index}>
                         <div
                             onClick={() => setSelectedImg(img)}
                             className="relative aspect-square rounded-[24px] overflow-hidden group shadow-sm hover:shadow-premium transition-all duration-700 bg-[#FAF8F5] cursor-zoom-in"
                         >
                             <Image
-                                src={img}
-                                alt={`Instagram Feed ${index + 1}`}
+                                src={img.src}
+                                alt={img.alt}
                                 fill
                                 className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90 group-hover:opacity-100"
                                 sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 16vw"
@@ -108,8 +102,8 @@ export default function InstagramPreview() {
                         >
                             <div className="relative w-full aspect-square rounded-[32px] overflow-hidden bg-white shadow-2xl border border-white/20">
                                 <Image
-                                    src={selectedImg}
-                                    alt="Vergrößerte Ansicht"
+                                    src={selectedImg.src}
+                                    alt={selectedImg.alt}
                                     fill
                                     className="object-contain p-2"
                                     sizes="(max-width: 768px) 100vw, 600px"

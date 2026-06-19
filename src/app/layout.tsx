@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import ConsentManager from "@/components/ConsentManager";
+import { rootMetadata } from "@/lib/seo/metadata";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -15,11 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "TK BEAUTYSTUDIO | Premium Beauty Studio Nürnberg",
-  description: "Exklusive Behandlungen für Ihre Schönheit: Dauerhafte Haarentfernung mit Alexandrit Laser, Microneedling & Kosmetik in Nürnberg.",
-  icons: {
-    icon: "/images/Favicon.png",
-  },
+  ...rootMetadata,
   verification: {
     google: "T2AgaDjhWQSsX1qTw3HOQtfo5YTih6_3BkWvgPLpnsU",
   },
