@@ -78,10 +78,7 @@ export default function TreatmentPageTemplate({
                             </h1>
                         </div>
                         <p className="text-lg text-[#685743] leading-relaxed max-w-lg">{intro}</p>
-                        <p className="text-sm text-[#8A7A65]">
-                            TK BEAUTYSTUDIO · Krugstraße 39, 90419 Nürnberg
-                        </p>
-                        <div className="flex flex-col gap-4 pt-2 w-full max-w-lg">
+                        <div className="flex flex-col gap-4 pt-4 w-full max-w-lg">
                             <Link href="/termin" className="block w-full">
                                 <Button variant="primary" className="w-full">
                                     Termin buchen
