@@ -4,7 +4,8 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/ui/Reveal";
 import Card from "@/components/ui/Card";
-import { Mail, Phone, MapPin, Scale, Globe, Info } from "lucide-react";
+import { Mail, Phone, MapPin, Scale, Globe, Info, ImageIcon } from "lucide-react";
+import { imageCredits, IMAGE_CREDITS_INTRO } from "@/data/image-credits";
 
 export default function ImpressumPage() {
     return (
@@ -117,6 +118,40 @@ export default function ImpressumPage() {
                             </div>
 
                         </div>
+                    </Card>
+                </Reveal>
+
+                <Reveal delay={0.35}>
+                    <Card className="mt-10 bg-creme border-none shadow-premium p-8 md:p-12 rounded-[40px] md:rounded-[60px]">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-primary/70">
+                                <ImageIcon className="w-5 h-5" />
+                            </div>
+                            <h2 className="text-xl font-serif font-bold text-foreground uppercase tracking-widest">
+                                Bildnachweise
+                            </h2>
+                        </div>
+
+                        <p className="text-[#685743] text-sm leading-relaxed mb-6 max-w-2xl">
+                            {IMAGE_CREDITS_INTRO}{" "}
+                            <a
+                                href="https://www.magnific.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary hover:text-primary/80 underline decoration-primary/20 underline-offset-4"
+                            >
+                                magnific.com
+                            </a>
+                        </p>
+
+                        <ul className="space-y-2 text-sm text-[#685743]">
+                            {imageCredits.map((credit) => (
+                                <li key={credit.label} className="flex flex-wrap gap-x-2">
+                                    <span className="text-foreground">{credit.label}</span>
+                                    <span className="text-[#8A7A65]">– {credit.author} / Magnific.com</span>
+                                </li>
+                            ))}
+                        </ul>
                     </Card>
                 </Reveal>
             </div>
