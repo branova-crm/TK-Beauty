@@ -17,8 +17,27 @@ const cspHeader = `
   style-src 'self' 'unsafe-inline' https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net;
   img-src 'self' data: https:;
   font-src 'self' https:;
-  frame-src https://www.google.com https://maps.google.com https://cloud.ccm19.de https://*.planity.com https://planity.com;
-  connect-src 'self' https://maps.googleapis.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net https://*.planity.com https://planity.com;
+  frame-src https://www.google.com https://maps.google.com https://cloud.ccm19.de https://*.planity.com https://planity.com https://*.planityapp.com;
+  connect-src 'self'
+    https://maps.googleapis.com
+    https://*.googleapis.com
+    https://vitals.vercel-insights.com
+    https://va.vercel-scripts.com
+    https://cloud.ccm19.de
+    https://d2skjte8udjqxw.cloudfront.net
+    https://*.planity.com
+    https://planity.com
+    https://*.planityapp.com
+    wss://*.planityapp.com
+    https://users.api.euwest1.prod.planityapp.com
+    https://product.api.euwest1.prod.planityapp.com
+    https://master.firebase.global.prod.planityapp.com
+    https://assets.cdn.global.prodsharedsvc.planityapp.com
+    https://planitary.api.euwest1.prodsharedsvc.planityapp.com
+    https://*.planity.services
+    wss://*.planity.services
+    https://*.firebaseio.com
+    wss://*.firebaseio.com;
   object-src 'none';
   base-uri 'self';
   form-action 'self';

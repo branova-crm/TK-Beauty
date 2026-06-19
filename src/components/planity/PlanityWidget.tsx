@@ -1,10 +1,11 @@
 "use client";
 
 import "@/styles/planity.css";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { useOverlayLock } from "@/hooks/useOverlayLock";
 
 const PLANITY_HEADER_OFFSET = "136px";
+const LOAD_TIMEOUT_MS = 25000;
 
 const POLYFILLS_SRC =
     "https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js";
@@ -26,11 +27,6 @@ declare global {
         google?: unknown;
     }
 }
-
-let planityScriptsLoaded = false;
-let planityScriptsLoading: Promise<void> | null = null;
-let planityMountedContainer: HTMLElement | null = null;
-let planityBootGeneration = 0;
 
 function scrollToWidgetTop(behavior: ScrollBehavior = "smooth") {
     const shell = document.getElementById("planity-appointment");
@@ -61,19 +57,8 @@ function isPlanityLive(container: HTMLElement) {
     );
 }
 
-function injectScript(src: string, force = false): Promise<void> {
+function injectScript(src: string): Promise<void> {
     return new Promise((resolve, reject) => {
-        const existing = document.querySelector(`script[src="${src}"]`);
-
-        if (existing && !force) {
-            resolve();
-            return;
-        }
-
-        if (existing) {
-            existing.remove();
-        }
-
         const script = document.createElement("script");
         script.src = src;
         script.async = false;
@@ -83,6 +68,10 @@ function injectScript(src: string, force = false): Promise<void> {
     });
 }
 
+function removeScript(src: string) {
+    document.querySelectorAll(`script[src="${src}"]`).forEach((node) => node.remove());
+}
+
 function resetGoogleMapsLoader() {
     document
         .querySelectorAll('script[src*="maps.googleapis.com/maps/api/js"]')
@@ -90,56 +79,48 @@ function resetGoogleMapsLoader() {
     delete window.google;
 }
 
-async function loadPlanityScriptsFirstTime(): Promise<void> {
-    if (planityScriptsLoaded) return;
-    if (planityScriptsLoading) {
-        await planityScriptsLoading;
-        return;
+async function ensurePolyfillsLoaded(): Promise<void> {
+    if (document.querySelector(`script[src="${POLYFILLS_SRC}"]`)) return;
+    await injectScript(POLYFILLS_SRC);
+}
+
+let mountPlanityMutex: Promise<void> = Promise.resolve();
+
+async function waitForPlanityLive(container: HTMLElement, timeoutMs = 20000): Promise<boolean> {
+    const started = Date.now();
+
+    while (Date.now() - started < timeoutMs) {
+        if (isPlanityLive(container)) return true;
+        await new Promise((resolve) => window.setTimeout(resolve, 200));
     }
 
-    planityScriptsLoading = (async () => {
-        await injectScript(POLYFILLS_SRC);
+    return isPlanityLive(container);
+}
+
+async function mountPlanityApp(container: HTMLElement, apiKey: string): Promise<void> {
+    const run = async () => {
+        configurePlanity(container, apiKey);
+
+        if (isPlanityLive(container)) return;
+
+        await ensurePolyfillsLoaded();
+
+        if (isPlanityLive(container)) return;
+
+        removeScript(APP_SRC);
+        resetGoogleMapsLoader();
+        container.replaceChildren();
+
         await injectScript(APP_SRC);
-        planityScriptsLoaded = true;
-    })().finally(() => {
-        planityScriptsLoading = null;
-    });
 
-    await planityScriptsLoading;
-}
+        const live = await waitForPlanityLive(container);
+        if (!live) {
+            throw new Error("Planity widget did not mount");
+        }
+    };
 
-async function remountPlanityApp(container: HTMLElement, apiKey: string): Promise<void> {
-    configurePlanity(container, apiKey);
-    container.replaceChildren();
-    resetGoogleMapsLoader();
-    await injectScript(APP_SRC, true);
-    planityMountedContainer = container;
-}
-
-async function initializePlanity(container: HTMLElement, apiKey: string, generation: number): Promise<void> {
-    if (generation !== planityBootGeneration) return;
-
-    configurePlanity(container, apiKey);
-
-    if (isPlanityLive(container)) {
-        planityMountedContainer = container;
-        return;
-    }
-
-    const previousContainerGone =
-        planityMountedContainer !== null &&
-        planityMountedContainer !== container &&
-        !planityMountedContainer.isConnected;
-
-    if (!planityScriptsLoaded) {
-        planityMountedContainer = container;
-        await loadPlanityScriptsFirstTime();
-        return;
-    }
-
-    if (previousContainerGone || (planityMountedContainer !== container && container.childElementCount === 0)) {
-        await remountPlanityApp(container, apiKey);
-    }
+    mountPlanityMutex = mountPlanityMutex.then(run, run);
+    await mountPlanityMutex;
 }
 
 function isPlanityOverlayNode(node: Node): boolean {
@@ -191,6 +172,7 @@ function hasActivePlanityOverlay(): boolean {
 
 export default function PlanityWidget() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const bootIdRef = useRef(0);
     const apiKey = process.env.NEXT_PUBLIC_PLANITY_API_KEY;
     const [hasOverlay, setHasOverlay] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -202,40 +184,43 @@ export default function PlanityWidget() {
         setHasOverlay(hasActivePlanityOverlay());
     }, []);
 
-    useEffect(() => {
+    const bootWidget = useCallback(async () => {
         const container = containerRef.current;
         if (!container || !apiKey) return;
 
-        const generation = ++planityBootGeneration;
-        let cancelled = false;
+        const bootId = ++bootIdRef.current;
+        setIsLoading(true);
+        setLoadError(false);
+
+        try {
+            await mountPlanityApp(container, apiKey);
+
+            if (bootId !== bootIdRef.current) return;
+
+            setIsLoading(false);
+            setLoadError(false);
+            evaluateOverlays();
+        } catch {
+            if (bootId !== bootIdRef.current) return;
+
+            setLoadError(true);
+            setIsLoading(false);
+        }
+    }, [apiKey, evaluateOverlays]);
+
+    useLayoutEffect(() => {
+        const container = containerRef.current;
+        if (!container || !apiKey) return;
 
         if (isPlanityLive(container)) {
             configurePlanity(container, apiKey);
             setIsLoading(false);
             setLoadError(false);
-        } else {
-            setIsLoading(true);
-            setLoadError(false);
+            evaluateOverlays();
+            return;
         }
 
-        const bootTimer = window.setTimeout(() => {
-            if (cancelled || generation !== planityBootGeneration) return;
-
-            void initializePlanity(container, apiKey, generation)
-                .then(() => {
-                    if (cancelled || generation !== planityBootGeneration) return;
-                    evaluateOverlays();
-                    if (isPlanityLive(container)) {
-                        setIsLoading(false);
-                    }
-                })
-                .catch(() => {
-                    if (!cancelled && generation === planityBootGeneration) {
-                        setLoadError(true);
-                        setIsLoading(false);
-                    }
-                });
-        }, 0);
+        void bootWidget();
 
         const contentObserver = new MutationObserver(() => {
             if (isPlanityLive(container)) {
@@ -275,26 +260,21 @@ export default function PlanityWidget() {
         const interval = window.setInterval(evaluateOverlays, 800);
 
         const loadingTimeout = window.setTimeout(() => {
-            if (!cancelled && generation === planityBootGeneration && !isPlanityLive(container)) {
+            if (!isPlanityLive(container)) {
                 setLoadError(true);
                 setIsLoading(false);
             }
-        }, 12000);
+        }, LOAD_TIMEOUT_MS);
 
         return () => {
-            cancelled = true;
-            window.clearTimeout(bootTimer);
+            bootIdRef.current += 1;
             contentObserver.disconnect();
             overlayObserver.disconnect();
             document.removeEventListener("focusin", onFocusIn);
             window.clearInterval(interval);
             window.clearTimeout(loadingTimeout);
-
-            if (planityMountedContainer === container && !container.isConnected) {
-                planityMountedContainer = null;
-            }
         };
-    }, [apiKey, evaluateOverlays]);
+    }, [apiKey, bootWidget, evaluateOverlays]);
 
     if (!apiKey) {
         return (
@@ -326,9 +306,9 @@ export default function PlanityWidget() {
                     <button
                         type="button"
                         className="font-semibold text-[#554734] underline underline-offset-2"
-                        onClick={() => window.location.reload()}
+                        onClick={() => void bootWidget()}
                     >
-                        Seite neu laden
+                        Erneut versuchen
                     </button>
                 </div>
             ) : null}
