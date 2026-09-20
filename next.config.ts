@@ -13,14 +13,18 @@ import type { NextConfig } from "next";
 // ============================================================
 const cspHeader = `
   default-src 'none';
-  script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com https://va.vercel-scripts.com https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net;
+  script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com https://apis.google.com https://va.vercel-scripts.com https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net https://js.stripe.com;
   style-src 'self' 'unsafe-inline' https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net;
   img-src 'self' data: https:;
   font-src 'self' https:;
-  frame-src https://www.google.com https://maps.google.com https://cloud.ccm19.de https://*.planity.com https://planity.com https://*.planityapp.com;
+  frame-src https://www.google.com https://maps.google.com https://*.google.com https://cloud.ccm19.de https://*.planity.com https://planity.com https://*.planityapp.com https://*.firebaseapp.com https://js.stripe.com https://hooks.stripe.com;
+  worker-src 'self' blob:;
   connect-src 'self'
     https://maps.googleapis.com
     https://*.googleapis.com
+    https://apis.google.com
+    https://api.woosmap.com
+    https://*.woosmap.com
     https://vitals.vercel-insights.com
     https://va.vercel-scripts.com
     https://cloud.ccm19.de
@@ -32,15 +36,25 @@ const cspHeader = `
     https://users.api.euwest1.prod.planityapp.com
     https://product.api.euwest1.prod.planityapp.com
     https://master.firebase.global.prod.planityapp.com
+    wss://master.firebase.global.prod.planityapp.com
+    https://public.firebase.global.prod.planityapp.com
+    wss://public.firebase.global.prod.planityapp.com
     https://assets.cdn.global.prodsharedsvc.planityapp.com
     https://planitary.api.euwest1.prodsharedsvc.planityapp.com
     https://*.planity.services
     wss://*.planity.services
     https://*.firebaseio.com
-    wss://*.firebaseio.com;
+    wss://*.firebaseio.com
+    https://*.firebaseapp.com
+    https://*.firebasedatabase.app
+    wss://*.firebasedatabase.app
+    https://*.europe-west1.firebasedatabase.app
+    wss://*.europe-west1.firebasedatabase.app
+    https://api.stripe.com
+    https://*.stripe.com;
   object-src 'none';
   base-uri 'self';
-  form-action 'self';
+  form-action 'self' https://www.planity.com https://planity.com https://*.planity.com https://*.planityapp.com https://*.stripe.com;
   frame-ancestors 'none';
   manifest-src 'self';
   upgrade-insecure-requests;
