@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+Sitemap: https://tkbeautystudio.de/sitemap.xml
+Host: https://tkbeautystudio.de

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react';
 import PreisAccordionPanel from "@/components/preise/PreisAccordionPanel";
 import type { FaqItem } from "@/lib/seo/schemas";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import "@/styles/planity.css";
-import { Component, useCallback, useLayoutEffect, useState } from "react";
+import { Component, useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import { useOverlayLock } from "@/hooks/useOverlayLock";
 
 const PLANITY_HEADER_OFFSET = "136px";
@@ -312,14 +312,29 @@ class PlanityHost extends Component<PlanityHostProps> {
     }
 }
 
+function readPlanityApiKey(): string | undefined {
+    if (typeof window !== "undefined") {
+        const runtime = (window as Window & { __PLANITY_API_KEY__?: string }).__PLANITY_API_KEY__;
+        if (runtime) return runtime;
+    }
+    return process.env.NEXT_PUBLIC_PLANITY_API_KEY || undefined;
+}
+
 export default function PlanityWidget() {
-    const apiKey = process.env.NEXT_PUBLIC_PLANITY_API_KEY;
+    // Key erst clientseitig (planity-env.js / Runtime) — SSR bleibt key-frei → keine Hydration-Mismatch
+    const [apiKey, setApiKey] = useState<string | undefined>(undefined);
+    const [keyReady, setKeyReady] = useState(false);
     const [hasOverlay, setHasOverlay] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [loadError, setLoadError] = useState(false);
     const [needsConsent, setNeedsConsent] = useState(false);
     const [canMount, setCanMount] = useState(false);
     const [mountId, setMountId] = useState(0);
+
+    useEffect(() => {
+        setApiKey(readPlanityApiKey());
+        setKeyReady(true);
+    }, []);
 
     useOverlayLock(hasOverlay);
 
@@ -434,6 +449,22 @@ export default function PlanityWidget() {
             window.clearInterval(interval);
         };
     }, [canMount, evaluateOverlays]);
+
+    if (!keyReady) {
+        return (
+            <div className="planity-widget-shell">
+                <div
+                    className="planity-widget-loading"
+                    aria-live="polite"
+                    aria-busy="true"
+                >
+                    <p className="text-sm text-[#8A7A65]">Terminbuchung wird geladen …</p>
+                    <div className="planity-widget-loading__bar planity-widget-loading__bar--lg" />
+                    <div className="planity-widget-loading__bar planity-widget-loading__bar--md" />
+                </div>
+            </div>
+        );
+    }
 
     if (!apiKey) {
         return (

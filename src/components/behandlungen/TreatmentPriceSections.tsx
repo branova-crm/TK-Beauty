@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react';
 import PreisAccordionPanel, {
     type PreisAccordionIconKey,
 } from "@/components/preise/PreisAccordionPanel";

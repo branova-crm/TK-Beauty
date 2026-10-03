@@ -1,0 +1,51 @@
+---
+import '../styles/globals.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'TK BEAUTYSTUDIO Nürnberg | Laser Haarentfernung & Kosmetik',
+  description = 'TK BEAUTYSTUDIO in Nürnberg: Dauerhafte Laser Haarentfernung mit Motus AX, Microneedling und kosmetische Behandlungen. Jetzt Termin online buchen.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="google-site-verification" content="T2AgaDjhWQSsX1qTw3HOQtfo5YTih6_3BkWvgPLpnsU" />
+    <title>{title}</title>
+    <link rel="icon" type="image/png" href="/images/tk-beautystudio-favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cloud.ccm19.de" />
+    <link rel="preconnect" href="https://d2skjte8udjqxw.cloudfront.net" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Runtime Planity key (geschrieben von server/start.sh) -->
+    <script is:inline src="/planity-env.js"></script>
+  </head>
+  <body class="font-sans antialiased bg-background text-foreground">
+    <script
+      is:inline
+      id="ccm19-script"
+      src="https://cloud.ccm19.de/app.js?apiKey=ff7e73e38d81af3c82275cc24475dce7b5a3fcc5dd5a34fe&domain=69da519c17dba216530dcf02&lang=de_DE"
+      defer
+      referrerpolicy="origin"></script>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --font-playfair: 'Playfair Display', ui-serif, Georgia, serif;
+    --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  }
+</style>

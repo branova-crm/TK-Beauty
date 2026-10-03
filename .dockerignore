@@ -1,0 +1,11 @@
+node_modules
+dist
+.next
+_legacy_next
+.git
+.DS_Store
+*.md
+.env*
+npm-cache
+.cursor
+.agents

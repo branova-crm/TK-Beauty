@@ -4,7 +4,8 @@ import { MapPin, Instagram, Calendar, MapIcon } from "lucide-react";
 import Button from "@/components/ui/Button";
 import SurfaceSection from "@/components/ui/SurfaceSection";
 import Reveal from "@/components/ui/Reveal";
-import { useState, useEffect } from "react";
+import ConsentGate from "@/components/ConsentGate";
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { BUSINESS } from "@/lib/site";
 
@@ -83,16 +84,23 @@ export default function ContactMap({ isNested = false }: ContactMapProps) {
                 <div className="relative aspect-[4/5] md:aspect-square lg:aspect-auto lg:h-[600px] rounded-[24px] overflow-hidden shadow-premium group border border-[#3A3A3A]/[0.05] bg-[#FAF8F5] flex flex-col items-center justify-center text-center">
                     <div className="absolute inset-0 transition-all duration-700">
                         {mounted && (
-                            <iframe
-                                src="https://maps.google.com/maps?q=Krugstra%C3%9Fe%2039%2C%2090419%20N%C3%BCrnberg&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                                width="100%"
-                                height="100%"
-                                style={{ border: 0 }}
-                                allowFullScreen
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
+                            <ConsentGate
+                                nameIncludes="google maps"
                                 className="w-full h-full"
-                            />
+                                style={{ height: "100%", borderRadius: 0, minHeight: "100%" }}
+                            >
+                                <iframe
+                                    src="https://maps.google.com/maps?q=Krugstra%C3%9Fe%2039%2C%2090419%20N%C3%BCrnberg&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    className="w-full h-full"
+                                    title="Google Maps – TK BEAUTYSTUDIO Nürnberg"
+                                />
+                            </ConsentGate>
                         )}
                     </div>
                     <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_40px_rgba(239,228,208,0.2)] z-10" />

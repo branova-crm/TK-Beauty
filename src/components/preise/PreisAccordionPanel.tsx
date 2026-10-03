@@ -4,7 +4,7 @@ import { ChevronDown, HelpCircle, Package, Sparkles, Zap, type LucideIcon } from
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import type { ReactNode } from "react";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from 'react';
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));

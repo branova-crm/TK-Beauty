@@ -1,17 +1,6 @@
-"use client";
+'use client';
 
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
-
-/**
- * Wrapper for Vercel tools. 
- * Blocking is handled by the CCM19 script in layout.tsx.
- */
+/** Vercel Analytics/SpeedInsights entfernt (Dokploy). CCM19 bleibt im Layout. */
 export default function ConsentManager() {
-    return (
-        <>
-            <SpeedInsights />
-            <Analytics />
-        </>
-    );
+  return null;
 }

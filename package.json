@@ -2,37 +2,37 @@
   "name": "tk-beauty-app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "description": "TK Beautystudio Nürnberg – Astro static + React Islands + Planity",
   "engines": {
     "node": ">=20.9.0"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "start": "node server/prod-start.mjs",
+    "astro": "astro",
+    "api": "node --env-file=.env.local server/send-api.mjs"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.98.0",
-    "@types/nodemailer": "^7.0.11",
-    "@vercel/analytics": "^1.6.1",
-    "@vercel/speed-insights": "^1.3.1",
+    "@astrojs/react": "^4.4.2",
+    "@tailwindcss/vite": "^4.1.13",
+    "astro": "^5.16.6",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.4",
     "lucide-react": "^0.576.0",
-    "next": "16.1.6",
     "nodemailer": "^8.0.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "tailwind-merge": "^3.5.0"
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.6",
-    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }
