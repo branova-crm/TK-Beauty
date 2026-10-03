@@ -13,17 +13,40 @@ import type { NextConfig } from "next";
 // ============================================================
 const cspHeader = `
   default-src 'none';
-  script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com https://apis.google.com https://va.vercel-scripts.com https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net https://js.stripe.com;
-  style-src 'self' 'unsafe-inline' https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net;
+  script-src 'self' 'unsafe-inline' blob:
+    https://maps.googleapis.com
+    https://maps.gstatic.com
+    https://apis.google.com
+    https://www.google.com
+    https://www.gstatic.com
+    https://www.recaptcha.net
+    https://va.vercel-scripts.com
+    https://cloud.ccm19.de
+    https://d2skjte8udjqxw.cloudfront.net
+    https://js.stripe.com
+    https://sdk.woosmap.com
+    https://*.firebaseio.com
+    https://*.firebasedatabase.app
+    https://*.europe-west1.firebasedatabase.app
+    https://*.planityapp.com
+    https://public.firebase.global.prod.planityapp.com
+    https://master.firebase.global.prod.planityapp.com
+    https://*.planity.services
+    https://*.stripe.com;
+  style-src 'self' 'unsafe-inline' https://cloud.ccm19.de https://d2skjte8udjqxw.cloudfront.net https://www.gstatic.com https://fonts.googleapis.com;
   img-src 'self' data: https:;
-  font-src 'self' https:;
-  frame-src https://www.google.com https://maps.google.com https://*.google.com https://cloud.ccm19.de https://*.planity.com https://planity.com https://*.planityapp.com https://*.firebaseapp.com https://js.stripe.com https://hooks.stripe.com;
+  font-src 'self' data: https:;
+  frame-src https://www.google.com https://maps.google.com https://*.google.com https://www.recaptcha.net https://recaptcha.google.com https://cloud.ccm19.de https://*.planity.com https://planity.com https://*.planityapp.com https://*.firebaseapp.com https://js.stripe.com https://hooks.stripe.com;
   worker-src 'self' blob:;
   connect-src 'self'
     https://maps.googleapis.com
     https://*.googleapis.com
     https://apis.google.com
+    https://www.google.com
+    https://www.gstatic.com
+    https://www.recaptcha.net
     https://api.woosmap.com
+    https://sdk.woosmap.com
     https://*.woosmap.com
     https://vitals.vercel-insights.com
     https://va.vercel-scripts.com
